@@ -58,6 +58,35 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 ## Ambiente de desenvolvimento
 
+### Configuração
+
+- Baixe o [.NET](https://dotnet.microsoft.com/pt-br/download) e faça a instalação
+  - Baixe o .NET Runtime caso queira somente executar aplicações desenvolvida em .NET
+  - Baixe o .NET SDK caso queira desenvolver aplicações em .NET
+- Confirme a instalação e outras informações de versões instaladas, executando no prompt de comandos: `dotnet --info`
+
+  ![Informações do .NET instalado](/introducao/fundamentos_csharp/img/dotnet-info.png)
+
+### IDE's de desenvolvimento
+
+- [Visual Studio](https://visualstudio.microsoft.com/pt-br/)
+  - Mais completa para desenvolvimento .NET
+  - Roda somente no Windows
+  - Possui versão gratuita e paga
+
+- [Visual Studio Code](https://code.visualstudio.com/)
+  - Versão mais simplicada e leve para desenvolvimento
+  - Multiplataforma
+  - Open Source
+  - Possui diversos plugins, que podem ser instalados conforme a necessidade
+  - Extensões para desenvolvimento C#:
+    - C#
+    - _(Opcional)_ C# Dev Kit
+
+- [Jetbrains Rider](https://www.jetbrains.com/rider/)
+  - Multiplataforma
+  - Paga
+
 ### Estrutura
 
 #### Projeto
