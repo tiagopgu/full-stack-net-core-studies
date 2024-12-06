@@ -96,7 +96,7 @@ Sequência de passos definidos para que um programa de computador consiga execut
 #### Projeto
 
 - Organiza os _códigos fonte_, seja por pasta e/ou arquivos
-- É um escrito em uma das linguagens suportadas pelo .NET
+- É escrito em uma das linguagens suportadas pelo .NET
 - Define a versão do .NET usada
 - Define a tipo de binário de saída (.exe, .dll)
 
