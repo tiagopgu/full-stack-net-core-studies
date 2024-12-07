@@ -135,6 +135,8 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 ### Tipos de Dados Primitivos
 
+Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor para o maior. Isto significa que o tipo menor cabe no tipo maior, porém o contrário não é verdadeiro.
+
 - Numéricos
   - Inteiros
     - `byte`: 0 até 255
@@ -186,3 +188,20 @@ Sequência de passos definidos para que um programa de computador consiga execut
 - Declaração: `const tipo_dado NOME_CONSTANTE = valor`. Exemplo: `const string NOME_CURSO = "CSHARP"`
 - Segue basicamente as mesmas regras de variáveis
 - No C# é convencionado que constantes sejam escritas em maiúscula e palavras compostas separadas por underscore (_).
+
+## Operadores
+
+- Aritméticos
+  - Soma: `variavel = valor1 + valor2;`
+  - Subtracao: `variavel = valor1 - valor2;`
+  - Multiplicação: `variavel = valor1 * valor2;`
+  - Divisão: `variavel = valor1 / valor2;`
+    - Retorna resultado inteiro caso os dois operandos sejam de algum dos tipos inteiros
+    - Retorna resultado real se ao menos um dos tipos for um dos tipos real
+    - Retorna erro se `valor2` for 0
+
+  Obs1.: Os operandos podem ser valores literais ou uma variável que contenha valor\
+  Obs2.: O tipo de dados do resultado será com base no tipo de dado do operando com maior capacidade de armazenamento de valor. Exemplo: `valor_inteiro + valor_long = resultado_long;`
+  Obs3.: Prioridade segue a mesma regra da matemática
+  Obs4.: Em uma expressão, use parênteses para alterar a ordem de prioridade. Exemplo: `var resultado = (valor1 + valor2) * (valor3 / valor4)`
+  
