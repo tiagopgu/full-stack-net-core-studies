@@ -192,10 +192,10 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 ## Operadores
 
 - Aritméticos
-  - Soma: `variavel = valor1 + valor2;`
-  - Subtracao: `variavel = valor1 - valor2;`
-  - Multiplicação: `variavel = valor1 * valor2;`
-  - Divisão: `variavel = valor1 / valor2;`
+  - Soma: `var resultado = valor1 + valor2;`
+  - Subtracao: `var resultado = valor1 - valor2;`
+  - Multiplicação: `var resultado = valor1 * valor2;`
+  - Divisão: `var resultado = valor1 / valor2;`
     - Retorna resultado inteiro caso os dois operandos sejam de algum dos tipos inteiros
     - Retorna resultado real se ao menos um dos tipos for um dos tipos real
     - Retorna erro se `valor2` for 0
@@ -215,4 +215,3 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
   - Menor ou igual: `var resultado = valor1 <= valor2`
 
   Obs.: O resultado dos operadores relacionais é do tipo `bool;`
-  
