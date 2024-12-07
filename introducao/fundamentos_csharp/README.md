@@ -21,8 +21,9 @@ Sequência de passos definidos para que um programa de computador consiga execut
 - Cada linguagem possui sua sintaxe e semântica, semelhante a um idioma de um país
   - Sintaxe no **C#**
     - Toda instrução deve terminar com `;`
-    - Comentário de uma linha: `// Comentário`
-    - Cometário em bloco (pode ter várias linhas): `/* Comentário - quebra de linha - Comentário */`
+    - Comentários não são executados
+      - Comentário de uma linha: `// Comentário`
+      - Cometário em bloco (pode ter várias linhas): `/* Comentário - quebra de linha - Comentário */`
 - Todo o conjunto de instruções usados no programa é chamado de **código fonte**.
 - Para ser executado, o _código fonte_ passa por um dos seguintes passos, a depender da linguagem de programação em que foi escrito:
   - Interpretação: Cada instrução é lida e executada em sequência pelo computador. Exemplo de linguagem interpretada: _python_
