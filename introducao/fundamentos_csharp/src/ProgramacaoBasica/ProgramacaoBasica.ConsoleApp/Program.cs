@@ -150,3 +150,10 @@ Console.WriteLine("\tPode Cadastrar: " + podeCadastrar);
 Console.WriteLine("\tAcesso liberado: " + acessoLiberado);
 Console.WriteLine("\n\tNão é possível realizar o cadastro: " + !podeCadastrar);
 Console.WriteLine();
+
+// Operador Ternário
+var logado = false;
+
+Console.WriteLine("\n** Operador Ternário **\n");
+Console.WriteLine("\t" + (logado ? "Você está logado no sistema" : "Você está deslogado do sistema"));
+Console.WriteLine();

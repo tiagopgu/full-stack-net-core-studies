@@ -223,3 +223,8 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
     - Ao menos um das condições deve ser verdadeira
   - Not: `!`. Exemplo: `var valido = !(valor > 10);`
     - Inverte o valor de um resultado lógico
+
+- Ternário
+  - Analisa um expressão e retorna um valor se verdeiro, ou um valor diferente se o resultado for falso
+  - Sintaxe: `var mensagem = usuarioAtivo ? "Usuário ativo no sistema" : "Usuário inativo no sistema";`
+  - O resultado retornado nas duas situações devem ser do mesmo tipo
