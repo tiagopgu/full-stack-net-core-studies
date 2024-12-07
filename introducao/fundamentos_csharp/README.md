@@ -19,6 +19,10 @@ Sequência de passos definidos para que um programa de computador consiga execut
 - Define instruções que usamos para implementar a lógica de um programa
 - Existem diversas linguagens disponíveis no mercado, como, por exemplo, o **C#**
 - Cada linguagem possui sua sintaxe e semântica, semelhante a um idioma de um país
+  - Sintaxe no **C#**
+    - Toda instrução deve terminar com `;`
+    - Comentário de uma linha: `// Comentário`
+    - Cometário em bloco (pode ter várias linhas): `/* Comentário - quebra de linha - Comentário */`
 - Todo o conjunto de instruções usados no programa é chamado de **código fonte**.
 - Para ser executado, o _código fonte_ passa por um dos seguintes passos, a depender da linguagem de programação em que foi escrito:
   - Interpretação: Cada instrução é lida e executada em sequência pelo computador. Exemplo de linguagem interpretada: _python_
@@ -125,3 +129,52 @@ Sequência de passos definidos para que um programa de computador consiga execut
   - Adicionar um projeto a uma solução: `dotnet sln nome_arquivo.sln add caminho_projeto.csproj`
 
 [🔼 topo](#topo)
+
+## Programação Básica
+
+### Tipos de Dados Primitivos
+
+- Numéricos
+  - Inteiros
+    - `byte`: 0 até 255
+    - `short`: -32768 até 32767
+    - `int`: -2174843648 até 2147483647
+    - `long`: -9223372036854775808 até 9223372036854775807
+
+    Obs.: Inclua `u` na frente dos tipos que aceitam valores negativos para não aceitar valores negativos aumentar o máximo dos positivos: Exemplo: `uint`
+  
+  - Real (ponto flutuante)
+    - `float`
+      - Até 9 dígitos
+      - O valor deve ter o sufixo `f`ou `F` no final. Exemplo: `35.54F`
+    - `double`
+      - Até 17 dígito
+      - Não necessita de sufixo no valor, porém pode ser usado o `d`ou `D`
+    - `decimal`
+      - Até 29 dígitos
+      - Usado quando necessita de uma precisão maior (por exemplo para trabalhar com valores monetários)
+      - O valor deve ter o sufixo `m` ou `M`. Exemplo: `199.99M`
+  - Caractere
+    - `char`
+      - Somente um caractere, podendo ser no formato hexadecimal ou unicode
+      - Valor deve estar entre aspas simples. Exemplo: `'A'`
+    - `string`
+      - Cadeia de caracteres
+      - Valor deve estar entre aspas duplas. Exemplo: `"Teste"`
+      - Não é um tipo primitivo, mas devido ao seu uso é praticamente considerado como sendo
+  - Booleando
+    - `bool`: Somente os valoes `true`ou `false`
+
+## Variável
+
+- Define uma região de memória para armazenar dados
+- Declaração: `tipo_dado nomeVariavel = valor`. Exemplo: `int idade = 35`
+  - O compilador pode inferir o tipo pelo valor atribuído: `var nomeVariavel = valor`. Exemplo: `var idade = 35`
+  - Não é possível usar uma variável sem inicializá-la
+  - Para usar, basta chamar pelo nome definido. Exemplo: `Console.WriteLine(idade)`
+  - Nome da variável
+    - Não pode ter caracteres especiais, exceto undescore (_)
+    - Não pode iniciar com número
+    - Não pode ter espaço em palavras compostas
+    - Não é indicado usar palavras com acentuação
+    - É uma boa prática que o nome seja significativo
