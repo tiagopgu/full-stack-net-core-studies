@@ -168,7 +168,7 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
   - Booleando
     - `bool`: Somente os valoes `true`ou `false`
 
-## Variável
+### Variável
 
 - Define uma região de memória para armazenar dados
 - Declaração: `tipo_dado nomeVariavel = valor`. Exemplo: `int idade = 35`
@@ -182,14 +182,14 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
     - Não é indicado usar palavras com acentuação
     - É uma boa prática que o nome seja significativo
 
-## Constante
+### Constante
 
 - Define uma variável que uma vez inicializada, não pode ser alterada posteriormente
 - Declaração: `const tipo_dado NOME_CONSTANTE = valor`. Exemplo: `const string NOME_CURSO = "CSHARP"`
 - Segue basicamente as mesmas regras de variáveis
 - No C# é convencionado que constantes sejam escritas em maiúscula e palavras compostas separadas por underscore (_).
 
-## Operadores
+### Operadores
 
 - Aritméticos
   - Soma: `var resultado = valor1 + valor2;`
@@ -228,3 +228,42 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
   - Analisa um expressão e retorna um valor se verdeiro, ou um valor diferente se o resultado for falso
   - Sintaxe: `var mensagem = usuarioAtivo ? "Usuário ativo no sistema" : "Usuário inativo no sistema";`
   - O resultado retornado nas duas situações devem ser do mesmo tipo
+
+### Métodos (Funções)
+
+- Bloco de código executado sempre que chamado
+- Pode receber parâmetro
+- Pode retornar valor
+  - `void` indica que a função não retorna valor
+- Sintaxe:
+
+  ~~~csharp
+
+  int numero1 = 5, numero2 = 10;
+
+  var soma = Soma(numero1, numero2); // Chamando função que retorna valor e recebe parâmetro
+
+  Escrever("Resultado: " + soma); // Chamando função que não retorna valor e recebe parâmetro
+
+  // Declarando uma função que retorna valor e recebe parâmetros
+  int Soma(int valor1, int valor2)
+  {
+    var resultado = valor1 + valor2;
+
+    return resultado;
+  }
+
+  // Declarando uma função que não retorna valor e recebe parâmetros
+  void Escrever(string texto)
+  {
+    Console.WriteLine(texto);
+
+    PularLinha(); // Chamando função que não retorna valor e não recebe parâmetro
+  }
+
+  // Declarando uma função que não retorna valor e não recebe parâmetros
+  void PularLinha()
+  {
+    Console.WriteLine();
+  }
+  ~~~
