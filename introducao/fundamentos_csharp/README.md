@@ -178,3 +178,10 @@ Sequência de passos definidos para que um programa de computador consiga execut
     - Não pode ter espaço em palavras compostas
     - Não é indicado usar palavras com acentuação
     - É uma boa prática que o nome seja significativo
+
+## Constante
+
+- Define uma variável que uma vez inicializada, não pode ser alterada posteriormente
+- Declaração: `const tipo_dado NOME_CONSTANTE = valor`. Exemplo: `const string NOME_CURSO = "CSHARP"`
+- Segue basicamente as mesmas regras de variáveis
+- No C# é convencionado que constantes sejam escritas em maiúscula e palavras compostas separadas por underscore (_).

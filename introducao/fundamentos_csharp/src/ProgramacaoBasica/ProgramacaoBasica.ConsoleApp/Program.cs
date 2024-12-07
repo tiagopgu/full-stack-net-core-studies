@@ -39,3 +39,15 @@ Console.WriteLine("\n** Outros Dados **\n");
 Console.WriteLine("\tAtivo: " + usuarioAtivo);
 Console.WriteLine("\tNúmero da Ordem: " + numeroOrdemUsuario);
 Console.WriteLine();
+
+// Constantes
+const string CHAVE_ACESSO = "TESTE";
+const decimal PERCENTUAL_DESCONTO_PADRAO = 1.5M;
+
+Console.WriteLine("\n** Valores Padrão **\n");
+Console.WriteLine("Chave de Acesso: " + CHAVE_ACESSO);
+Console.WriteLine("Percentual Desconto Padrão: " + PERCENTUAL_DESCONTO_PADRAO);
+Console.WriteLine();
+
+// Essa instrução produz um erro de compilação
+// CHAVE_ACESSO = "NOVA";
