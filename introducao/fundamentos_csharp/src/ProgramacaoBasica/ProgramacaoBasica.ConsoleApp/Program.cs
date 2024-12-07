@@ -134,3 +134,19 @@ Console.WriteLine("\t" + valor1 + " >= " + valor2 + " = " + resultadoMaiorIgualA
 Console.WriteLine("\t" + valor1 + " <= " + valor2 + " = " + resultadoMenorIgualA);
 Console.WriteLine("\n\tCofirmação Senha válida: " + confirmacaoSenhaValida);
 Console.WriteLine();
+
+// Operadores Lógicos
+const int IDADE_MINIMA = 18;
+var idade = 14;
+var cadastroLiberado = false;
+var senhaCadastrada = "123456";
+var senhaInformada = "1234567";
+
+var podeCadastrar = idade > IDADE_MINIMA || cadastroLiberado;
+var acessoLiberado = senhaCadastrada == senhaInformada && podeCadastrar;
+
+Console.WriteLine("\n** Operadores Lógicos **\n");
+Console.WriteLine("\tPode Cadastrar: " + podeCadastrar);
+Console.WriteLine("\tAcesso liberado: " + acessoLiberado);
+Console.WriteLine("\n\tNão é possível realizar o cadastro: " + !podeCadastrar);
+Console.WriteLine();

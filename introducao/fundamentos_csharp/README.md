@@ -215,3 +215,11 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
   - Menor ou igual: `var resultado = valor1 <= valor2`
 
   Obs.: O resultado dos operadores relacionais é do tipo `bool;`
+
+  - Lógicos
+    - And: `&&`. Exemplo: `var valido = valor > 5 && valor < 25;`
+      - Todas as condições devem ser verdadeiras
+    - Or: `||`. Exemplo `var valido = valor > 5 || valor == 2;`;
+      - Ao menos um das condições deve ser verdadeira
+    - Not: `!`. Exemplo: `var valido = !(valor > 10);`
+      - Inverte o valor de um resultado lógico
