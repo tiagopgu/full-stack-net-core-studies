@@ -99,10 +99,29 @@ Sequência de passos definidos para que um programa de computador consiga execut
 - É escrito em uma das linguagens suportadas pelo .NET
 - Define a versão do .NET usada
 - Define a tipo de binário de saída (.exe, .dll)
+- Para criar um projeto via CLI:
+  - Listar templates de projeto: `dotnet new list`
+  - Criar um projeto: `dotnet new nome_curto_template [-n nome_projeto] [-o diretorio_saida] [-f versao_framework]`. Exemplo de uma aplicação console: `dotnet new console -n MinhaAplicacao -f new8.0`
+    - Se não informado o nome do projeto, será usado o nome do diretório
+    - Se não informado o framework, será usada a versão mais recente instalada na máquina (ver `dotnet --info`)
+    - Dentre os itens criado para o projeto, está o arquivo de projeto _.csproj_
+- Para executar um projeto:
+  - Buildando o projeto: `dotnet build [caminho_arquivo_solution.sln | caminho_arquivo_projeto.csproj]`
+    - Caso esteja no diretório da solution ou projeto, não é necessário informar o caminho
+  - Limpando arquivos de build: `dotnet clean [caminho_arquivo_solution.sln | caminho_arquivo_projeto.csproj]`
+    - Caso esteja no diretório da solution ou projeto, não é necessário informar o caminho
+  - Executando um projeto: `dotnet run --project caminho_arquivo_projeto.csproj`
+    - Caso esteja no diretório do projeto, não é necessário informar a opção _--project_
+    - Automaticamente será gerado um _build_ do projeto
 
 #### Solution
 
 - Agrupa projetos de uma aplicação
 - Permite que todos os projetos sejam compilados de uma vez
+- Para criar uma solution via CLI:
+  - Criando a solution: `dotnet new solution [-o diretorio_saida] [-n NomeSolution]`
+    - Se não informado o diretório de saída, será criado somente o arquivo de solução (_.sln_)
+    - Se não informado o nome da solução, será usado o do diretório de saída
+  - Adicionar um projeto a uma solução: `dotnet sln nome_arquivo.sln add caminho_projeto.csproj`
 
 [🔼 topo](#topo)
