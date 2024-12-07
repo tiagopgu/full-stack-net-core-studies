@@ -204,4 +204,15 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
   Obs2.: O tipo de dados do resultado será com base no tipo de dado do operando com maior capacidade de armazenamento de valor. Exemplo: `valor_inteiro + valor_long = resultado_long;`
   Obs3.: Prioridade segue a mesma regra da matemática
   Obs4.: Em uma expressão, use parênteses para alterar a ordem de prioridade. Exemplo: `var resultado = (valor1 + valor2) * (valor3 / valor4)`
+
+- Relacionais
+  - Igualdade: `var resultado = valor1 == valor2;`
+    - `=` é chamado de _operador de atribuição_
+  - Diferença: `var resultado = valor1 != valor2;`
+  - Maior que: `var resultado = valor1 > valor2;`
+  - Menor que: `var resultado = valor1 < valor2;`
+  - Maior ou igual: `var resultado = valor1 >= valor2;`
+  - Menor ou igual: `var resultado = valor1 <= valor2`
+
+  Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   

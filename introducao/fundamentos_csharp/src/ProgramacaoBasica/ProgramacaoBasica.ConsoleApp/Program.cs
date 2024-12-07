@@ -108,3 +108,29 @@ Console.WriteLine("\tResultado delta: " + resultadoDelta);
 Console.WriteLine("\tResultado solução 1: " + resultadoSolucao1);
 Console.WriteLine("\tResultado solução 2: " + resultadoSolucao2);
 Console.WriteLine();
+
+// Operadores Relacionais
+
+var valor1 = 15;
+var valor2 = 42;
+
+var resultadoIgualdade = valor1 == valor2;
+var resultadoDiferenca = valor1 != valor2;
+var resultadoMaiorQue = valor1 > valor2;
+var resultadoMenorQue = valor1 < valor2;
+var resultadoMaiorIgualA = valor1 >= valor2;
+var resultadoMenorIgualA = valor1 <= valor2;
+
+var senha = "atL5590!";
+var senhaConfirmacao = "atL559o!";
+var confirmacaoSenhaValida = senha == senhaConfirmacao;
+
+Console.WriteLine("\n** Comparações Relacionais **\n");
+Console.WriteLine("\t" + valor1 + " == " + valor2 + " = " + resultadoIgualdade);
+Console.WriteLine("\t" + valor1 + " != " + valor2 + " = " + resultadoDiferenca);
+Console.WriteLine("\t" + valor1 + " > " + valor2 + " = " + resultadoMaiorQue);
+Console.WriteLine("\t" + valor1 + " < " + valor2 + " = " + resultadoMenorQue);
+Console.WriteLine("\t" + valor1 + " >= " + valor2 + " = " + resultadoMaiorIgualA);
+Console.WriteLine("\t" + valor1 + " <= " + valor2 + " = " + resultadoMenorIgualA);
+Console.WriteLine("\n\tCofirmação Senha válida: " + confirmacaoSenhaValida);
+Console.WriteLine();
