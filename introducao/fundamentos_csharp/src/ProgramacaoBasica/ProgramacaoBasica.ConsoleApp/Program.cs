@@ -1,4 +1,6 @@
-﻿VariaveisTiposDados();
+﻿using System.Collections;
+
+VariaveisTiposDados();
 
 Console.WriteLine();
 
@@ -21,6 +23,12 @@ Console.WriteLine();
 OperadorTernario();
 
 Console.WriteLine();
+
+EstruturaDados_ArrayList();
+
+Console.WriteLine();
+
+// ******************************************************************************************* //
 
 void VariaveisTiposDados()
 {
@@ -199,4 +207,51 @@ double CalcularSolucaoFormulaBaskara(double a, double b, double c, bool primeira
 
 
     return resultadoSolucao;
+}
+
+void EstruturaDados_ArrayList()
+{
+    ArrayList dadosPessoais =
+    [
+        "Vera Tânia Assis",
+        45,
+        'F'
+    ];
+
+    Console.WriteLine("\n** Dados Cadastrados do(a) " + dadosPessoais[0] + " **\n");
+    
+    dadosPessoais.Add("432.575.783-00");
+    dadosPessoais.Add(1.60);
+
+    EscreverArrayList(dadosPessoais);
+
+    dadosPessoais.Remove('F');
+
+    Console.WriteLine("--");
+
+    EscreverArrayList(dadosPessoais);
+
+    dadosPessoais.Add("(85) 98991-6148");
+
+    dadosPessoais.RemoveAt(3);
+
+    Console.WriteLine("\n--");
+
+    EscreverArrayList(dadosPessoais);
+
+    dadosPessoais.Clear();
+
+    Console.WriteLine("\n--");
+
+    EscreverArrayList(dadosPessoais);
+
+    dadosPessoais = [];
+}
+
+void EscreverArrayList(ArrayList array)
+{
+    foreach(var item in array)
+    {
+        Console.WriteLine(item);
+    }
 }

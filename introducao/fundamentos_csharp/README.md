@@ -267,3 +267,58 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
     Console.WriteLine();
   }
   ~~~
+
+### Estruturas de dados
+
+- ArrayList
+  - Armazena itens de diversos tipos de dados
+  - Acessada por índice
+    - Índice inicia em `0`
+  - Sintaxe
+
+    ~~~csharp
+    using System.Collections; // Namespace onde está o ArrayList
+
+    // Criando um array vazio
+    var array1 = new ArrayList();
+    ArrayList array2 = new ArrayList();
+    ArrayList array3 = new();
+    ArrayList array4 = [];
+
+    // Criando um array com objetos
+    var array5 = new()
+    {
+      "Item 1",
+      'A',
+      45,
+      3.50M
+    };
+
+    var array6 =
+    [
+      "Item 1",
+      'A',
+      45,
+      3.50M
+    ];
+
+    // Adicionar item
+    array6.Add("Novo Item de Qualquer tipo");
+
+    // Acessar um item pelo índice
+    var item = array6[2];
+
+    // Remover a primeira ocorrencia de um item
+    array6.Remove(45);
+
+    // Remover um item pelo índice
+    array6.RemoveAt(1);
+
+    // Quantidade de itens
+    array6.Count;
+
+    // Limpando um array
+    array6.Clear();
+
+    array6 = new(); // Atribuindo um novo objeto ArrayList
+    ~~~~
