@@ -231,7 +231,7 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 
 ### Métodos (Funções)
 
-- Bloco de código executado sempre que chamado
+- Bloco de código nomeado, executado sempre que chamado
 - Pode receber parâmetro
 - Pode retornar valor
   - `void` indica que a função não retorna valor
