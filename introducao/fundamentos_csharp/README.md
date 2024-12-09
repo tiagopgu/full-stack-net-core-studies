@@ -118,6 +118,7 @@ Sequência de passos definidos para que um programa de computador consiga execut
   - Executando um projeto: `dotnet run --project caminho_arquivo_projeto.csproj`
     - Caso esteja no diretório do projeto, não é necessário informar a opção _--project_
     - Automaticamente será gerado um _build_ do projeto
+    - Desabilitando mensagens de compilação: `dotnet run --WarningLevel 0`
 
 #### Solution
 
