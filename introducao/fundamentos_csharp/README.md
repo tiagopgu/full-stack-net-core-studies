@@ -269,6 +269,8 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
   }
   ~~~
 
+[🔼 topo](#topo)
+
 ### Estruturas de dados
 
 - Array
@@ -350,4 +352,50 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
     array6 = new(); // Atribuindo um novo objeto ArrayList
     ~~~
 
-Obs.: Índice inicia em `0`
+- Lista Genérica
+  - Deve ser tipado
+  - Pode ser acessado por índice
+  - Mais performática
+  - Possui mais funcionalidades para trabalhar com listas
+  - Sintaxe
+
+    ~~~c#
+    using System.Collections.Generic; // Namespace onde está a lista
+
+    // Criando uma lista
+    List<string> list1 = new List<string>(); // Pode ser passador no construtor o tamanho inicial
+    List<int> list2 = new(); // Pode ser passador no construtor o tamanho inicial
+    List<byte> list3 = [];
+
+    var list4 = new List<string>();
+
+    // Criando uma lista inializada
+    List<string> list5 = new List<string>() { "Valor 1", "Valor 2" };
+    List<int> list6 = new List<int> { 5, 10 };
+    List<string> list7 = new() { "Valor 1", "Valor 2" };
+    List<int> list8 = [ 15, 23 ];
+
+    var lista9 = new List<string>() { "Valor 1", "Valor 2" };
+    var list10 = new List<int> { 58, 26 };
+
+    // Adicionando item
+    lista10.Add(5);
+    lista10.AddRange([9, 50, 13, 11]); // Pode ser adicionada qualquer outra coleção
+
+    // Acessando por índice
+    var item = list10[3];
+
+    // Atualizando item
+    list10[2] = 10;
+
+    // Removendo item
+    list10.Remove(item); // Remove primeira ocorrência do item
+    list10.RemoveAt(0); // Remove item por indice
+
+    // Limpando a lista
+    list10.Clear();
+    ~~~
+
+> Obs.: Índice inicia em `0`
+
+[🔼 topo](#topo)

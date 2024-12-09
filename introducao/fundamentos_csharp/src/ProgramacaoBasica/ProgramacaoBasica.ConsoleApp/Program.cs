@@ -32,6 +32,10 @@ EstruturaDados_ArrayList();
 
 Console.WriteLine();
 
+EstruturasDados_List();
+
+Console.WriteLine();
+
 
 // ******************************************************************************************* //
 
@@ -291,4 +295,50 @@ void EscreverArrayList(ArrayList array)
     {
         Console.WriteLine(item);
     }
+}
+
+void EstruturasDados_List()
+{
+   var alunos = new List<string>
+   {
+        "Caleb José Porto",
+        "Cristiane Lara Galvão",
+        "Carla Rafaela Natália Assis",
+        "Mário Renan da Luz"
+   };
+
+    Console.WriteLine("** Lista de alunos **\n");
+
+    foreach (var aluno in alunos) Console.WriteLine(aluno);
+
+    alunos.Add("Cauã André Augusto da Mata");
+    alunos.Add("Matheus Bento Assunção");
+
+    Console.WriteLine("\n--");
+    foreach (var aluno in alunos) Console.WriteLine(aluno);
+
+    alunos.AddRange(["Yago Eduardo Benjamin Baptista", "Agatha Carolina da Rosa", "Bruna Stella Caroline Almada"]);
+
+    Console.WriteLine("\n--");
+    foreach (var aluno in alunos) Console.WriteLine(aluno);
+
+    var alunoAux = alunos[5];
+
+    Console.WriteLine("\n--\n" + alunoAux);
+
+    alunos[3] = "Mário Renan Luz";
+
+    Console.WriteLine("\n--");
+    foreach (var aluno in alunos) Console.WriteLine(aluno);
+
+    alunos.Remove(alunoAux);
+    alunos.RemoveAt(0);
+
+    Console.WriteLine("\n--");
+    foreach (var aluno in alunos) Console.WriteLine(aluno);
+
+    alunos.Clear();
+
+    Console.WriteLine("\n--");
+    foreach (var aluno in alunos) Console.WriteLine(aluno);
 }
