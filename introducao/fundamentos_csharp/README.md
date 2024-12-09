@@ -270,10 +270,36 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 
 ### Estruturas de dados
 
+- Array
+  - Deve ser tipado (aceita só um tipo de valor, conforme o tipo definido)
+  - Itens da coleção acessado por índice
+  - Sintaxe
+
+    ~~~csharp
+    // Declarando array vazio
+    string[] array1 = new string[10]; // Indicar o tipo de dados do array e a quantidade de items (neste exemplo 10 itens, com índice de 0 a 9)
+    var array2 = new int[5];
+
+    // Declarando array inicializado
+    string[] array3 = new string[] { "Item 1", "Item 2", "Item 3" };
+    string[] array4 = new[] { "Item 1", "Item 2", "Item 3" };
+    string[] array5 = [ "Item 1", "Item 2", "Item 3" ];
+    var array6 = new string[] { "Item 1", "Item 2", "Item 3" };
+
+    // Acessando item por um índice
+    var item = array6[2];
+
+    // Inserindo/Atualizando item por um índice
+    array6[0] = "Novo Item";
+
+    // Redimensionando array
+    Array.Resize(ref array6, 5); // Novos espaços vazios
+    array6 = [.. array6, "Item 4", "Item 5" ]; // Redimensionando com a inclusão de novos itens
+    ~~~
+
 - ArrayList
   - Armazena itens de diversos tipos de dados
   - Acessada por índice
-    - Índice inicia em `0`
   - Sintaxe
 
     ~~~csharp
@@ -321,4 +347,6 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
     array6.Clear();
 
     array6 = new(); // Atribuindo um novo objeto ArrayList
-    ~~~~
+    ~~~
+
+Obs.: Índice inicia em `0`

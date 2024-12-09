@@ -24,9 +24,14 @@ OperadorTernario();
 
 Console.WriteLine();
 
+EstruturaDados_Array();
+
+Console.WriteLine();
+
 EstruturaDados_ArrayList();
 
 Console.WriteLine();
+
 
 // ******************************************************************************************* //
 
@@ -207,6 +212,38 @@ double CalcularSolucaoFormulaBaskara(double a, double b, double c, bool primeira
 
 
     return resultadoSolucao;
+}
+
+void EstruturaDados_Array()
+{
+    string[] nomesSorteio =
+    [
+        "Caroline Heloisa da Silva",
+        "Ian Heitor Danilo Martins",
+        "Andrea Isadora Aurora Ferreira"
+    ];
+
+    Console.WriteLine("** Nomes para sorteio **\n");
+
+    foreach (var nome in nomesSorteio) Console.WriteLine(nome);
+
+    Array.Resize(ref nomesSorteio, 5);
+
+    nomesSorteio[3] = "Pedro Henrique Cláudio Calebe da Costa";
+    nomesSorteio[4] = "Andrea Tânia Eduarda Nunes";
+
+    Console.WriteLine("\n--");
+    foreach (var nome in nomesSorteio) Console.WriteLine(nome);
+
+    nomesSorteio = [.. nomesSorteio, "Mirella Emily Mariane Dias", "Davi Thomas Farias"];
+
+    Console.WriteLine("\n--");
+    foreach(var nome in nomesSorteio) Console.WriteLine(nome);
+
+    nomesSorteio[0] = "Caroline Heloisa Silva";
+
+    Console.WriteLine("\n--");
+    foreach(var nome in nomesSorteio) Console.WriteLine(nome);
 }
 
 void EstruturaDados_ArrayList()
