@@ -32,6 +32,8 @@ Sequência de passos definidos para que um programa de computador consiga execut
     <a id="compilacao-csharp"></a>
     - O _C#_ é uma linguagem compilada, porém passa por um processo diferente: na primeira etapa é gerada uma linguagem intermediária (IL). Esse código intermediário é passado por um compilador de tempo de execução (RyuJIT), que transformará o código IL nos binário nativo da máquina em que está sendo executado.
 
+[🔼 topo](#topo)
+
 ### .NET
 
 - Plataforma de código aberto para desenvolvimento de várias aplicações: desktop, web, IoT, jogos, etc.
@@ -95,6 +97,8 @@ Sequência de passos definidos para que um programa de computador consiga execut
 - [Jetbrains Rider](https://www.jetbrains.com/rider/)
   - Multiplataforma
   - Paga
+
+[🔼 topo](#topo)
 
 ### Estrutura
 
@@ -169,6 +173,8 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
   - Booleando
     - `bool`: Somente os valoes `true`ou `false`
 
+[🔼 topo](#topo)
+
 ### Variável
 
 - Define uma região de memória para armazenar dados
@@ -189,6 +195,8 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 - Declaração: `const tipo_dado NOME_CONSTANTE = valor`. Exemplo: `const string NOME_CURSO = "CSHARP"`
 - Segue basicamente as mesmas regras de variáveis
 - No C# é convencionado que constantes sejam escritas em maiúscula e palavras compostas separadas por underscore (_).
+
+[🔼 topo](#topo)
 
 ### Operadores
 
@@ -229,6 +237,8 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
   - Analisa um expressão e retorna um valor se verdeiro, ou um valor diferente se o resultado for falso
   - Sintaxe: `var mensagem = usuarioAtivo ? "Usuário ativo no sistema" : "Usuário inativo no sistema";`
   - O resultado retornado nas duas situações devem ser do mesmo tipo
+
+[🔼 topo](#topo)
 
 ### Métodos (Funções)
 
@@ -394,6 +404,50 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 
     // Limpando a lista
     list10.Clear();
+    ~~~
+  
+- Dicionário
+  - Itens possuem chave/valor
+  - Tanto a chave quando o valor são tipados (podem ser diferentes entre si)
+  - Valor de cada item acessado por chave
+  - Sintaxe:
+
+    ~~~csharp
+    using System.Collections.Generic; // Namespace onde está o dicionário
+
+    // Inializando dicionário vazio
+    Dictionary<string, string> dic1 = new Dicionary<string, string>();
+    Dictionary<int, string> dic2 = new();
+    Dictionary<string, string> dic3 = [];
+
+    var dic4 = new Dictionary<int, string>();
+
+    // Inicializando dicionário com itens
+    Dictionary<string, string> dic5 = new Dictionary<string, string>() { { "chave1", "valor1" }, { "chave2" , "valor2" } }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+    Dictionary<int, string> dic6 = new Dictionary<int, string>() { ["chave1"] = "valor1", ["chave2"] = "valor2" }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+    Dictionary<string, string> dic7 = new() { { "chave1", "valor1" }, { "chave2", "valor2" } };
+    Dictionary<int, string> dict8 = new() { [1] = "Valor 1", [2] = "Valor 2" };
+
+    var dic9 = new Dictionary<string, string>() { { "chave1", "valor1" }, { "chave2", "valor2" } }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+    var dic10 = new Dictionary<int, string>() { [1] = "Valor 1", [2] = "Valor 2" }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+
+    // Obtendo um item
+    var item = dic10.ElementAt(0); // item do tipo KeyValuePair<int, string>
+    var keyItem = item.Key;
+    var keyItem = item.Value;
+
+    // Adicionar item
+    dic10.Add(3) = "Valor 3";
+    dic10[4] = "Valor 4";
+
+    // Atualizar valor do item
+    dic10[3] = "Novo valor";
+
+    // Remover item
+    dic10.Remove(0);
+
+    // Limpar o dicionário
+    dic10.Clear();
     ~~~
 
 > Obs.: Índice inicia em `0`

@@ -36,6 +36,10 @@ EstruturasDados_List();
 
 Console.WriteLine();
 
+EstruturaDados_Dictionary();
+
+Console.WriteLine();
+
 
 // ******************************************************************************************* //
 
@@ -341,4 +345,43 @@ void EstruturasDados_List()
 
     Console.WriteLine("\n--");
     foreach (var aluno in alunos) Console.WriteLine(aluno);
+}
+
+void EstruturaDados_Dictionary()
+{
+    var clientes = new Dictionary<string, string>
+    {
+        { "608.250.820-30", "Caleb José Porto" },
+        { "095.181.566-03", "Cristiane Lara Galvão" },
+        { "785.472.946-86", "Carla Rafaela Natália Assis" }
+    };
+
+    Console.WriteLine("** Dados Clientes **");
+
+    foreach (var item in clientes) Console.WriteLine("\nCPF: " + item.Key + "\nNome: " + item.Value);
+
+    var clienteAux = clientes.ElementAt(1);
+
+    Console.WriteLine("\n--\nCPF: " + clienteAux.Key + "\nNome: " + clienteAux.Value);
+
+    clientes.Add("451.870.462-25", "Mário Renan da Luz");
+    clientes["756.543.484-18"] = "Cauã André Augusto da Mata";
+
+    Console.Write("\n--");
+    foreach (var item in clientes) Console.WriteLine("\nCPF: " + item.Key + "\nNome: " + item.Value);
+
+    clientes["451.870.462-25"] = "Mário Renan Luz";
+
+    Console.Write("\n--");
+    foreach (var item in clientes) Console.WriteLine("\nCPF: " + item.Key + "\nNome: " + item.Value);
+
+    clientes.Remove("756.543.484-18");
+
+    Console.Write("\n--");
+    foreach (var item in clientes) Console.WriteLine("\nCPF: " + item.Key + "\nNome: " + item.Value);
+
+    clientes.Clear();
+
+    Console.Write("\n--");
+    foreach (var item in clientes) Console.WriteLine("\nCPF: " + item.Key + "\nNome: " + item.Value);
 }
