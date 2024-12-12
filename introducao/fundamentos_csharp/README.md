@@ -487,10 +487,50 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
     // Verificar o próximo item da fila
     var item = lista6.Peek();
 
-    // Desempilhar o próximo item da fila (remove o item)
+    // Obter o próximo item da fila (remove o item)
     var item2 = lista6.Dequeue();
 
     // Limpar fila
     lista6.Clear();
     ~~~
+
 [🔼 topo](#topo)
+
+- Stack (Pilha)
+  - Implementa a lógica LIFO (Last In First Out)
+  - Não permite ordenação
+  - Acesso ao dado ocorre a partir do último incluído
+  - Pode aceitar qualquer tipo de dado, ou pode ser tipado
+  - Sintaxe:
+
+    ~~~csharp
+    using System.Collections; // Namespace onde está a coleção
+
+    // Lista que aceita qualquer tipo
+    Stack lista1 = new Stack();
+    Stack lista2 = new();
+
+    var lista3 = new Stack();
+
+    // Lista tipada
+    Stack<string> lista4 = new Stack<string>();
+    Stack<int> lista5  = new();
+
+    var lista6 = new Stack<string>();
+
+    // Adicionar item à lista
+    lista3.Push("Item");
+    lista3.Push(5);
+
+    lista6.Push("Item 1");
+    lista6.Push("Item 2");
+
+    // Ver último item da lista
+    var item = lista6.Peek();
+
+    // Obter o próximo item da fila (remove o item da lista)
+    var item2 = lista6.Pop();
+
+    // Limpar a fila
+    lista6.Clear();
+    ~~~

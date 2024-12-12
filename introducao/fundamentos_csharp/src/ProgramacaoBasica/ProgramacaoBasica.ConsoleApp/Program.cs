@@ -441,3 +441,53 @@ void EstruturaDados_Queue()
     Console.WriteLine("\n--");
     foreach (var nome in nomes) Console.WriteLine(nome);
 }
+
+void EstruturaDados_Stack()
+{
+    Stack s1 = new Stack();
+    Stack s2 = new();
+
+    Stack<string> s3 = new Stack<string>();
+    Stack<int> s4 = new();
+
+    var s5 = new Stack();
+    var items = new Stack();
+
+    items.Push("Alícia Daiane da Paz");
+    items.Push(68);
+
+    items.Push("Severino Bento Assunção");
+    items.Push(26);
+
+    Console.WriteLine("** Dados Diversos Empilhados **\n");
+
+    Console.WriteLine(items.Peek());
+    Console.WriteLine(items.Peek());
+
+    Console.WriteLine("\n--");
+    Console.WriteLine(items.Pop());
+    Console.WriteLine(items.Pop());
+
+    Console.WriteLine("\n--");
+    Console.WriteLine(items.Peek());
+
+    Console.WriteLine("\n--");
+    foreach (var item in items) Console.WriteLine(item);
+
+    Stack<string> nomes = new();
+
+    nomes.Push("Vera Aline Carvalho");
+    nomes.Push("Lavínia Marli Rezende");
+    nomes.Push("Anthony Hugo Pietro Castro");
+
+    Console.WriteLine("\n--");
+    foreach (var nome in nomes) Console.WriteLine(nome);
+
+    Console.WriteLine("\n--");
+    Console.WriteLine(nomes.Peek());
+
+    nomes.Clear();
+
+    Console.WriteLine("\n--");
+    foreach (var nome in nomes) Console.WriteLine(nome);
+}
