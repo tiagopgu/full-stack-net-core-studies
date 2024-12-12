@@ -453,3 +453,44 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 > Obs.: Índice inicia em `0`
 
 [🔼 topo](#topo)
+
+- Queue (Fila)
+  - Lista do tipo FIFO (First In First Out)
+  - Não permite ordenação
+  - Acesso ao dado ocorre na ordem de inclusão
+  - Pode aceitar qualquer tipo de dado, ou pode ser tipado
+  - Ideal para quando a ordem de entrada na lista importa
+  - Sintaxe:
+
+    ~~~csharp
+    using System.Collections; // Namespace onde está a lista
+
+    // Lista que aceita qualquer tipo
+    Queue lista1 = new Queue();
+    Queue lista2 = new();
+
+    var lista3 = new Queue();
+
+    // Lista tipada
+    Queue<string> lista4 = new Queue<string>();
+    Queue<int> lista5 = new();
+
+    var lista6 = new Queue<string>();
+
+    // Adicionando itens
+    lista3.Enqueue("Item");
+    lista3.Enqueue(5);
+
+    lista6.Enqueue("Item 1");
+    lista6.Enqueue("Item 2");
+
+    // Verificar o próximo item da fila
+    var item = lista6.Peek();
+
+    // Desempilhar o próximo item da fila (remove o item)
+    var item2 = lista6.Dequeue();
+
+    // Limpar fila
+    lista6.Clear();
+    ~~~
+[🔼 topo](#topo)

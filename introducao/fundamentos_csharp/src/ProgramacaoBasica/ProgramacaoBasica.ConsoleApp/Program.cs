@@ -40,6 +40,14 @@ EstruturaDados_Dictionary();
 
 Console.WriteLine();
 
+EstruturaDados_Queue();
+
+Console.WriteLine();
+
+EstruturaDados_Stack();
+
+Console.WriteLine();
+
 
 // ******************************************************************************************* //
 
@@ -384,4 +392,52 @@ void EstruturaDados_Dictionary()
 
     Console.Write("\n--");
     foreach (var item in clientes) Console.WriteLine("\nCPF: " + item.Key + "\nNome: " + item.Value);
+}
+
+void EstruturaDados_Queue()
+{
+    Queue dados = new();
+    
+    dados.Enqueue(45);
+    dados.Enqueue("Elza Alice Araújo");
+
+    dados.Enqueue(29);
+    dados.Enqueue("Aparecida Andrea Vitória Drumond");
+
+    Console.WriteLine("** Dados Diversos **\n");
+
+    Console.WriteLine(dados.Peek());
+    Console.WriteLine(dados.Peek());
+
+    Console.WriteLine("\n--");
+
+    Console.WriteLine(dados.Dequeue());
+    Console.WriteLine(dados.Dequeue());
+
+    Console.WriteLine("\n--");
+
+    Console.WriteLine(dados.Peek());
+
+    dados.Enqueue(35);
+    dados.Enqueue("Sônia Laís Isabella Rocha");
+
+    Console.WriteLine("\n--");
+    foreach (var dado in dados) Console.WriteLine(dado);
+
+    Console.WriteLine("\n--");
+    Console.WriteLine(dados.Peek());
+
+    var nomes = new Queue<string>();
+
+    nomes.Enqueue("Oliver Diogo Bruno das Neves");
+    nomes.Enqueue("Francisco Diogo Bryan Martins");
+    nomes.Enqueue("Giovana Rayssa Alícia Gomes");
+
+    Console.WriteLine("\n--");
+    foreach (var nome in nomes) Console.WriteLine(nome);
+
+    nomes.Clear();
+
+    Console.WriteLine("\n--");
+    foreach (var nome in nomes) Console.WriteLine(nome);
 }
