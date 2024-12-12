@@ -142,36 +142,40 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor para o maior. Isto significa que o tipo menor cabe no tipo maior, porém o contrário não é verdadeiro.
 
-- Numéricos
-  - Inteiros
-    - `byte`: 0 até 255
-    - `short`: -32768 até 32767
-    - `int`: -2174843648 até 2147483647
-    - `long`: -9223372036854775808 até 9223372036854775807
+#### Numéricos
 
-    Obs.: Inclua `u` na frente dos tipos que aceitam valores negativos para não aceitar valores negativos aumentar o máximo dos positivos: Exemplo: `uint`
-  
-  - Real (ponto flutuante)
-    - `float`
-      - Até 9 dígitos
-      - O valor deve ter o sufixo `f`ou `F` no final. Exemplo: `35.54F`
-    - `double`
-      - Até 17 dígito
-      - Não necessita de sufixo no valor, porém pode ser usado o `d`ou `D`
-    - `decimal`
-      - Até 29 dígitos
-      - Usado quando necessita de uma precisão maior (por exemplo para trabalhar com valores monetários)
-      - O valor deve ter o sufixo `m` ou `M`. Exemplo: `199.99M`
-  - Caractere
-    - `char`
-      - Somente um caractere, podendo ser no formato hexadecimal ou unicode
-      - Valor deve estar entre aspas simples. Exemplo: `'A'`
-    - `string`
-      - Cadeia de caracteres
-      - Valor deve estar entre aspas duplas. Exemplo: `"Teste"`
-      - Não é um tipo primitivo, mas devido ao seu uso é praticamente considerado como sendo
-  - Booleando
-    - `bool`: Somente os valoes `true`ou `false`
+- Inteiros
+  - `byte`: 0 até 255
+  - `short`: -32768 até 32767
+  - `int`: -2174843648 até 2147483647
+  - `long`: -9223372036854775808 até 9223372036854775807
+
+  Obs.: Inclua `u` na frente dos tipos que aceitam valores negativos para não aceitar valores negativos aumentar o máximo dos positivos: Exemplo: `uint`
+- Real (ponto flutuante)
+  - `float`
+    - Até 9 dígitos
+    - O valor deve ter o sufixo `f`ou `F` no final. Exemplo: `35.54F`
+  - `double`
+    - Até 17 dígito
+    - Não necessita de sufixo no valor, porém pode ser usado o `d`ou `D`
+  - `decimal`
+    - Até 29 dígitos
+    - Usado quando necessita de uma precisão maior (por exemplo para trabalhar com valores monetários)
+    - O valor deve ter o sufixo `m` ou `M`. Exemplo: `199.99M`
+
+#### Caractere
+
+- `char`
+  - Somente um caractere, podendo ser no formato hexadecimal ou unicode
+  - Valor deve estar entre aspas simples. Exemplo: `'A'`
+- `string`
+  - Cadeia de caracteres
+  - Valor deve estar entre aspas duplas. Exemplo: `"Teste"`
+  - Não é um tipo primitivo, mas devido ao seu uso é praticamente considerado como sendo
+
+#### Booleando
+
+- `bool`: Somente os valoes `true`ou `false`
 
 [🔼 topo](#topo)
 
@@ -200,43 +204,47 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 
 ### Operadores
 
-- Aritméticos
-  - Soma: `var resultado = valor1 + valor2;`
-  - Subtracao: `var resultado = valor1 - valor2;`
-  - Multiplicação: `var resultado = valor1 * valor2;`
-  - Divisão: `var resultado = valor1 / valor2;`
-    - Retorna resultado inteiro caso os dois operandos sejam de algum dos tipos inteiros
-    - Retorna resultado real se ao menos um dos tipos for um dos tipos real
-    - Retorna erro se `valor2` for 0
+#### Aritméticos
 
-  Obs1.: Os operandos podem ser valores literais ou uma variável que contenha valor\
-  Obs2.: O tipo de dados do resultado será com base no tipo de dado do operando com maior capacidade de armazenamento de valor. Exemplo: `valor_inteiro + valor_long = resultado_long;`
-  Obs3.: Prioridade segue a mesma regra da matemática
-  Obs4.: Em uma expressão, use parênteses para alterar a ordem de prioridade. Exemplo: `var resultado = (valor1 + valor2) * (valor3 / valor4)`
+- Soma: `var resultado = valor1 + valor2;`
+- Subtracao: `var resultado = valor1 - valor2;`
+- Multiplicação: `var resultado = valor1 * valor2;`
+- Divisão: `var resultado = valor1 / valor2;`
+  - Retorna resultado inteiro caso os dois operandos sejam de algum dos tipos inteiros
+  - Retorna resultado real se ao menos um dos tipos for um dos tipos real
+  - Retorna erro se `valor2` for 0
 
-- Relacionais
-  - Igualdade: `var resultado = valor1 == valor2;`
-    - `=` é chamado de _operador de atribuição_
-  - Diferença: `var resultado = valor1 != valor2;`
-  - Maior que: `var resultado = valor1 > valor2;`
-  - Menor que: `var resultado = valor1 < valor2;`
-  - Maior ou igual: `var resultado = valor1 >= valor2;`
-  - Menor ou igual: `var resultado = valor1 <= valor2`
+Obs1.: Os operandos podem ser valores literais ou uma variável que contenha valor\
+Obs2.: O tipo de dados do resultado será com base no tipo de dado do operando com maior capacidade de armazenamento de valor. Exemplo: `valor_inteiro + valor_long = resultado_long;`
+Obs3.: Prioridade segue a mesma regra da matemática
+Obs4.: Em uma expressão, use parênteses para alterar a ordem de prioridade. Exemplo: `var resultado = (valor1 + valor2) * (valor3 / valor4)`
 
-  Obs.: O resultado dos operadores relacionais é do tipo `bool;`
+#### Relacionais
 
-- Lógicos
-  - And: `&&`. Exemplo: `var valido = valor > 5 && valor < 25;`
-    - Todas as condições devem ser verdadeiras
-  - Or: `||`. Exemplo `var valido = valor > 5 || valor == 2;`;
-    - Ao menos um das condições deve ser verdadeira
-  - Not: `!`. Exemplo: `var valido = !(valor > 10);`
-    - Inverte o valor de um resultado lógico
+- Igualdade: `var resultado = valor1 == valor2;`
+  - `=` é chamado de _operador de atribuição_
+- Diferença: `var resultado = valor1 != valor2;`
+- Maior que: `var resultado = valor1 > valor2;`
+- Menor que: `var resultado = valor1 < valor2;`
+- Maior ou igual: `var resultado = valor1 >= valor2;`
+- Menor ou igual: `var resultado = valor1 <= valor2`
 
-- Ternário
-  - Analisa um expressão e retorna um valor se verdeiro, ou um valor diferente se o resultado for falso
-  - Sintaxe: `var mensagem = usuarioAtivo ? "Usuário ativo no sistema" : "Usuário inativo no sistema";`
-  - O resultado retornado nas duas situações devem ser do mesmo tipo
+Obs.: O resultado dos operadores relacionais é do tipo `bool;`
+
+#### Lógicos
+
+- And: `&&`. Exemplo: `var valido = valor > 5 && valor < 25;`
+  - Todas as condições devem ser verdadeiras
+- Or: `||`. Exemplo `var valido = valor > 5 || valor == 2;`;
+  - Ao menos um das condições deve ser verdadeira
+- Not: `!`. Exemplo: `var valido = !(valor > 10);`
+  - Inverte o valor de um resultado lógico
+
+#### Ternário
+
+- Analisa um expressão e retorna um valor se verdeiro, ou um valor diferente se o resultado for falso
+- Sintaxe: `var mensagem = usuarioAtivo ? "Usuário ativo no sistema" : "Usuário inativo no sistema";`
+- O resultado retornado nas duas situações devem ser do mesmo tipo
 
 [🔼 topo](#topo)
 
@@ -283,254 +291,262 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 
 ### Estruturas de dados
 
-- Array
-  - Deve ser tipado (aceita só um tipo de valor, conforme o tipo definido)
-  - Itens da coleção acessado por índice
-  - Sintaxe
+#### Array
 
-    ~~~csharp
-    // Declarando array vazio
-    string[] array1 = new string[10]; // Indicar o tipo de dados do array e a quantidade de items (neste exemplo 10 itens, com índice de 0 a 9)
-    var array2 = new int[5];
+- Deve ser tipado (aceita só um tipo de valor, conforme o tipo definido)
+- Itens da coleção acessado por índice
+- Sintaxe
 
-    // Declarando array inicializado
-    string[] array3 = new string[] { "Item 1", "Item 2", "Item 3" };
-    string[] array4 = new[] { "Item 1", "Item 2", "Item 3" };
-    string[] array5 = [ "Item 1", "Item 2", "Item 3" ];
-    var array6 = new string[] { "Item 1", "Item 2", "Item 3" };
+  ~~~csharp
+  // Declarando array vazio
+  string[] array1 = new string[10]; // Indicar o tipo de dados do array e a quantidade de items (neste exemplo 10 itens, com índice de 0 a 9)
+  var array2 = new int[5];
 
-    // Acessando item por um índice
-    var item = array6[2];
+  // Declarando array inicializado
+  string[] array3 = new string[] { "Item 1", "Item 2", "Item 3" };
+  string[] array4 = new[] { "Item 1", "Item 2", "Item 3" };
+  string[] array5 = [ "Item 1", "Item 2", "Item 3" ];
+  var array6 = new string[] { "Item 1", "Item 2", "Item 3" };
 
-    // Inserindo/Atualizando item por um índice
-    array6[0] = "Novo Item";
+  // Acessando item por um índice
+  var item = array6[2];
 
-    // Redimensionando array
-    Array.Resize(ref array6, 5); // Novos espaços vazios
-    array6 = [.. array6, "Item 4", "Item 5" ]; // Redimensionando com a inclusão de novos itens
-    ~~~
+  // Inserindo/Atualizando item por um índice
+  array6[0] = "Novo Item";
 
-- ArrayList
-  - Armazena itens de diversos tipos de dados
-  - Acessada por índice
-  - Sintaxe
+  // Redimensionando array
+  Array.Resize(ref array6, 5); // Novos espaços vazios
+  array6 = [.. array6, "Item 4", "Item 5" ]; // Redimensionando com a inclusão de novos itens
+  ~~~
 
-    ~~~csharp
-    using System.Collections; // Namespace onde está o ArrayList
+#### ArrayList
 
-    // Criando um array vazio
-    var array1 = new ArrayList();
-    ArrayList array2 = new ArrayList();
-    ArrayList array3 = new();
-    ArrayList array4 = [];
+- Armazena itens de diversos tipos de dados
+- Acessada por índice
+- Sintaxe
 
-    // Criando um array com objetos
-    var array5 = new()
-    {
-      "Item 1",
-      'A',
-      45,
-      3.50M
-    };
+  ~~~csharp
+  using System.Collections; // Namespace onde está o ArrayList
 
-    var array6 =
-    [
-      "Item 1",
-      'A',
-      45,
-      3.50M
-    ];
+  // Criando um array vazio
+  var array1 = new ArrayList();
+  ArrayList array2 = new ArrayList();
+  ArrayList array3 = new();
+  ArrayList array4 = [];
 
-    // Adicionar item
-    array6.Add("Novo Item de Qualquer tipo");
+  // Criando um array com objetos
+  var array5 = new()
+  {
+    "Item 1",
+    'A',
+    45,
+    3.50M
+  };
 
-    // Acessar um item pelo índice
-    var item = array6[2];
+  var array6 =
+  [
+    "Item 1",
+    'A',
+    45,
+    3.50M
+  ];
 
-    // Remover a primeira ocorrencia de um item
-    array6.Remove(45);
+  // Adicionar item
+  array6.Add("Novo Item de Qualquer tipo");
 
-    // Remover um item pelo índice
-    array6.RemoveAt(1);
+  // Acessar um item pelo índice
+  var item = array6[2];
 
-    // Quantidade de itens
-    array6.Count;
+  // Remover a primeira ocorrencia de um item
+  array6.Remove(45);
 
-    // Limpando um array
-    array6.Clear();
+  // Remover um item pelo índice
+  array6.RemoveAt(1);
 
-    array6 = new(); // Atribuindo um novo objeto ArrayList
-    ~~~
+  // Quantidade de itens
+  array6.Count;
 
-- Lista Genérica
-  - Deve ser tipado
-  - Pode ser acessado por índice
-  - Mais performática
-  - Possui mais funcionalidades para trabalhar com listas
-  - Sintaxe
+  // Limpando um array
+  array6.Clear();
 
-    ~~~c#
-    using System.Collections.Generic; // Namespace onde está a lista
+  array6 = new(); // Atribuindo um novo objeto ArrayList
+  ~~~
 
-    // Criando uma lista
-    List<string> list1 = new List<string>(); // Pode ser passador no construtor o tamanho inicial
-    List<int> list2 = new(); // Pode ser passador no construtor o tamanho inicial
-    List<byte> list3 = [];
+#### Lista Genérica
 
-    var list4 = new List<string>();
+- Deve ser tipada
+- Pode ser acessado por índice
+- Mais performática
+- Possui mais funcionalidades para trabalhar com listas
+- Sintaxe
 
-    // Criando uma lista inializada
-    List<string> list5 = new List<string>() { "Valor 1", "Valor 2" };
-    List<int> list6 = new List<int> { 5, 10 };
-    List<string> list7 = new() { "Valor 1", "Valor 2" };
-    List<int> list8 = [ 15, 23 ];
+  ~~~c#
+  using System.Collections.Generic; // Namespace onde está a lista
 
-    var lista9 = new List<string>() { "Valor 1", "Valor 2" };
-    var list10 = new List<int> { 58, 26 };
+  // Criando uma lista
+  List<string> list1 = new List<string>(); // Pode ser passador no construtor o tamanho inicial
+  List<int> list2 = new(); // Pode ser passador no construtor o tamanho inicial
+  List<byte> list3 = [];
 
-    // Adicionando item
-    lista10.Add(5);
-    lista10.AddRange([9, 50, 13, 11]); // Pode ser adicionada qualquer outra coleção
+  var list4 = new List<string>();
 
-    // Acessando por índice
-    var item = list10[3];
+  // Criando uma lista inializada
+  List<string> list5 = new List<string>() { "Valor 1", "Valor 2" };
+  List<int> list6 = new List<int> { 5, 10 };
+  List<string> list7 = new() { "Valor 1", "Valor 2" };
+  List<int> list8 = [ 15, 23 ];
 
-    // Atualizando item
-    list10[2] = 10;
+  var lista9 = new List<string>() { "Valor 1", "Valor 2" };
+  var list10 = new List<int> { 58, 26 };
 
-    // Removendo item
-    list10.Remove(item); // Remove primeira ocorrência do item
-    list10.RemoveAt(0); // Remove item por indice
+  // Adicionando item
+  lista10.Add(5);
+  lista10.AddRange([9, 50, 13, 11]); // Pode ser adicionada qualquer outra coleção
 
-    // Limpando a lista
-    list10.Clear();
-    ~~~
+  // Acessando por índice
+  var item = list10[3];
+
+  // Atualizando item
+  list10[2] = 10;
+
+  // Removendo item
+  list10.Remove(item); // Remove primeira ocorrência do item
+  list10.RemoveAt(0); // Remove item por indice
+
+  // Limpando a lista
+  list10.Clear();
+  ~~~
   
-- Dicionário
-  - Itens possuem chave/valor
-  - Tanto a chave quando o valor são tipados (podem ser diferentes entre si)
-  - Valor de cada item acessado por chave
-  - Sintaxe:
+#### Dicionário
 
-    ~~~csharp
-    using System.Collections.Generic; // Namespace onde está o dicionário
+- Itens possuem chave/valor
+- Tanto a chave quando o valor são tipados (podem ser diferentes entre si)
+- Valor de cada item acessado por chave
+- Sintaxe:
 
-    // Inializando dicionário vazio
-    Dictionary<string, string> dic1 = new Dicionary<string, string>();
-    Dictionary<int, string> dic2 = new();
-    Dictionary<string, string> dic3 = [];
+  ~~~csharp
+  using System.Collections.Generic; // Namespace onde está o dicionário
 
-    var dic4 = new Dictionary<int, string>();
+  // Inializando dicionário vazio
+  Dictionary<string, string> dic1 = new Dicionary<string, string>();
+  Dictionary<int, string> dic2 = new();
+  Dictionary<string, string> dic3 = [];
 
-    // Inicializando dicionário com itens
-    Dictionary<string, string> dic5 = new Dictionary<string, string>() { { "chave1", "valor1" }, { "chave2" , "valor2" } }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
-    Dictionary<int, string> dic6 = new Dictionary<int, string>() { ["chave1"] = "valor1", ["chave2"] = "valor2" }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
-    Dictionary<string, string> dic7 = new() { { "chave1", "valor1" }, { "chave2", "valor2" } };
-    Dictionary<int, string> dict8 = new() { [1] = "Valor 1", [2] = "Valor 2" };
+  var dic4 = new Dictionary<int, string>();
 
-    var dic9 = new Dictionary<string, string>() { { "chave1", "valor1" }, { "chave2", "valor2" } }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
-    var dic10 = new Dictionary<int, string>() { [1] = "Valor 1", [2] = "Valor 2" }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+  // Inicializando dicionário com itens
+  Dictionary<string, string> dic5 = new Dictionary<string, string>() { { "chave1", "valor1" }, { "chave2" , "valor2" } }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+  Dictionary<int, string> dic6 = new Dictionary<int, string>() { ["chave1"] = "valor1", ["chave2"] = "valor2" }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+  Dictionary<string, string> dic7 = new() { { "chave1", "valor1" }, { "chave2", "valor2" } };
+  Dictionary<int, string> dict8 = new() { [1] = "Valor 1", [2] = "Valor 2" };
 
-    // Obtendo um item
-    var item = dic10.ElementAt(0); // item do tipo KeyValuePair<int, string>
-    var keyItem = item.Key;
-    var keyItem = item.Value;
+  var dic9 = new Dictionary<string, string>() { { "chave1", "valor1" }, { "chave2", "valor2" } }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+  var dic10 = new Dictionary<int, string>() { [1] = "Valor 1", [2] = "Valor 2" }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
 
-    // Adicionar item
-    dic10.Add(3) = "Valor 3";
-    dic10[4] = "Valor 4";
+  // Obtendo um item
+  var item = dic10.ElementAt(0); // item do tipo KeyValuePair<int, string>
+  var keyItem = item.Key;
+  var keyItem = item.Value;
 
-    // Atualizar valor do item
-    dic10[3] = "Novo valor";
+  // Adicionar item
+  dic10.Add(3) = "Valor 3";
+  dic10[4] = "Valor 4";
 
-    // Remover item
-    dic10.Remove(0);
+  // Atualizar valor do item
+  dic10[3] = "Novo valor";
 
-    // Limpar o dicionário
-    dic10.Clear();
-    ~~~
+  // Remover item
+  dic10.Remove(0);
+
+  // Limpar o dicionário
+  dic10.Clear();
+  ~~~
 
 > Obs.: Índice inicia em `0`
 
 [🔼 topo](#topo)
 
-- Queue (Fila)
-  - Lista do tipo FIFO (First In First Out)
-  - Não permite ordenação
-  - Acesso ao dado ocorre na ordem de inclusão
-  - Pode aceitar qualquer tipo de dado, ou pode ser tipado
-  - Ideal para quando a ordem de entrada na lista importa
-  - Sintaxe:
+#### Queue (Fila)
 
-    ~~~csharp
-    using System.Collections; // Namespace onde está a lista
+- Lista do tipo FIFO (First In First Out)
+- Não permite ordenação
+- Acesso ao dado ocorre na ordem de inclusão
+- Pode aceitar qualquer tipo de dado, ou pode ser tipado
+- Ideal para quando a ordem de entrada na lista importa
+- Sintaxe:
 
-    // Lista que aceita qualquer tipo
-    Queue lista1 = new Queue();
-    Queue lista2 = new();
+  ~~~csharp
+  using System.Collections; // Namespace onde está a lista
 
-    var lista3 = new Queue();
+  // Lista que aceita qualquer tipo
+  Queue lista1 = new Queue();
+  Queue lista2 = new();
 
-    // Lista tipada
-    Queue<string> lista4 = new Queue<string>();
-    Queue<int> lista5 = new();
+  var lista3 = new Queue();
 
-    var lista6 = new Queue<string>();
+  // Lista tipada
+  Queue<string> lista4 = new Queue<string>();
+  Queue<int> lista5 = new();
 
-    // Adicionando itens
-    lista3.Enqueue("Item");
-    lista3.Enqueue(5);
+  var lista6 = new Queue<string>();
 
-    lista6.Enqueue("Item 1");
-    lista6.Enqueue("Item 2");
+  // Adicionando itens
+  lista3.Enqueue("Item");
+  lista3.Enqueue(5);
 
-    // Verificar o próximo item da fila
-    var item = lista6.Peek();
+  lista6.Enqueue("Item 1");
+  lista6.Enqueue("Item 2");
 
-    // Obter o próximo item da fila (remove o item)
-    var item2 = lista6.Dequeue();
+  // Verificar o próximo item da fila
+  var item = lista6.Peek();
 
-    // Limpar fila
-    lista6.Clear();
-    ~~~
+  // Obter o próximo item da fila (remove o item)
+  var item2 = lista6.Dequeue();
+
+  // Limpar fila
+  lista6.Clear();
+  ~~~
 
 [🔼 topo](#topo)
 
-- Stack (Pilha)
-  - Implementa a lógica LIFO (Last In First Out)
-  - Não permite ordenação
-  - Acesso ao dado ocorre a partir do último incluído
-  - Pode aceitar qualquer tipo de dado, ou pode ser tipado
-  - Sintaxe:
+#### Stack (Pilha)
 
-    ~~~csharp
-    using System.Collections; // Namespace onde está a coleção
+- Implementa a lógica LIFO (Last In First Out)
+- Não permite ordenação
+- Acesso ao dado ocorre a partir do último incluído
+- Pode aceitar qualquer tipo de dado, ou pode ser tipado
+- Sintaxe:
 
-    // Lista que aceita qualquer tipo
-    Stack lista1 = new Stack();
-    Stack lista2 = new();
+  ~~~csharp
+  using System.Collections; // Namespace onde está a coleção
 
-    var lista3 = new Stack();
+  // Lista que aceita qualquer tipo
+  Stack lista1 = new Stack();
+  Stack lista2 = new();
 
-    // Lista tipada
-    Stack<string> lista4 = new Stack<string>();
-    Stack<int> lista5  = new();
+  var lista3 = new Stack();
 
-    var lista6 = new Stack<string>();
+  // Lista tipada
+  Stack<string> lista4 = new Stack<string>();
+  Stack<int> lista5  = new();
 
-    // Adicionar item à lista
-    lista3.Push("Item");
-    lista3.Push(5);
+  var lista6 = new Stack<string>();
 
-    lista6.Push("Item 1");
-    lista6.Push("Item 2");
+  // Adicionar item à lista
+  lista3.Push("Item");
+  lista3.Push(5);
 
-    // Ver último item da lista
-    var item = lista6.Peek();
+  lista6.Push("Item 1");
+  lista6.Push("Item 2");
 
-    // Obter o próximo item da fila (remove o item da lista)
-    var item2 = lista6.Pop();
+  // Ver último item da lista
+  var item = lista6.Peek();
 
-    // Limpar a fila
-    lista6.Clear();
-    ~~~
+  // Obter o próximo item da fila (remove o item da lista)
+  var item2 = lista6.Pop();
+
+  // Limpar a fila
+  lista6.Clear();
+  ~~~
+
+[🔼 topo](#topo)
