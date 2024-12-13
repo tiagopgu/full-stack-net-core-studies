@@ -204,12 +204,21 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 
 ### Operadores
 
+#### Atribuição
+
+- Atribui o valor a direita à variável a esquerda
+- Exemplo: `string variavel = "Valor Atribuído";`;
+
 #### Aritméticos
 
 - Soma: `var resultado = valor1 + valor2;`
+  - Soma da variável e reatribuição: `resultado += valor3; // resultado = resultado + valor3`
 - Subtracao: `var resultado = valor1 - valor2;`
+  - Subtração da variável e reatribuição: `resultado -= valor3; // resultado = resultado - valor3`
 - Multiplicação: `var resultado = valor1 * valor2;`
+  - Multiplicação da variável e reatribuição: `resultado *= valor3; // resultado = resultado * valor3`
 - Divisão: `var resultado = valor1 / valor2;`
+  - Divisão da variável e reatribuição: ``resultado /= valor3; // resultado = resultado / valor3`
   - Retorna resultado inteiro caso os dois operandos sejam de algum dos tipos inteiros
   - Retorna resultado real se ao menos um dos tipos for um dos tipos real
   - Retorna erro se `valor2` for 0
