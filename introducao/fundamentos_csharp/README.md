@@ -550,3 +550,68 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   ~~~
 
 [🔼 topo](#topo)
+
+### Estruturas de Controle
+
+#### Estrutura de decisão
+
+- Executa trecho de código com base em um resultado booleano
+- Sintaxe:
+
+  ~~~csharp
+  // Executa um bloco de código se resultado booleano for true. Caso seja só um código executado, é possível omitir as chaves
+  if (resultadoBooleano)
+  {
+    Console.WriteLine("Executa alguma coisa se true");
+    Console.WriteLine("Executa outra coisa se true");
+  }
+
+  // Executa um bloco de código se true e outro se false.  Caso seja só um código executado, é possível omitir as chaves
+  if (resultadoBooleano)
+  {
+    Console.WriteLine("Executa alguma coisa se true");
+    Console.WriteLine("Executa outra coisa se true");
+  }
+  else
+  {
+    Console.WriteLine("Executa alguma coisa se false");
+    Console.WriteLine("Executa outra coisa se false");
+  }
+
+  // Executa um bloco de código para diversos resultados booleano.  Caso seja só um código executado, é possível omitir as chaves
+  if (resultadoBooleano)
+  {
+    Console.WriteLine("Executa alguma coisa se resultado 1 true");
+    Console.WriteLine("Executa outra coisa se resultado 1 true");
+  }
+  else if (resultadoBooleano2)
+  {
+    Console.WriteLine("Executa alguma coisa se resultado 1 false e resultado 2 true");
+    Console.WriteLine("Executa outra coisa se resultado 1 false  e resultado 2 true");
+  }
+  else
+  {
+    Console.WriteLine("Executa alguma coisa se resultados 1 e 2 forem false");
+    Console.WriteLine("Executa outra coisa se resultados 1 e 2 forem false");
+  }
+
+  // Estruturas podem ser aninhadas
+  if (resultadoBooleano)
+  {
+    Console.WriteLine("Executa alguma coisa se true");
+
+    if (resultadoBooleano2)
+    {
+      Console.WriteLine("Executa alguma coisa se resultados 1 e 2 forem true");
+      Console.WriteLine("Executa outra alguma coisa se resultados 1 e 2 forem true");
+    }
+    else
+    {
+      Console.WriteLine("Executa alguma coisa se resultado 1 for true e resultado 2 for false");
+      Console.WriteLine("Executa outra alguma coisa se resultado 1 for true e resultado 2 for false");
+    }
+  }
+    
+  ~~~
+
+[🔼 topo](#topo)

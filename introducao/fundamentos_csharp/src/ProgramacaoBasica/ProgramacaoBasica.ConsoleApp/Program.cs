@@ -48,6 +48,10 @@ EstruturaDados_Stack();
 
 Console.WriteLine();
 
+EstruturaControle_Decisao();
+
+Console.WriteLine();
+
 
 // ******************************************************************************************* //
 
@@ -490,4 +494,98 @@ void EstruturaDados_Stack()
 
     Console.WriteLine("\n--");
     foreach (var nome in nomes) Console.WriteLine(nome);
+}
+
+void EstruturaControle_Decisao()
+{
+    var cepEstado = new Dictionary<string, string>
+    {
+        { "65633599", "MA" },
+        { "29143669", "ES" },
+        { "58038320", "PB" },
+        { "06700519", "SP" },
+        { "30610550", "MG" },
+        { "74893804", "GO" },
+        { "68770971", "PA" },
+        { "29217210", "ES" },
+        { "65058080", "MA" },
+        { "58069299", "PB" },
+        { "65058229", "MA" },
+        { "64005260", "PI" },
+        { "52070230", "PE" },
+        { "40220265", "BA" },
+        { "79303080", "MS" },
+        { "42835971", "BA" },
+        { "95050190", "RS" },
+        { "82720290", "PR" },
+        { "88309080", "SC" },
+        { "76822200", "RO" },
+        { "68904281", "AP" },
+        { "27340490", "RJ" },
+        { "76964232", "RO" },
+        { "89253774", "SC" },
+        { "69900064", "AC" },
+        { "69316715", "RR" },
+        { "79620211", "MS" },
+        { "69315054", "RR" },
+        { "69900379", "AC" },
+        { "64212120", "PI" }
+    };
+
+    Console.WriteLine("** Dados dos Estados **\n");
+
+    var totalCepEstado = new Dictionary<string, int>();
+
+    foreach (var item in cepEstado)
+    {
+        if (!totalCepEstado.ContainsKey(item.Value))
+            totalCepEstado.Add(item.Value, 1);
+        else
+            totalCepEstado[item.Value]++;
+    }
+
+    Console.WriteLine("- Total de CEP cadastrados por estado\n");
+
+    foreach (var estado in totalCepEstado)
+    {
+        Console.WriteLine("\tEstado: " + estado.Key);
+        Console.WriteLine("\tTotal CEP: " + estado.Value);
+        Console.WriteLine();
+    }
+
+    int menorTotalCep = int.MaxValue;
+    int maiorTotalCep = 0;
+
+    foreach (var estado in totalCepEstado)
+    {
+        if (estado.Value < menorTotalCep) menorTotalCep = estado.Value;
+        
+        if (estado.Value > maiorTotalCep) maiorTotalCep = estado.Value;
+    }
+
+    var ufMenorQtdCep = "";
+    var separadorUfMenor = "";
+    var ufMaiorQtdCep = "";
+    var separadorUfMaior = "";
+
+    foreach (var estado in totalCepEstado)
+    {
+        if (estado.Value == menorTotalCep)
+        {
+            ufMenorQtdCep += separadorUfMenor + estado.Key;
+            separadorUfMenor = ", ";
+        }
+        else if (estado.Value == maiorTotalCep)
+        {
+            ufMaiorQtdCep += separadorUfMaior + estado.Key;
+            separadorUfMaior = ", ";
+        }
+    }
+
+    Console.WriteLine("- Contagens de CEP\n");
+    Console.WriteLine("\tMenor quantidade total: " + menorTotalCep);
+    Console.WriteLine("\tUF's menor quantidade: " + ufMenorQtdCep);
+
+    Console.WriteLine("\n\tMaior quantidade total: " + maiorTotalCep);
+    Console.WriteLine("\tUF'a maior quantidade: " + ufMaiorQtdCep);
 }
