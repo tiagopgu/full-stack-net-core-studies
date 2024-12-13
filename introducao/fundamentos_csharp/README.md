@@ -430,6 +430,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 - Itens possuem chave/valor
 - Tanto a chave quando o valor são tipados (podem ser diferentes entre si)
+- Chaves não podem ser repetidas
 - Valor de cada item acessado por chave
 - Sintaxe:
 
