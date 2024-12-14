@@ -621,7 +621,48 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
       Console.WriteLine("Executa outra alguma coisa se resultado 1 for true e resultado 2 for false");
     }
   }
-    
   ~~~
 
 [🔼 topo](#topo)
+
+
+#### Estrutura de seleção
+
+- Executa um bloco de instrução com base em um valor
+- Sintaxe:
+
+  ~~~csharp
+  var resultado = "Valor 3";
+
+  // Testa o valor da variável resultado e executa um bloco de código quando encontrado
+  switch (resultado)
+  {
+    case "Valor":
+      Console.WriteLine("Executa uma instrução para 'Valor'");
+      Console.WriteLine("Executa outra instrução  para 'Valor'");
+      break; // Indica onde para as instruções desse case
+    case "Valor 1":
+    case "Valor 2": // As intruções são executadas se resultado for "Valor 1" ou "Valor 2"
+      Console.WriteLine("Executa uma instrução para 'Valor 1' ou 'Valor 2'");
+      Console.WriteLine("Executa outra instrução para 'Valor 1' ou 'Valor 2'");
+      break; // Indica onde para as instruções desse case
+    case "Valor 3":
+      Console.WriteLine("Executa uma instrução para 'Valor 3'");
+      Console.WriteLine("Executa outra instrução para 'Valor 3'");
+      break; // Indica onde para as instruções desse case
+    default:
+      Console.WriteLine("Executa uma instrução para valores não encontrados");
+      Console.WriteLine("Executa outra instrução para valores não encontrados");
+      break; // Indica onde para as instruções desse case
+  }
+
+  // Retorna um resultado com base em um valor. Resultados retornados devem ser do mesmo tipo.
+  var retorno = resultado switch
+  {
+    "Valor" => "Retorno se 'Valor'",
+    "Valor 1" => "Retorno se 'Valor 1'",
+    "Valor 2" => "Retorno se 'Valor 2'",
+    "Valor 3" => "Retorno se 'Valor 3'",
+    _ => "Resultado se nenhum valor encontrado"
+  };
+  ~~~

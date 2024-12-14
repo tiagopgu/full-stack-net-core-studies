@@ -52,6 +52,10 @@ EstruturaControle_Decisao();
 
 Console.WriteLine();
 
+EstruturaControle_Selecao();
+
+Console.WriteLine();
+
 
 // ******************************************************************************************* //
 
@@ -588,4 +592,118 @@ void EstruturaControle_Decisao()
 
     Console.WriteLine("\n\tMaior quantidade total: " + maiorTotalCep);
     Console.WriteLine("\tUF'a maior quantidade: " + ufMaiorQtdCep);
+}
+
+void EstruturaControle_Selecao()
+{
+    char[] sexo = [ 'M', 'F' ];
+
+    var codigoItem = 1;
+    var separadorItem = "";
+
+    Console.WriteLine("** Informações Tratamento Pessoa **\n");
+
+    foreach (var s in sexo)
+    {
+        Console.Write(separadorItem + codigoItem++ + ". " + s);
+        separadorItem = " - ";
+    }
+
+    Console.Write("\n\nSelecione o código referente ao sexo da pessoa: ");
+    codigoItem = int.Parse(Console.ReadLine() ?? "");
+
+    Console.WriteLine();
+
+    if (codigoItem <= 0 || codigoItem > sexo.Length)
+        Console.WriteLine("Código Inválido");
+    else
+        EscreverInformacoesTratamentoPessoa(sexo[--codigoItem]);
+
+    Console.WriteLine();
+    EscreverInformacoesTratamentoPessoa('A');
+
+    string[] estados = ["AC", "AL", "AP", "AM", "BA", "CE", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
+
+    Console.WriteLine("\n\n** Estados do Brasil **\n");
+
+    codigoItem = 1;
+    separadorItem = "";
+
+    foreach (var estado in estados)
+    {
+        Console.Write(separadorItem + codigoItem++ + ". " + estado);
+        separadorItem = " - ";
+    }
+
+    Console.Write("\n\nSelecione o código do estado para obter a descrição: ");
+    codigoItem = int.Parse(Console.ReadLine() ?? "");
+
+    if (codigoItem > 0 && codigoItem <= estados.Length)
+    {
+        var estadoSelecionado = estados[codigoItem - 1];
+
+        Console.WriteLine("\n" + estadoSelecionado + ": " + RetornarDescricaoEstado(estadoSelecionado));
+    }
+    else
+    {
+        Console.WriteLine("\nCódigo inválido");;
+    }
+
+    Console.WriteLine("\nTE: " + RetornarDescricaoEstado("TE"));
+}
+
+void EscreverInformacoesTratamentoPessoa(char sexo)
+{
+    Console.WriteLine("O sexo escolhido foi '" + sexo + "'");
+
+    switch (sexo)
+    {
+        case 'M':
+            Console.WriteLine("A pessoa é do sexo masculino.");
+            Console.WriteLine("O tratamento adequado é 'Sr.'");
+            Console.WriteLine("Pessoa deve ser direcioanda para a ala masculina.");
+            break;
+        case 'F':
+            Console.WriteLine("A pessoa é do sexo feminino.");
+            Console.WriteLine("O tratamento adequado é 'Srta.'");
+            Console.WriteLine("Pessoa deve ser direcionada para ala feminina.");
+            break;
+        default:
+            Console.WriteLine("Não foi possível identificar informações de tratamento para o sexo informado");
+            break;
+    }
+}
+
+string RetornarDescricaoEstado(string estado)
+{
+   return estado switch
+   {
+        "AC" => "Acre",
+        "AL" => "Alagoas",
+        "AP" => "Amapá",
+        "AM" => "Amazonas",
+        "BA" => "Bahia",
+        "CE" => "Ceará",
+        "ES" => "Espírito Santo",
+        "GO" => "Goiás",
+        "MA" => "Maranhão",
+        "MT" => "Mato Grosso",
+        "MS" => "Mato Grosso do Sul",
+        "MG" => "Minas Gerais",
+        "PA" => "Pará",
+        "PB" => "Paraíba",
+        "PR" => "Paraná",
+        "PE" => "Pernambuco",
+        "PI" => "Piauí",
+        "RJ" => "Rio de Janeiro",
+        "RN" => "Rio Grande do Norte",
+        "RS" => "Rio Grande do Sul",
+        "RO" => "Rondônia",
+        "RR" => "Roraima",
+        "SC" => "Santa Catarina",
+        "SP" => "São Paulo",
+        "SE" => "Sergipe",
+        "TO" => "Tocantins",
+        _ => "Estado inválido"
+   };
 }
