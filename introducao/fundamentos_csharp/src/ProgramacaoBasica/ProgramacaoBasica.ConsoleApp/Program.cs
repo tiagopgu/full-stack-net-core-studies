@@ -59,10 +59,19 @@ Console.WriteLine();
 EstruturaRepeticao_For();
 
 Console.WriteLine();
-*/
+
 EstruturaRepeticao_Foreach();
 
 Console.WriteLine();
+*/
+EstruturaRepeticao_While();
+
+Console.WriteLine();
+
+EstruturaRepeticao_Do_While();
+
+Console.WriteLine();
+
 
 // ******************************************************************************************* //
 
@@ -750,4 +759,31 @@ void EstruturaRepeticao_Foreach()
 
     foreach (var nome in nomes)
         Console.WriteLine(nome);
+}
+
+void EstruturaRepeticao_While()
+{
+    Console.WriteLine("** Processamento 1 **\n");
+
+    var processando = Random.Shared.Next(20) % 3 == 0;
+
+    while(processando)
+    {
+        Console.WriteLine("Em processamento: " + processando);
+
+        processando = Random.Shared.Next(20) % 3 == 0;
+    }
+}
+
+void EstruturaRepeticao_Do_While()
+{
+    Console.WriteLine("** Processamento 2 **\n");
+
+    var processando = Random.Shared.Next(20) % 3 == 0;
+
+    do
+    {
+        Console.WriteLine("Em processamento: " + processando);
+        processando = Random.Shared.Next(20) % 3 == 0;
+    } while(processando);
 }

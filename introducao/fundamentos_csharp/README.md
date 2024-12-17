@@ -708,4 +708,37 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
   ~~~
 
+##### While
+
+- Testa uma condição no início
+- Trecho de código executado enquanto uma condição for verdadeira
+- Sintaxe
+
+  ~~~csharp
+  var i = 0;
+  
+  // Executa o laço enquanto a condição for verdadeira
+  while (i < 5)
+  {
+    Console.WriteLine("i = " + i);
+    i++;
+  }
+  ~~~
+
+##### Do..While
+
+- Testa uma condição no fim do laço
+- Executa o bloco de código ao menos uma vez, e depois enquanto a condição for verdadeira
+- Sintaxe:
+
+  ~~~csharp
+  var i = 0;
+
+  do
+  {
+    Console.WriteLine("i = " + i);
+    i++;
+  } while(i < 5)
+  ~~~
+
 [🔼 topo](#topo)
