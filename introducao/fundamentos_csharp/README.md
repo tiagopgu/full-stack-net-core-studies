@@ -690,4 +690,22 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   }
   ~~~~
 
+##### Foreach
+
+- Itera sobre uma coleção, retornando cada valor na mesma
+- Não é possível acessar o índice do item corrente, caso a coleção permita ser acessada por índice
+- Sintaxe:
+
+  ~~~csharp
+  string[] lista = [ "Valor 1", "Valor 2", "Valor 3" ];
+
+  // Percorrendo a coleção
+  foreach (var item in lista)
+  {
+    // Executa qualquer coisa sobre o item
+    Console.WriteLine(item);
+  }
+
+  ~~~
+
 [🔼 topo](#topo)

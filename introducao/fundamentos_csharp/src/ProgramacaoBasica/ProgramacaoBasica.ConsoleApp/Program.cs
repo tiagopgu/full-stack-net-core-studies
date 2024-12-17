@@ -55,11 +55,14 @@ Console.WriteLine();
 EstruturaControle_Selecao();
 
 Console.WriteLine();
-*/
+
 EstruturaRepeticao_For();
 
 Console.WriteLine();
+*/
+EstruturaRepeticao_Foreach();
 
+Console.WriteLine();
 
 // ******************************************************************************************* //
 
@@ -730,4 +733,21 @@ void EstruturaRepeticao_For()
         Console.Write((i + 1) + ". ");
         Console.WriteLine(nomes[i]);
     }
+}
+
+void EstruturaRepeticao_Foreach()
+{
+    string[] nomes =
+    [
+        "Clara Maitê Valentina Moraes",
+        "Eliane Adriana Caldeira",
+        "Andreia Carla Bárbara Duarte",
+        "Jorge Paulo Erick Baptista",
+        "Benício Ruan Thales Dias"
+    ];
+
+    Console.WriteLine("** Nomes Candidatos **\n");
+
+    foreach (var nome in nomes)
+        Console.WriteLine(nome);
 }
