@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-
+/*
 VariaveisTiposDados();
 
 Console.WriteLine();
@@ -53,6 +53,10 @@ EstruturaControle_Decisao();
 Console.WriteLine();
 
 EstruturaControle_Selecao();
+
+Console.WriteLine();
+*/
+EstruturaRepeticao_For();
 
 Console.WriteLine();
 
@@ -706,4 +710,24 @@ string RetornarDescricaoEstado(string estado)
         "TO" => "Tocantins",
         _ => "Estado inválido"
    };
+}
+
+void EstruturaRepeticao_For()
+{
+    string[] nomes =
+    [
+        "Clara Maitê Valentina Moraes",
+        "Eliane Adriana Caldeira",
+        "Andreia Carla Bárbara Duarte",
+        "Jorge Paulo Erick Baptista",
+        "Benício Ruan Thales Dias"
+    ];
+
+    Console.WriteLine("** Nomes Sorteados **\n");
+
+    for (var i = 0; i < nomes.Length; i++)
+    {
+        Console.Write((i + 1) + ". ");
+        Console.WriteLine(nomes[i]);
+    }
 }

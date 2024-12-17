@@ -625,7 +625,6 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-
 #### Estrutura de seleção
 
 - Executa um bloco de instrução com base em um valor
@@ -666,3 +665,29 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
     _ => "Resultado se nenhum valor encontrado"
   };
   ~~~
+
+[🔼 topo](#topo)
+
+#### Estruturas de Repetição
+
+- Repete um trecho de código
+
+##### For
+
+- Usado quando se sabe exatamente a quantidade de vezes que o código será repetido.
+- Sintaxe:
+
+  ~~~csharp
+  // for (valor inicial; condição de parada; incremento do valor inicial após cada execução do bloco)
+
+  // Exemplo percorrendo uma lista
+  var lista = new string[] { "Valor 1", "Valor 2", "Valor 3" };
+
+  for (var i = 0; lista.Length; i++)
+  {
+    var valor = lista[i]; // A cada execução, valor de i acessar um item da lista
+    Console.WriteLine(valor);
+  }
+  ~~~~
+
+[🔼 topo](#topo)
