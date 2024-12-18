@@ -1,85 +1,94 @@
 ﻿using System.Collections;
 
-VariaveisTiposDados();
+Dictionary<string, Action> acoes = new()
+{
+    { "Variáveis e Tipos de Dados", VariaveisTiposDados },
+    { "Constantes", Constantes },
+    { "Operadores Aritméticos", OperadoresAritmeticos },
+    { "Operadores Relacionais", OperadoresRelacionais },
+    { "Operadores Lógicos", OperadoresLogicos },
+    { "Operadores Ternários", OperadorTernario },
+    { "Estrutura de Dados: Array", EstruturaDados_Array },
+    { "Estrutura de Dados: ArrayList", EstruturaDados_ArrayList },
+    { "Estrutura de Dados: List", EstruturasDados_List },
+    { "Estrutura de Dados: Dictionary ", EstruturaDados_Dictionary },
+    { "Estrutura de Dados: Queue" , EstruturaDados_Queue },
+    { "Estrutura de Dados: Stack", EstruturaDados_Stack },
+    { "Estrutura de Decisão", EstruturaControle_Decisao },
+    { "Estrutura de Seleção", EstruturaControle_Selecao },
+    { "Estrutura de Repetição: For", EstruturaRepeticao_For },
+    { "Estrutura de Repetição: Foreach", EstruturaRepeticao_Foreach },
+    { "Estrutura de Repetição: While", EstruturaRepeticao_While },
+    { "Estrutura de Repetição: Do..While", EstruturaRepeticao_Do_While },
+    { "Estrutura de Repetição: Break", EstruturaRepeticao_Break },
+    { "Estrutura de Repetição: Continue", EstruturaRepeticao_Continue }
+};
 
-Console.WriteLine();
+var opcao = -1;
 
-Constantes();
+do
+{
+    ClearConsole();
 
-Console.WriteLine();
+    Console.WriteLine("** Programação Básica: Assuntos abordados **\n");
 
-OperadoresAritmeticos();
+    MostrarOpcoes();
+    
+    Console.Write("\nSelecione uma opção: ");
+    var entrada = Console.ReadLine();
 
-Console.WriteLine();
+    if (!int.TryParse(entrada, out opcao))
+    {
+        Console.WriteLine("\nOpção Inválida\n");
+        continue;
+    }
 
-OperadoresRelacionais();
+    Console.WriteLine();
 
-Console.WriteLine();
+    if (opcao <= 0) break;
 
-OperadoresLogicos();
+    ExecutarExemplo(opcao);
+    
+    Console.WriteLine();
+} while(opcao > 0);
 
-Console.WriteLine();
+void MostrarOpcoes()
+{
+    var count = 1;
 
-OperadorTernario();
+    Console.WriteLine("\t0. Sair\n");
 
-Console.WriteLine();
+    foreach(var acao in acoes)
+        Console.WriteLine("\t" + count++ + ". " + acao.Key);
+}
 
-EstruturaDados_Array();
+void ExecutarExemplo(int opcao)
+{
+    var opcaoValida = --opcao >= 0 && opcao < acoes.Count;
 
-Console.WriteLine();
+    if (!opcaoValida)
+    {
+        Console.WriteLine("\nOpção Inválida");
+    }
+    else
+    {
+        var acao = acoes.ElementAt(opcao).Value;
 
-EstruturaDados_ArrayList();
+        acao();
+    }
 
-Console.WriteLine();
+    Console.Write("\nPressione uma tecla para continuar....");
+    Console.ReadKey();
+    Console.Clear();
+}
 
-EstruturasDados_List();
-
-Console.WriteLine();
-
-EstruturaDados_Dictionary();
-
-Console.WriteLine();
-
-EstruturaDados_Queue();
-
-Console.WriteLine();
-
-EstruturaDados_Stack();
-
-Console.WriteLine();
-
-EstruturaControle_Decisao();
-
-Console.WriteLine();
-
-EstruturaControle_Selecao();
-
-Console.WriteLine();
-
-EstruturaRepeticao_For();
-
-Console.WriteLine();
-
-EstruturaRepeticao_Foreach();
-
-Console.WriteLine();
-
-EstruturaRepeticao_While();
-
-Console.WriteLine();
-
-EstruturaRepeticao_Do_While();
-
-Console.WriteLine();
-
-EstruturaRepeticao_Break();
-
-Console.WriteLine();
-
-EstruturaRepeticao_Continue();
-
-Console.WriteLine();
-
+void ClearConsole()
+{
+    Console.Clear();
+    Console.WriteLine("\x1b[3J");
+    Console.SetCursorPosition(0, 0);
+    Console.Clear();
+}
 
 // ******************************************************************************************* //
 
