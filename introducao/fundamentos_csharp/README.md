@@ -19,6 +19,11 @@ Sequência de passos definidos para que um programa de computador consiga execut
 - Define instruções que usamos para implementar a lógica de um programa
 - Existem diversas linguagens disponíveis no mercado, como, por exemplo, o **C#**
 - Cada linguagem possui sua sintaxe e semântica, semelhante a um idioma de um país
+  - Sintaxe no **C#**
+    - Toda instrução deve terminar com `;`
+    - Comentários não são executados
+      - Comentário de uma linha: `// Comentário`
+      - Cometário em bloco (pode ter várias linhas): `/* Comentário - quebra de linha - Comentário */`
 - Todo o conjunto de instruções usados no programa é chamado de **código fonte**.
 - Para ser executado, o _código fonte_ passa por um dos seguintes passos, a depender da linguagem de programação em que foi escrito:
   - Interpretação: Cada instrução é lida e executada em sequência pelo computador. Exemplo de linguagem interpretada: _python_
@@ -26,6 +31,8 @@ Sequência de passos definidos para que um programa de computador consiga execut
   
     <a id="compilacao-csharp"></a>
     - O _C#_ é uma linguagem compilada, porém passa por um processo diferente: na primeira etapa é gerada uma linguagem intermediária (IL). Esse código intermediário é passado por um compilador de tempo de execução (RyuJIT), que transformará o código IL nos binário nativo da máquina em que está sendo executado.
+
+[🔼 topo](#topo)
 
 ### .NET
 
@@ -91,6 +98,8 @@ Sequência de passos definidos para que um programa de computador consiga execut
   - Multiplataforma
   - Paga
 
+[🔼 topo](#topo)
+
 ### Estrutura
 
 #### Projeto
@@ -99,10 +108,672 @@ Sequência de passos definidos para que um programa de computador consiga execut
 - É escrito em uma das linguagens suportadas pelo .NET
 - Define a versão do .NET usada
 - Define a tipo de binário de saída (.exe, .dll)
+- Para criar um projeto via CLI:
+  - Listar templates de projeto: `dotnet new list`
+  - Criar um projeto: `dotnet new nome_curto_template [-n nome_projeto] [-o diretorio_saida] [-f versao_framework]`. Exemplo de uma aplicação console: `dotnet new console -n MinhaAplicacao -f new8.0`
+    - Se não informado o nome do projeto, será usado o nome do diretório
+    - Se não informado o framework, será usada a versão mais recente instalada na máquina (ver `dotnet --info`)
+    - Dentre os itens criado para o projeto, está o arquivo de projeto _.csproj_
+- Para executar um projeto:
+  - Buildando o projeto: `dotnet build [caminho_arquivo_solution.sln | caminho_arquivo_projeto.csproj]`
+    - Caso esteja no diretório da solution ou projeto, não é necessário informar o caminho
+  - Limpando arquivos de build: `dotnet clean [caminho_arquivo_solution.sln | caminho_arquivo_projeto.csproj]`
+    - Caso esteja no diretório da solution ou projeto, não é necessário informar o caminho
+  - Executando um projeto: `dotnet run --project caminho_arquivo_projeto.csproj`
+    - Caso esteja no diretório do projeto, não é necessário informar a opção _--project_
+    - Automaticamente será gerado um _build_ do projeto
+    - Desabilitando mensagens de compilação: `dotnet run --WarningLevel 0`
 
 #### Solution
 
 - Agrupa projetos de uma aplicação
 - Permite que todos os projetos sejam compilados de uma vez
+- Para criar uma solution via CLI:
+  - Criando a solution: `dotnet new solution [-o diretorio_saida] [-n NomeSolution]`
+    - Se não informado o diretório de saída, será criado somente o arquivo de solução (_.sln_)
+    - Se não informado o nome da solução, será usado o do diretório de saída
+  - Adicionar um projeto a uma solução: `dotnet sln nome_arquivo.sln add caminho_projeto.csproj`
+
+[🔼 topo](#topo)
+
+## Programação Básica
+
+### Tipos de Dados Primitivos
+
+Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor para o maior. Isto significa que o tipo menor cabe no tipo maior, porém o contrário não é verdadeiro.
+
+#### Numéricos
+
+- Inteiros
+  - `byte`: 0 até 255
+  - `short`: -32768 até 32767
+  - `int`: -2174843648 até 2147483647
+  - `long`: -9223372036854775808 até 9223372036854775807
+
+  Obs.: Inclua `u` na frente dos tipos que aceitam valores negativos para não aceitar valores negativos aumentar o máximo dos positivos: Exemplo: `uint`
+- Real (ponto flutuante)
+  - `float`
+    - Até 9 dígitos
+    - O valor deve ter o sufixo `f`ou `F` no final. Exemplo: `35.54F`
+  - `double`
+    - Até 17 dígito
+    - Não necessita de sufixo no valor, porém pode ser usado o `d`ou `D`
+  - `decimal`
+    - Até 29 dígitos
+    - Usado quando necessita de uma precisão maior (por exemplo para trabalhar com valores monetários)
+    - O valor deve ter o sufixo `m` ou `M`. Exemplo: `199.99M`
+
+#### Caractere
+
+- `char`
+  - Somente um caractere, podendo ser no formato hexadecimal ou unicode
+  - Valor deve estar entre aspas simples. Exemplo: `'A'`
+- `string`
+  - Cadeia de caracteres
+  - Valor deve estar entre aspas duplas. Exemplo: `"Teste"`
+  - Não é um tipo primitivo, mas devido ao seu uso é praticamente considerado como sendo
+
+#### Booleando
+
+- `bool`: Somente os valoes `true`ou `false`
+
+[🔼 topo](#topo)
+
+### Variável
+
+- Define uma região de memória para armazenar dados
+- Declaração: `tipo_dado nomeVariavel = valor`. Exemplo: `int idade = 35`
+  - O compilador pode inferir o tipo pelo valor atribuído: `var nomeVariavel = valor`. Exemplo: `var idade = 35`
+  - Não é possível usar uma variável sem inicializá-la
+  - Para usar, basta chamar pelo nome definido. Exemplo: `Console.WriteLine(idade)`
+  - Nome da variável
+    - Não pode ter caracteres especiais, exceto undescore (_)
+    - Não pode iniciar com número
+    - Não pode ter espaço em palavras compostas
+    - Não é indicado usar palavras com acentuação
+    - É uma boa prática que o nome seja significativo
+
+### Constante
+
+- Define uma variável que uma vez inicializada, não pode ser alterada posteriormente
+- Declaração: `const tipo_dado NOME_CONSTANTE = valor`. Exemplo: `const string NOME_CURSO = "CSHARP"`
+- Segue basicamente as mesmas regras de variáveis
+- No C# é convencionado que constantes sejam escritas em maiúscula e palavras compostas separadas por underscore (_).
+
+[🔼 topo](#topo)
+
+### Operadores
+
+#### Atribuição
+
+- Atribui o valor a direita à variável a esquerda
+- Exemplo: `string variavel = "Valor Atribuído";`;
+
+#### Aritméticos
+
+- Soma: `var resultado = valor1 + valor2;`
+  - Soma da variável e reatribuição: `resultado += valor3; // resultado = resultado + valor3`
+- Subtracao: `var resultado = valor1 - valor2;`
+  - Subtração da variável e reatribuição: `resultado -= valor3; // resultado = resultado - valor3`
+- Multiplicação: `var resultado = valor1 * valor2;`
+  - Multiplicação da variável e reatribuição: `resultado *= valor3; // resultado = resultado * valor3`
+- Divisão: `var resultado = valor1 / valor2;`
+  - Divisão da variável e reatribuição: ``resultado /= valor3; // resultado = resultado / valor3`
+  - Retorna resultado inteiro caso os dois operandos sejam de algum dos tipos inteiros
+  - Retorna resultado real se ao menos um dos tipos for um dos tipos real
+  - Retorna erro se `valor2` for 0
+
+Obs1.: Os operandos podem ser valores literais ou uma variável que contenha valor\
+Obs2.: O tipo de dados do resultado será com base no tipo de dado do operando com maior capacidade de armazenamento de valor. Exemplo: `valor_inteiro + valor_long = resultado_long;`
+Obs3.: Prioridade segue a mesma regra da matemática
+Obs4.: Em uma expressão, use parênteses para alterar a ordem de prioridade. Exemplo: `var resultado = (valor1 + valor2) * (valor3 / valor4)`
+
+#### Relacionais
+
+- Igualdade: `var resultado = valor1 == valor2;`
+  - `=` é chamado de _operador de atribuição_
+- Diferença: `var resultado = valor1 != valor2;`
+- Maior que: `var resultado = valor1 > valor2;`
+- Menor que: `var resultado = valor1 < valor2;`
+- Maior ou igual: `var resultado = valor1 >= valor2;`
+- Menor ou igual: `var resultado = valor1 <= valor2`
+
+Obs.: O resultado dos operadores relacionais é do tipo `bool;`
+
+#### Lógicos
+
+- And: `&&`. Exemplo: `var valido = valor > 5 && valor < 25;`
+  - Todas as condições devem ser verdadeiras
+- Or: `||`. Exemplo `var valido = valor > 5 || valor == 2;`;
+  - Ao menos um das condições deve ser verdadeira
+- Not: `!`. Exemplo: `var valido = !(valor > 10);`
+  - Inverte o valor de um resultado lógico
+
+#### Ternário
+
+- Analisa um expressão e retorna um valor se verdeiro, ou um valor diferente se o resultado for falso
+- Sintaxe: `var mensagem = usuarioAtivo ? "Usuário ativo no sistema" : "Usuário inativo no sistema";`
+- O resultado retornado nas duas situações devem ser do mesmo tipo
+
+[🔼 topo](#topo)
+
+### Métodos (Funções)
+
+- Bloco de código nomeado, executado sempre que chamado
+- Pode receber parâmetro
+- Pode retornar valor
+  - `void` indica que a função não retorna valor
+- Sintaxe:
+
+  ~~~csharp
+
+  int numero1 = 5, numero2 = 10;
+
+  var soma = Soma(numero1, numero2); // Chamando função que retorna valor e recebe parâmetro
+
+  Escrever("Resultado: " + soma); // Chamando função que não retorna valor e recebe parâmetro
+
+  // Declarando uma função que retorna valor e recebe parâmetros
+  int Soma(int valor1, int valor2)
+  {
+    var resultado = valor1 + valor2;
+
+    return resultado;
+  }
+
+  // Declarando uma função que não retorna valor e recebe parâmetros
+  void Escrever(string texto)
+  {
+    Console.WriteLine(texto);
+
+    PularLinha(); // Chamando função que não retorna valor e não recebe parâmetro
+  }
+
+  // Declarando uma função que não retorna valor e não recebe parâmetros
+  void PularLinha()
+  {
+    Console.WriteLine();
+  }
+  ~~~
+
+[🔼 topo](#topo)
+
+### Estruturas de dados
+
+#### Array
+
+- Deve ser tipado (aceita só um tipo de valor, conforme o tipo definido)
+- Itens da coleção acessado por índice
+- Sintaxe
+
+  ~~~csharp
+  // Declarando array vazio
+  string[] array1 = new string[10]; // Indicar o tipo de dados do array e a quantidade de items (neste exemplo 10 itens, com índice de 0 a 9)
+  var array2 = new int[5];
+
+  // Declarando array inicializado
+  string[] array3 = new string[] { "Item 1", "Item 2", "Item 3" };
+  string[] array4 = new[] { "Item 1", "Item 2", "Item 3" };
+  string[] array5 = [ "Item 1", "Item 2", "Item 3" ];
+  var array6 = new string[] { "Item 1", "Item 2", "Item 3" };
+
+  // Acessando item por um índice
+  var item = array6[2];
+
+  // Inserindo/Atualizando item por um índice
+  array6[0] = "Novo Item";
+
+  // Redimensionando array
+  Array.Resize(ref array6, 5); // Novos espaços vazios
+  array6 = [.. array6, "Item 4", "Item 5" ]; // Redimensionando com a inclusão de novos itens
+  ~~~
+
+#### ArrayList
+
+- Armazena itens de diversos tipos de dados
+- Acessada por índice
+- Sintaxe
+
+  ~~~csharp
+  using System.Collections; // Namespace onde está o ArrayList
+
+  // Criando um array vazio
+  var array1 = new ArrayList();
+  ArrayList array2 = new ArrayList();
+  ArrayList array3 = new();
+  ArrayList array4 = [];
+
+  // Criando um array com objetos
+  var array5 = new()
+  {
+    "Item 1",
+    'A',
+    45,
+    3.50M
+  };
+
+  var array6 =
+  [
+    "Item 1",
+    'A',
+    45,
+    3.50M
+  ];
+
+  // Adicionar item
+  array6.Add("Novo Item de Qualquer tipo");
+
+  // Acessar um item pelo índice
+  var item = array6[2];
+
+  // Remover a primeira ocorrencia de um item
+  array6.Remove(45);
+
+  // Remover um item pelo índice
+  array6.RemoveAt(1);
+
+  // Quantidade de itens
+  array6.Count;
+
+  // Limpando um array
+  array6.Clear();
+
+  array6 = new(); // Atribuindo um novo objeto ArrayList
+  ~~~
+
+#### Lista Genérica
+
+- Deve ser tipada
+- Pode ser acessado por índice
+- Mais performática
+- Possui mais funcionalidades para trabalhar com listas
+- Sintaxe
+
+  ~~~c#
+  using System.Collections.Generic; // Namespace onde está a lista
+
+  // Criando uma lista
+  List<string> list1 = new List<string>(); // Pode ser passador no construtor o tamanho inicial
+  List<int> list2 = new(); // Pode ser passador no construtor o tamanho inicial
+  List<byte> list3 = [];
+
+  var list4 = new List<string>();
+
+  // Criando uma lista inializada
+  List<string> list5 = new List<string>() { "Valor 1", "Valor 2" };
+  List<int> list6 = new List<int> { 5, 10 };
+  List<string> list7 = new() { "Valor 1", "Valor 2" };
+  List<int> list8 = [ 15, 23 ];
+
+  var lista9 = new List<string>() { "Valor 1", "Valor 2" };
+  var list10 = new List<int> { 58, 26 };
+
+  // Adicionando item
+  lista10.Add(5);
+  lista10.AddRange([9, 50, 13, 11]); // Pode ser adicionada qualquer outra coleção
+
+  // Acessando por índice
+  var item = list10[3];
+
+  // Atualizando item
+  list10[2] = 10;
+
+  // Removendo item
+  list10.Remove(item); // Remove primeira ocorrência do item
+  list10.RemoveAt(0); // Remove item por indice
+
+  // Limpando a lista
+  list10.Clear();
+  ~~~
+  
+#### Dicionário
+
+- Itens possuem chave/valor
+- Tanto a chave quando o valor são tipados (podem ser diferentes entre si)
+- Chaves não podem ser repetidas
+- Valor de cada item acessado por chave
+- Sintaxe:
+
+  ~~~csharp
+  using System.Collections.Generic; // Namespace onde está o dicionário
+
+  // Inializando dicionário vazio
+  Dictionary<string, string> dic1 = new Dicionary<string, string>();
+  Dictionary<int, string> dic2 = new();
+  Dictionary<string, string> dic3 = [];
+
+  var dic4 = new Dictionary<int, string>();
+
+  // Inicializando dicionário com itens
+  Dictionary<string, string> dic5 = new Dictionary<string, string>() { { "chave1", "valor1" }, { "chave2" , "valor2" } }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+  Dictionary<int, string> dic6 = new Dictionary<int, string>() { ["chave1"] = "valor1", ["chave2"] = "valor2" }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+  Dictionary<string, string> dic7 = new() { { "chave1", "valor1" }, { "chave2", "valor2" } };
+  Dictionary<int, string> dict8 = new() { [1] = "Valor 1", [2] = "Valor 2" };
+
+  var dic9 = new Dictionary<string, string>() { { "chave1", "valor1" }, { "chave2", "valor2" } }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+  var dic10 = new Dictionary<int, string>() { [1] = "Valor 1", [2] = "Valor 2" }; // Se não tiver parâmetro, parênteses do construtor pode ser omitido
+
+  // Obtendo um item
+  var item = dic10.ElementAt(0); // item do tipo KeyValuePair<int, string>
+  var keyItem = item.Key;
+  var keyItem = item.Value;
+
+  // Adicionar item
+  dic10.Add(3) = "Valor 3";
+  dic10[4] = "Valor 4";
+
+  // Atualizar valor do item
+  dic10[3] = "Novo valor";
+
+  // Remover item
+  dic10.Remove(0);
+
+  // Limpar o dicionário
+  dic10.Clear();
+  ~~~
+
+> Obs.: Índice inicia em `0`
+
+[🔼 topo](#topo)
+
+#### Queue (Fila)
+
+- Lista do tipo FIFO (First In First Out)
+- Não permite ordenação
+- Acesso ao dado ocorre na ordem de inclusão
+- Pode aceitar qualquer tipo de dado, ou pode ser tipado
+- Ideal para quando a ordem de entrada na lista importa
+- Sintaxe:
+
+  ~~~csharp
+  using System.Collections; // Namespace onde está a lista
+
+  // Lista que aceita qualquer tipo
+  Queue lista1 = new Queue();
+  Queue lista2 = new();
+
+  var lista3 = new Queue();
+
+  // Lista tipada
+  Queue<string> lista4 = new Queue<string>();
+  Queue<int> lista5 = new();
+
+  var lista6 = new Queue<string>();
+
+  // Adicionando itens
+  lista3.Enqueue("Item");
+  lista3.Enqueue(5);
+
+  lista6.Enqueue("Item 1");
+  lista6.Enqueue("Item 2");
+
+  // Verificar o próximo item da fila
+  var item = lista6.Peek();
+
+  // Obter o próximo item da fila (remove o item)
+  var item2 = lista6.Dequeue();
+
+  // Limpar fila
+  lista6.Clear();
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Stack (Pilha)
+
+- Implementa a lógica LIFO (Last In First Out)
+- Não permite ordenação
+- Acesso ao dado ocorre a partir do último incluído
+- Pode aceitar qualquer tipo de dado, ou pode ser tipado
+- Sintaxe:
+
+  ~~~csharp
+  using System.Collections; // Namespace onde está a coleção
+
+  // Lista que aceita qualquer tipo
+  Stack lista1 = new Stack();
+  Stack lista2 = new();
+
+  var lista3 = new Stack();
+
+  // Lista tipada
+  Stack<string> lista4 = new Stack<string>();
+  Stack<int> lista5  = new();
+
+  var lista6 = new Stack<string>();
+
+  // Adicionar item à lista
+  lista3.Push("Item");
+  lista3.Push(5);
+
+  lista6.Push("Item 1");
+  lista6.Push("Item 2");
+
+  // Ver último item da lista
+  var item = lista6.Peek();
+
+  // Obter o próximo item da fila (remove o item da lista)
+  var item2 = lista6.Pop();
+
+  // Limpar a fila
+  lista6.Clear();
+  ~~~
+
+[🔼 topo](#topo)
+
+### Estruturas de Controle
+
+#### Estrutura de decisão
+
+- Executa trecho de código com base em um resultado booleano
+- Sintaxe:
+
+  ~~~csharp
+  // Executa um bloco de código se resultado booleano for true. Caso seja só um código executado, é possível omitir as chaves
+  if (resultadoBooleano)
+  {
+    Console.WriteLine("Executa alguma coisa se true");
+    Console.WriteLine("Executa outra coisa se true");
+  }
+
+  // Executa um bloco de código se true e outro se false.  Caso seja só um código executado, é possível omitir as chaves
+  if (resultadoBooleano)
+  {
+    Console.WriteLine("Executa alguma coisa se true");
+    Console.WriteLine("Executa outra coisa se true");
+  }
+  else
+  {
+    Console.WriteLine("Executa alguma coisa se false");
+    Console.WriteLine("Executa outra coisa se false");
+  }
+
+  // Executa um bloco de código para diversos resultados booleano.  Caso seja só um código executado, é possível omitir as chaves
+  if (resultadoBooleano)
+  {
+    Console.WriteLine("Executa alguma coisa se resultado 1 true");
+    Console.WriteLine("Executa outra coisa se resultado 1 true");
+  }
+  else if (resultadoBooleano2)
+  {
+    Console.WriteLine("Executa alguma coisa se resultado 1 false e resultado 2 true");
+    Console.WriteLine("Executa outra coisa se resultado 1 false  e resultado 2 true");
+  }
+  else
+  {
+    Console.WriteLine("Executa alguma coisa se resultados 1 e 2 forem false");
+    Console.WriteLine("Executa outra coisa se resultados 1 e 2 forem false");
+  }
+
+  // Estruturas podem ser aninhadas
+  if (resultadoBooleano)
+  {
+    Console.WriteLine("Executa alguma coisa se true");
+
+    if (resultadoBooleano2)
+    {
+      Console.WriteLine("Executa alguma coisa se resultados 1 e 2 forem true");
+      Console.WriteLine("Executa outra alguma coisa se resultados 1 e 2 forem true");
+    }
+    else
+    {
+      Console.WriteLine("Executa alguma coisa se resultado 1 for true e resultado 2 for false");
+      Console.WriteLine("Executa outra alguma coisa se resultado 1 for true e resultado 2 for false");
+    }
+  }
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Estrutura de seleção
+
+- Executa um bloco de instrução com base em um valor
+- Sintaxe:
+
+  ~~~csharp
+  var resultado = "Valor 3";
+
+  // Testa o valor da variável resultado e executa um bloco de código quando encontrado
+  switch (resultado)
+  {
+    case "Valor":
+      Console.WriteLine("Executa uma instrução para 'Valor'");
+      Console.WriteLine("Executa outra instrução  para 'Valor'");
+      break; // Indica onde para as instruções desse case
+    case "Valor 1":
+    case "Valor 2": // As intruções são executadas se resultado for "Valor 1" ou "Valor 2"
+      Console.WriteLine("Executa uma instrução para 'Valor 1' ou 'Valor 2'");
+      Console.WriteLine("Executa outra instrução para 'Valor 1' ou 'Valor 2'");
+      break; // Indica onde para as instruções desse case
+    case "Valor 3":
+      Console.WriteLine("Executa uma instrução para 'Valor 3'");
+      Console.WriteLine("Executa outra instrução para 'Valor 3'");
+      break; // Indica onde para as instruções desse case
+    default:
+      Console.WriteLine("Executa uma instrução para valores não encontrados");
+      Console.WriteLine("Executa outra instrução para valores não encontrados");
+      break; // Indica onde para as instruções desse case
+  }
+
+  // Retorna um resultado com base em um valor. Resultados retornados devem ser do mesmo tipo.
+  var retorno = resultado switch
+  {
+    "Valor" => "Retorno se 'Valor'",
+    "Valor 1" => "Retorno se 'Valor 1'",
+    "Valor 2" => "Retorno se 'Valor 2'",
+    "Valor 3" => "Retorno se 'Valor 3'",
+    _ => "Resultado se nenhum valor encontrado"
+  };
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Estruturas de Repetição
+
+- Repete um trecho de código
+
+##### For
+
+- Usado quando se sabe exatamente a quantidade de vezes que o código será repetido.
+- Sintaxe:
+
+  ~~~csharp
+  // for (valor inicial; condição de parada; incremento do valor inicial após cada execução do bloco)
+
+  // Exemplo percorrendo uma lista
+  var lista = new string[] { "Valor 1", "Valor 2", "Valor 3" };
+
+  for (var i = 0; lista.Length; i++)
+  {
+    var valor = lista[i]; // A cada execução, valor de i acessar um item da lista
+    Console.WriteLine(valor);
+  }
+  ~~~~
+
+##### Foreach
+
+- Itera sobre uma coleção, retornando cada valor na mesma
+- Não é possível acessar o índice do item corrente, caso a coleção permita ser acessada por índice
+- Sintaxe:
+
+  ~~~csharp
+  string[] lista = [ "Valor 1", "Valor 2", "Valor 3" ];
+
+  // Percorrendo a coleção
+  foreach (var item in lista)
+  {
+    // Executa qualquer coisa sobre o item
+    Console.WriteLine(item);
+  }
+
+  ~~~
+
+[🔼 topo](#topo)
+
+##### While
+
+- Testa uma condição no início
+- Trecho de código executado enquanto uma condição for verdadeira
+- Sintaxe
+
+  ~~~csharp
+  var i = 0;
+  
+  // Executa o laço enquanto a condição for verdadeira
+  while (i < 5)
+  {
+    Console.WriteLine("i = " + i);
+    i++;
+  }
+  ~~~
+
+##### Do..While
+
+- Testa uma condição no fim do laço
+- Executa o bloco de código ao menos uma vez, e depois enquanto a condição for verdadeira
+- Sintaxe:
+
+  ~~~csharp
+  var i = 0;
+
+  do
+  {
+    Console.WriteLine("i = " + i);
+    i++;
+  } while(i < 5)
+  ~~~
+
+[🔼 topo](#topo)
+
+##### Break
+
+- Encerra imediatamente a execução do laço de repetição
+- Exemplo:
+
+  ~~~csharp
+  // Escreve de 0 a 6
+  for (var i = 0 ; i < 10; i++)
+  {
+    Console.WriteLine(i);
+
+    if (i > 3 && i % 3 == 0) break; // Encerra o laço se a condição for atendida
+  }
+  ~~~
+
+  ##### Continue
+
+  - Avança imediatamente para a próxima iteração do laço de repetição
+  - Exemplo:
+
+    ~~~csharp
+    // Não escreve os números divisiveis por 3
+    for (var i = 0; i <= 10; i++)
+    {
+      if (i % 3 == 0)
+        continue;
+
+      Console.WriteLine(i);
+    }
+    ~~~
 
 [🔼 topo](#topo)
