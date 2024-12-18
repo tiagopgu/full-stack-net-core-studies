@@ -63,12 +63,17 @@ Console.WriteLine();
 EstruturaRepeticao_Foreach();
 
 Console.WriteLine();
-*/
+
 EstruturaRepeticao_While();
 
 Console.WriteLine();
 
 EstruturaRepeticao_Do_While();
+
+Console.WriteLine();
+*/
+
+EstruturaRepeticao_Break();
 
 Console.WriteLine();
 
@@ -786,4 +791,54 @@ void EstruturaRepeticao_Do_While()
         Console.WriteLine("Em processamento: " + processando);
         processando = Random.Shared.Next(20) % 3 == 0;
     } while(processando);
+}
+
+void EstruturaRepeticao_Break()
+{
+    Dictionary<string, int> candidatosIdade = new()
+    {
+        { "Erick Noah Alves", 41 },
+        { "Luan Severino Costa", 27 },
+        { "Arthur Tiago Henrique Campos", 60 },
+        { "Renan Theo Levi Almada", 60 },
+        { "Mateus Caleb Roberto de Paula", 49 },
+        { "Isabelly Flávia Dias", 68 },
+        { "Bruno Giovanni Ricardo Corte Real", 27 },
+        { "Bento Geraldo Rafael Ramos", 68 },
+        { "Antônia Sônia Figueiredo", 64 },
+        { "Sérgio Roberto Galvão", 74 },
+        { "Hadassa Alícia Simone Cavalcanti", 73 },
+        { "Tiago Roberto Pietro Santos", 24 },
+        { "Amanda Maria Melissa Aragão", 24 },
+        { "Regina Milena Bárbara Silveira", 76 },
+        { "Regina Louise Fogaça", 48 },
+        { "Hadassa Jennifer Nogueira", 40 },
+        { "Danilo Manuel Moura", 36 },
+        { "Juliana Sarah Souza", 56 },
+        { "Enrico Iago Luiz Caldeira", 25 },
+        { "Edson Eduardo Brito", 43 },
+        { "Josefa Sophia Vera Assis", 60 },
+        { "Milena Luna Lopes", 34 },
+        { "Miguel Gabriel Pinto", 24 },
+        { "Clara Elaine da Cruz", 27 },
+        { "Aparecida Catarina Duarte", 21 },
+        { "Laura Rita Bruna dos Santos", 32 },
+        { "Roberto Caleb Ribeiro", 50 },
+        { "Cauã Bento Emanuel Araújo", 18 },
+        { "Kauê Oliver Nathan Novaes", 53 },
+        { "Daniela Laura Jesus", 18 }
+    };
+
+    Console.WriteLine("** Lista de Candidatos e Idade **\n");
+
+    foreach (var candidato in candidatosIdade)
+    {
+        if (candidato.Value < 25)
+        {
+            Console.WriteLine("\nATENÇÃO: Encontrado candidato com idade inferior a 25");
+            break;
+        }
+
+        Console.WriteLine("\t" + candidato.Key + " (" + candidato.Value + ")");
+    }
 }

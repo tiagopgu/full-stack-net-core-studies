@@ -708,6 +708,8 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
   ~~~
 
+[🔼 topo](#topo)
+
 ##### While
 
 - Testa uma condição no início
@@ -739,6 +741,23 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
     Console.WriteLine("i = " + i);
     i++;
   } while(i < 5)
+  ~~~
+
+[🔼 topo](#topo)
+
+##### Break
+
+- Encerra imediatamente a execução do laço de repetição
+- Exemplo:
+
+  ~~~csharp
+  // Escreve de 0 a 6
+  for (var i = 0 ; i < 10; i++)
+  {
+    Console.WriteLine(i);
+
+    if (i > 3 && i % 3 == 0) break; // Encerra o laço se a condição for atendida
+  }
   ~~~
 
 [🔼 topo](#topo)
