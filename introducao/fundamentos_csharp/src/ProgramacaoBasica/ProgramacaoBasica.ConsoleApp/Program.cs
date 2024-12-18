@@ -71,9 +71,12 @@ Console.WriteLine();
 EstruturaRepeticao_Do_While();
 
 Console.WriteLine();
-*/
 
 EstruturaRepeticao_Break();
+
+Console.WriteLine();
+*/
+EstruturaRepeticao_Continue();
 
 Console.WriteLine();
 
@@ -838,6 +841,52 @@ void EstruturaRepeticao_Break()
             Console.WriteLine("\nATENÇÃO: Encontrado candidato com idade inferior a 25");
             break;
         }
+
+        Console.WriteLine("\t" + candidato.Key + " (" + candidato.Value + ")");
+    }
+}
+
+void EstruturaRepeticao_Continue()
+{
+    Dictionary<string, string> candidatosEstado = new()
+    {
+        { "Erick Noah Alves", "PE" },
+        { "Luan Severino Costa", "GO" },
+        { "Arthur Tiago Henrique Campos", "SP" },
+        { "Renan Theo Levi Almada", "MA" },
+        { "Mateus Caleb Roberto de Paula", "PE" },
+        { "Isabelly Flávia Dias", "SC" },
+        { "Bruno Giovanni Ricardo Corte Real", "RO" },
+        { "Bento Geraldo Rafael Ramos", "TO" },
+        { "Antônia Sônia Figueiredo", "RJ" },
+        { "Sérgio Roberto Galvão", "AM" },
+        { "Hadassa Alícia Simone Cavalcanti", "AM" },
+        { "Tiago Roberto Pietro Santos", "TO" },
+        { "Amanda Maria Melissa Aragão", "SC" },
+        { "Regina Milena Bárbara Silveira", "SE" },
+        { "Regina Louise Fogaça", "RS" },
+        { "Hadassa Jennifer Nogueira", "PR" },
+        { "Danilo Manuel Moura", "PI" },
+        { "Juliana Sarah Souza", "BA" },
+        { "Enrico Iago Luiz Caldeira", "PB" },
+        { "Edson Eduardo Brito", "CE" },
+        { "Josefa Sophia Vera Assis", "RO" },
+        { "Milena Luna Lopes", "PI" },
+        { "Miguel Gabriel Pinto", "SC" },
+        { "Clara Elaine da Cruz", "CE" },
+        { "Aparecida Catarina Duarte", "PB" },
+        { "Laura Rita Bruna dos Santos", "AP" },
+        { "Roberto Caleb Ribeiro", "MS" },
+        { "Cauã Bento Emanuel Araújo", "RS" },
+        { "Kauê Oliver Nathan Novaes", "PB" },
+        { "Daniela Laura Jesus", "AL" }
+    };
+
+    Console.WriteLine("** Lista de Candidatos por UF (exceto SC) **\n");
+
+    foreach (var candidato in candidatosEstado)
+    {
+        if (candidato.Value == "SC") continue;
 
         Console.WriteLine("\t" + candidato.Key + " (" + candidato.Value + ")");
     }

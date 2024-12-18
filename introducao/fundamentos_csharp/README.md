@@ -760,4 +760,20 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   }
   ~~~
 
+  ##### Continue
+
+  - Avança imediatamente para a próxima iteração do laço de repetição
+  - Exemplo:
+
+    ~~~csharp
+    // Não escreve os números divisiveis por 3
+    for (var i = 0; i <= 10; i++)
+    {
+      if (i % 3 == 0)
+        continue;
+
+      Console.WriteLine(i);
+    }
+    ~~~
+
 [🔼 topo](#topo)
