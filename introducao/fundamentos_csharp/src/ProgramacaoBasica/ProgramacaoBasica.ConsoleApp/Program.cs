@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-/*
+
 VariaveisTiposDados();
 
 Console.WriteLine();
@@ -75,7 +75,7 @@ Console.WriteLine();
 EstruturaRepeticao_Break();
 
 Console.WriteLine();
-*/
+
 EstruturaRepeticao_Continue();
 
 Console.WriteLine();
