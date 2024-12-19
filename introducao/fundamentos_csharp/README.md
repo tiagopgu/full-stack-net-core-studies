@@ -134,6 +134,55 @@ Sequência de passos definidos para que um programa de computador consiga execut
     - Se não informado o nome da solução, será usado o do diretório de saída
   - Adicionar um projeto a uma solução: `dotnet sln nome_arquivo.sln add caminho_projeto.csproj`
 
+[🔼 topo](#topo)
+
+#### Namespace
+
+- Permite realizar agrupamento de classes
+- Podem existir classes de mesmo nome, desde que em namespaces diferentes
+- Sintaxe:
+
+  ~~~csharp
+  // Declaração de um namespace. Esta forma de declaração permite ter mais de um namespace no mesmo arquivo
+  namespace Parte.Nome.NomeNamespace
+  {
+    public class NomeClass1
+    {
+      //
+    }
+
+    public class NomeClass2
+    {
+      //
+    }
+  }
+
+  // Declaração simplificada. Esta forma de declaração permite somente uma definição de namespace no arquivo, e deve estar no início, antes da declaração dos membros
+  namespace Parte.Nome.NomeNamespace2;
+
+  public class NomeClass1
+  {
+    //
+  }
+
+  public class NomeClass3
+  {
+    //
+  }
+
+  // Para acessar membros do namespace em outro arquivo da aplicação
+  // Usando o caminho completo da classe
+  var class1 = new Parte.Nome.NomeNamespace.NomeClass1();
+  var class2 = new Parte.Nome.NomeNamespace2.NomeClass1();
+
+  // Usando using para simplificar caminho do membro
+  using Parte.Nome.NomeNamespace;
+  using Alternativa = Parte.Nome.NomeNamespace2; // Alias para um namespace
+
+  var class1 = new NomeClass1(); // Pertence ao namespace 'Parte.Nome.NomeNamespace'
+  var class2 = new Alternativa.NomeClass1(); // Pertence ao namespace 'Parte.Nome.NomeNamespace2'. Neste exemplo, para não causar conflito com a classe definida no namespace 'Parte.Nome.NomeNamespace', foi necessário criar um alias.
+  ~~~
+
 #### Entrypoint da aplicação
 
 - Define o ponto de início de uma aplicação
