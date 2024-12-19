@@ -760,20 +760,41 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   }
   ~~~
 
-  ##### Continue
+##### Continue
 
-  - Avança imediatamente para a próxima iteração do laço de repetição
-  - Exemplo:
+- Avança imediatamente para a próxima iteração do laço de repetição
+- Exemplo:
 
-    ~~~csharp
-    // Não escreve os números divisiveis por 3
-    for (var i = 0; i <= 10; i++)
-    {
-      if (i % 3 == 0)
-        continue;
+  ~~~csharp
+  // Não escreve os números divisiveis por 3
+  for (var i = 0; i <= 10; i++)
+  {
+    if (i % 3 == 0)
+      continue;
 
-      Console.WriteLine(i);
-    }
-    ~~~
+    Console.WriteLine(i);
+  }
+  ~~~
 
 [🔼 topo](#topo)
+
+## Programação Orientada a Objeto
+
+- Paradigma de programação, difundido por volta dos anos 90
+- Programação mais próxima do mundo real
+  - Conceitos dos mundo real são tratados como objeto
+- Pilares
+  - Abstração
+    - Consiste em "abstrair" somente características essencial do objeto
+    - Torna o objeto mais genérico
+    - Características estendidas e melhor definida por objetos especializados
+  - Encapsulamento
+    - Protege atributos e propriedades do objeto
+    - Esconde complexidade das implementações de um objeto
+    - Alterações em atributos e propriedades do objeto somente feito por métodos expostos
+  - Herança
+    - Capacidade de um objeto herdar atributos e comportamentos de outro
+    - Conceito do "é um": objeto que herda "é um" tipo do objeto herdado
+  - Polimorfismo
+    - Um comportamento pode ser diferente dependendo do objeto que o invoca
+    - Um objeto genérico pode aplicar um comportamento padrão, e objetos especializados sobreescrever esse comportamento conforme suas necessidades.
