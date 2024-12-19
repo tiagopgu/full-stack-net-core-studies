@@ -134,6 +134,38 @@ Sequência de passos definidos para que um programa de computador consiga execut
     - Se não informado o nome da solução, será usado o do diretório de saída
   - Adicionar um projeto a uma solução: `dotnet sln nome_arquivo.sln add caminho_projeto.csproj`
 
+#### Entrypoint da aplicação
+
+- Define o ponto de início de uma aplicação
+- No C#, é iniciado no método estático `Main`
+  - Só pode exitir um método estático `Main`
+- Sintaxe:
+
+  ~~~csharp
+  namespace NomeNamespace;
+
+  public class Program
+  {
+    static void Main(string[] args)
+    {
+      Console.WriteLine("Aqui inicia a execução da aplicação");
+    }
+  }
+  ~~~
+
+##### Top-Level Statement
+
+- Simplifica a escrita do ponto de entrada da aplicação
+- Só pode existir um único arquivo de classe com esta forma
+- Disponível a partir do **.Net 6.0**
+- Se existir na aplicação um método `Main`, esta forma terá prioridade na execução
+- Sintaxe:
+
+  ~~~csharp
+  // Simples assim: não precisa definir o namespace, a classe e o método Main
+  Console.WriteLine("Aqui inicia a execução da aplicação");
+  ~~~
+
 [🔼 topo](#topo)
 
 ## Programação Básica
