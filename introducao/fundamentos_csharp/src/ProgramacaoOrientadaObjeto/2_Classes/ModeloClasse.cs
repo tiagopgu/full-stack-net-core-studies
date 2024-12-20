@@ -1,5 +1,3 @@
-using System;
-
 namespace ProgramacaoOrientadaObjeto.Classes;
 
 public class ModeloClasse

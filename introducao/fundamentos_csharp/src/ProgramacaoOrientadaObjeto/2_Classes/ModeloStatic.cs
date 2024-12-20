@@ -1,6 +1,4 @@
-using System;
-
-namespace ProgramacaoOrientadaObjeto._2_Classes;
+namespace ProgramacaoOrientadaObjeto.Classes;
 
 public static class ModeloStatic
 {

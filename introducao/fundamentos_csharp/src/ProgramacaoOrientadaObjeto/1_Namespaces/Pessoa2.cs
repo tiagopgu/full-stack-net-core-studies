@@ -1,5 +1,3 @@
-using System;
-
 namespace ProgramacaoOrientadaObjeto.Namespaces;
 
 // Classe abaixo provoca erro, pois já existe outra no mesmo namespace
