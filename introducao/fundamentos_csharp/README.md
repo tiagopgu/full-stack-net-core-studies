@@ -1100,3 +1100,48 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   ~~~
 
 [🔼 topo](#topo)
+
+#### Classe estática
+
+- Não podem ser instanciada
+- Não possui construtor
+- Só podem ter membros estáticos
+- Sintaxe
+
+  ~~~csharp
+  public static class ClassStatic
+  {
+    // Constantes são automaticamente estáticas
+    public const int VALOR_CONSTANTE = 3;
+
+    public static int PropriedadeStatic { get; set; }
+
+    public static void MetodoStatic(int a, int b)
+    {
+      PropriedadeStatic = a + b + VALOR_CONSTANTE;
+    }
+
+    public static string OutroMetodoStatic()
+    {
+      return "Alguma coisa";
+    }
+  }
+
+  // Usando uma classe estática. Using necessário em outras namespace
+
+  // Isso produz erro
+  //var modelo = new ClassStatic();
+
+  // Acessando membros de uma classe estática
+  ClassStatic.PropriedadeStatic = 11;
+
+  Console.WriteLine(ClassStatic.PropriedadeStatic);
+
+  Console.WriteLine(ClassStatic.VALOR_CONSTANTE);
+
+  ClassStatic.MetodoStatic(5, 2);
+
+  Console.WriteLine(ClassStatic.OutroMetodoStatic());
+  ~~~
+
+[🔼 topo](#topo)

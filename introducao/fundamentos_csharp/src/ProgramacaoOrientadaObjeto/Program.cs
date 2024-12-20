@@ -1,4 +1,5 @@
-﻿using ProgramacaoOrientadaObjeto.Classes;
+﻿using ProgramacaoOrientadaObjeto._2_Classes;
+using ProgramacaoOrientadaObjeto.Classes;
 using ProgramacaoOrientadaObjeto.Namespaces;
 using Entidades = ProgramacaoOrientadaObjeto.Namespaces.Entidades;
 
@@ -44,3 +45,20 @@ Console.WriteLine("Alterando atributo da via método\n" + modelo.RetornarDados()
 var valorTotal = ModeloClasse.CalcularDesconto(modelo.PropriedadeImplementadaValor, 10M);
 
 Console.WriteLine("Usando método estático da classe\n" + "Valor com desconto de 10%: " + valorTotal + "\n");
+
+Console.WriteLine("** Classe estática **\n");
+
+// Erro: classes estáticas não podem ser instancias
+//var modeloStatic = new ModeloStatic();
+
+ModeloStatic.Chave = 11;
+
+Console.WriteLine("Acessando propriedade estática\n" + "Chave: " + ModeloStatic.Chave + "\n");
+
+Console.WriteLine("Acessando constante em classe estática\n" + "Valor Padrão: " + ModeloStatic.VALOR_PADRAO + "\n");
+
+ModeloStatic.SetId(5);
+
+Console.WriteLine("Chamando um método estático\n" + ModeloStatic.RetornarValores() + "\n");
+
+Console.WriteLine("Usando um método estático\n" + "2 + 5 = " + ModeloStatic.Somar(2, 5) + "\n");
