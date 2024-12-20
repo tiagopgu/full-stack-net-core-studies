@@ -1105,6 +1105,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 - Não podem ser instanciada
 - Não possui construtor
+- Não pode ser herdado
 - Só podem ter membros estáticos
 - Sintaxe
 
@@ -1142,6 +1143,173 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   ClassStatic.MetodoStatic(5, 2);
 
   Console.WriteLine(ClassStatic.OutroMetodoStatic());
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Classe Abstrata
+
+- Não pode ser instânciada
+- Deve ser herdada por outras classes especializadas
+- Acesso aos membros que não sejam de classe somente através de objetos especializados
+- Sintaxe:
+
+  ~~~csharp
+  public abstract class ModeloAbstrato
+  {
+    // Constantes e membros estáticos podem ser acessador pelo nome da superclasse
+    public const string CHAVE_PADRAO = "TESTE";
+
+    public int Id { get; set; }
+
+    // O modificador de acesso 'protected' indica que o membro somente pode ser acessado pelas subclasses, ou classes filhas
+    public int Codigo { get; protected set; }
+
+    // Método não pode ser sobrescrito nas subclasses
+    public string Metodo()
+    {
+        return "Metodo implementado na superclasse";
+    }
+
+    // A keyword 'virtual' indica que o método pode ser sobrescrito pelas subclasses
+    public virtual string Metodo2()
+    {
+        return "Metodo2 implementado na superclasse";
+    }
+
+    // Método abstratos obriga a implementação nas subclasses
+    // Métodos abstratos não possuem implementação
+    // Só pode existir em classes abstratas
+    public abstract string Metodo3();
+
+    public virtual string ObterDados()
+    {
+        return "Id: " + Id +
+            "\nCódigo: " + Codigo;
+    }
+
+    // É uma boa prática manter os construtores 'protected', já que somente serão acessados pelas subclasses
+    protected ModeloAbstrato()
+    {
+
+    }
+
+    protected ModeloAbstrato(int id) : this()
+    {
+        Id = id;
+    }
+  }
+
+  // Classe herda de 'ModeloAbstrato' (Neste contexto ':' significa que herda, ou seja, aplica o conceito 'é um')
+  // A classe herdada é chamada de 'superclasse', e a que herda é chamada de 'subclasse'
+  public class ModeloEspecializado : ModeloAbstrato
+  {
+    // Membro só pode ser acessado pelo objeto especializado
+    public string PropriedadeEspecializada { get; set; }
+
+    public ModeloEspecializado()
+    {
+        // Membro definido na superclasse pode ser acessado na subclasse, desde que não seja privado
+        Codigo = Random.Shared.Next();
+    }
+
+    public ModeloEspecializado(int id, string valor) : this()
+    {
+        Id = id;
+        PropriedadeEspecializada = valor;
+    }
+
+    // Membro só pode ser acessado pelo objeto especializado
+    public string MetodoEspecializado()
+    {
+        return "Este método só existe na classe 'ModeloEspecializado'";
+    }
+
+    // A keyword 'override' significa que o método está sendo sobrescrito
+    public override string Metodo2()
+    {
+        return "Método2 reimplementado na subclasse 'ModeloEspecializado'";
+    }
+
+    public override string Metodo3()
+    {
+        return "Método3 implementado na subclasse 'ModeloEspecializado'";
+    }
+
+    // A keyword 'base', significa que está sendo acessado membros da superclasse e não da subclasse
+    public override string ObterDados()
+    {        
+        return base.ObterDados() +
+            "\nPropriedade Especializada: " + PropriedadeEspecializada
+        ;
+    }
+  }
+
+  public class ModeloEspecializado2 : ModeloAbstrato
+  {
+    public string PropriedadeEspecializada2 { get; }
+
+    // 'base(id)' indica que está sendo usado o construtor da base que aceita um argumento do tipo passado
+    public ModeloEspecializado2(int id, string valor) : base(id)
+    {
+        PropriedadeEspecializada2 = valor;
+        Codigo = Random.Shared.Next();
+    }
+
+    public string MetodoEspecializado2()
+    {
+        return "Este método só existe na classe 'ModeloEspecializado2'";
+    }
+
+    public override string Metodo3()
+    {
+        return "Metodo3 implementado na subclasse 'ModeloEspecializado2'";
+    }
+
+    public override string ObterDados()
+    {
+        return base.ObterDados() +
+            "\nPropriedade Especializada 2: " + PropriedadeEspecializada2
+        ;
+    }
+  }
+
+  // Usando classes herdadas
+
+  // Erro: classe abstrata não pode ser instanciada
+  //var modeloAbstrato = new ModeloAbstrato();
+  var modeloEspecializado = new ModeloEspecializado()
+  {
+      Id = 3,
+      PropriedadeEspecializada = "Valor 1"
+      //Codigo = 5; // Erro: Propriedade somente leitura externamente
+  };
+  var modeloEspecializado2 = new ModeloEspecializado2(5, "Valor 2");
+
+  // Membro estático na superclasse
+  Console.WriteLine(ModeloAbstrato.CHAVE_PADRAO);
+
+  // Membros existente somente nas especializações
+  Console.WriteLine(modeloEspecializado.PropriedadeEspecializada);
+  Console.WriteLine(modeloEspecializado.MetodoEspecializado());
+
+  Console.WriteLine(modeloEspecializado2.PropriedadeEspecializada2);
+  Console.WriteLine(modeloEspecializado2.MetodoEspecializado2());
+
+  // Abstração e herança permite a aplicação do polimorfismo
+  // Embora de tipos diferentes, as duas classes especializadas puderam ser alocadas na lista de tipo diferente, devido ao conceito do "é um"
+  List<ModeloAbstrato> especializacoes = [modeloEspecializado, modeloEspecializado2];
+
+  // Chamadas aos métodos abaixo podem ter comportamentos diferentes dependendo do objeto em que está sendo chamado
+  // Somente podem ser chamados membros definidos no tipo da lista 'especializacoes'
+  foreach (var obj in especializacoes)
+  {
+      Console.WriteLine("Id: " + obj.Id);
+      Console.WriteLine("Método 1: " + obj.Metodo());
+      Console.WriteLine("Método 2: " + obj.Metodo2());
+      Console.WriteLine("Método 3: " + obj.Metodo3());
+      Console.WriteLine();
+  }
   ~~~
 
 [🔼 topo](#topo)
