@@ -198,6 +198,20 @@ Sequência de passos definidos para que um programa de computador consiga execut
     static void Main(string[] args)
     {
       Console.WriteLine("Aqui inicia a execução da aplicação");
+
+      MetodoInterno(5);
+
+      Console.WriteLine(OutroMetodoInterno());
+    }
+
+    static void MetodoInterno(int param)
+    {
+      //
+    }
+
+    static string OutroMetodoInterno()
+    {
+      return "Alguma coisa";
     }
   }
   ~~~
@@ -213,6 +227,21 @@ Sequência de passos definidos para que um programa de computador consiga execut
   ~~~csharp
   // Simples assim: não precisa definir o namespace, a classe e o método Main
   Console.WriteLine("Aqui inicia a execução da aplicação");
+
+  MetodoInterno(5);
+  
+  Console.WriteLine(OutroMetodoInterno());
+
+  // Um método que não retorna valor
+  void MetodoInterno(int param)
+  {
+    //
+  }
+
+  string OutroMetodoInterno()
+  {
+    return "Alguma Coisa"
+  }
   ~~~
 
 [🔼 topo](#topo)
