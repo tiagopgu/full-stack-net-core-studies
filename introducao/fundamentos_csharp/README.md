@@ -908,3 +908,195 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   - Polimorfismo
     - Um comportamento pode ser diferente dependendo do objeto que o invoca
     - Um objeto genérico pode aplicar um comportamento padrão, e objetos especializados sobreescrever esse comportamento conforme suas necessidades.
+
+[🔼 topo](#topo)
+
+### Classe
+
+- Implementa os conceitos do mundo real
+- Modelo para a criação dos objetos
+- Define atributos e comportamentos dos objetos
+- Unidade mínima na linguagem C#
+- Todo método e atributo só podem ser definidos dentro de uma classe
+- **Instância** é o processo de criação de um objeto a partir de uma classe
+- Sintaxe:
+
+  ~~~csharp
+  using System; // Definição dos usings usados na classe
+
+  namespace ProgramacaoOrientadaObjeto.Classes; // Namespace ao qual pertence a classe
+
+  // Modificador de acesso 'public' indica que a classe pode ser instânciada (criação de um objeto) em qualquer lugar da aplicação
+  public class ModeloClasse
+  {
+      // Este é um campo da classe. Convenções da linguagem dita que campos privados devem iniciar com '_'.
+      // O modificador de acesso 'private', indica que o campo só pode ser acessado diretamente dentro da classe
+      private int _idPrivado;
+
+      // Os métodos a seguir são chamados de acessores do campo privado acima, permitindo atualizar e acessar o valor.
+      // O modificador de acesso 'public', indica que o método pode ser acessado de fora da classe
+      public void SetIdPrivado(int id)
+      {
+          if (id > 0)
+              throw new ArgumentException("Id deve ser maior que 0");
+
+          _idPrivado = id;
+      }
+
+      public int GetIdPrivado()
+      {
+          return _idPrivado;
+      }
+
+      // Esta é uma propriedade auto-implementada: substitui a escrita de campo acima e seus acessores. Os métodos acessores estão intrísecos na propriedade.
+      public int PropriedadeAutoImplementadaDescricao { get; set; }
+
+      // A seguir é uma propriedade implementada. Métodos acessores estão intríseco na propriedade. Ideal quando precisa de lógica de tratamento do valor a ser inserido na propriedade e/ou tratamento do retorno
+      // É uma boa prática que o nome da propriedade implementada seja igual ao do campo ao qual referencia. No exemplo, seria "Valor". O nome abaixo é para didaticamente indicar que é uma propriedade implementada.
+      private decimal _valor;
+      
+      public decimal PropriedadeImplementadaValor
+      {
+          get
+          {
+              // Talvez algum tratamento do retorno
+              return _valor;
+          }
+          set
+          {
+              if (value < 0M)
+                  throw new ArgumentException("Valor não pode ser menor que 0");
+
+              _valor = value;
+          }
+      }
+
+      // A seguir dois membros de classe somente leitura: atualização somente pode ser feita pelo construtor da classe
+      public string PropriedadeSomenteLeitura { get; }
+      public readonly string CampoSomenteLeitura;
+
+      // A propriedade implementada abaixo, embora seja somente leitura fora da classe, internamente pode ser atualizada
+      private int _estoque;
+      public int PropriedadeEstoque {
+          // Chaves nos acessores e métodos pode ser substituída por '=>', caso o membro retorne somente o valor sem tratamento, ou caso execute somente uma lógica, mesmo não retornando nada.
+          get => _estoque;
+
+          // O modificador de acesso 'private' indica que o método acessor só pode ser chamado internamente.
+          private set
+          {
+              if (ValidarValorEstoque(value))
+                  _estoque = value;
+          } 
+      }
+
+      // Essa é a definição de uma constante. Diferente dos outros membros, que devem ser chamados a partir de uma instância, este é chamado pela própria classe, sem instância
+      public const int CONST_ESTOQUE_MINIMO = 10;
+
+      // Esse é um construtor, que possui o mesmo nome da classe e não tem retorno.
+      // Construtores inicializam propriedades e campos da classe
+      // O construtor sem parâmetro estará disponível automaticamente, caso nenhum outro com parâmetro tenha sido implementado.
+      // Se existir construtor com parâmetro, para diponibilizar o construtor sem parâmetro deve ser implementado explicitamente
+      public ModeloClasse()
+      {
+          // Campos somente leitura somente podem ser inicializados em contrutores
+          PropriedadeSomenteLeitura = "Esta propriedade é somente leitura";
+          CampoSomenteLeitura = "Este campo é somente leitura";
+      }
+
+      // Os construtores abaixo aceitam parâmetros.
+      // Caso não tenha sido declarado explicitamente o construtor sem parâmetros, essa classe só pode ser instânciada mediante a passagem de valor definida em um desses construtores.
+      // this se refere à propria classe. Neste caso, após execução desse construtor, chama o construtor sem parâmetros, caso seja definido
+      public ModeloClasse(int id) : this()
+      {
+          SetIdPrivado(id);
+      }
+
+      // this se refere à propria classe. Neste caso, após execução desse construtor, chama o construtor com um parâmetro, caso seja definido
+      public ModeloClasse(int id, decimal valor) : this(id)
+      {
+          PropriedadeImplementadaValor = valor;
+      }
+
+      // Este é um método da classe acessível externamente e que não retorna valor
+      public void ChecarEstoque()
+      {
+          if (PropriedadeEstoque < CONST_ESTOQUE_MINIMO)
+              throw new ApplicationException("Estoque muito baixo");
+      }
+
+      // Este é um método da classe acessível externamente e que não retorna valor
+      public void AtualizarEstoque(int qtd)
+      {
+          if (ValidarValorEstoque(qtd))
+              _estoque += qtd;
+      }
+
+      // Este é um método da classe acessível externamente e que retorna valor
+      public string RetornarDados()
+      {
+          return 
+              "Id: " + GetIdPrivado() +
+              "\nDescrição: " + PropriedadeAutoImplementadaDescricao +
+              "\nValor: " + PropriedadeImplementadaValor +
+              "\nEstoque: " + PropriedadeEstoque +
+              "\nObservação 1: " + PropriedadeSomenteLeitura +
+              "\nObservação 2: " + CampoSomenteLeitura;
+      }
+
+      // Método static é acessado sem uma instância da classe. Esses métodos não podem acessar membros não estáticos da classe
+      public static decimal CalcularDesconto(decimal valor, decimal percentual) => valor - (valor * (percentual / 100));
+
+      // O método abaixo só pode ser acessado pela classe
+      private bool ValidarValorEstoque(int qtd)
+      {
+          if (qtd <= 0)
+              throw new ArgumentException("Valor para atualização do estoque deve ser maior que 0");
+
+          return true;
+      }
+  }
+
+  // Usando classe. Será necessário o using com o namespace da classe em outros arquivos
+
+  // Instânciando usando construtor padrão
+  var instanciaValoresPadrao = new ModeloClasse();
+
+  // Instânciando usando construtor com um parâmetro
+  var instanciaConstrutorUmParam = new ModeloClasse(5);
+
+  // Instânciando usando construtor com dois parâmetros
+  var intanciaConstrutorDoisParam = new ModeloClasse(3, 19.99M);
+
+  // Instanciando e inicializando propriedades
+  var modelo = new ModeloClasse()
+  {
+      PropriedadeAutoImplementadaDescricao = "Atualizando valor de uma propriedade",
+      PropriedadeImplementadaValor = 39.99M,
+
+      // Tentivas abaixo produzirá erros, por serem somente leitura externamente
+      //PropriedadeSomenteLeitura = "Atualizado internamente via construtor";
+      //PropriedadeEstoque = 5 // Não pode ser atualizado
+      //CampoSomenteLeitura = "Atualizando internamente via construtor";
+  };
+
+  // Chamando métodos
+  Console.WriteLine(modelo.RetornarDados() + "\n");
+
+  // Usando acessores de campos
+  modelo.SetIdPrivado(10);
+  Console.WriteLine("Atualizando Id para " + modelo.GetIdPrivado() +"\n" + modelo.RetornarDados() + "\n");
+
+  // Acessando propriedades
+  Console.WriteLine("Observação: " + modelo.PropriedadeSomenteLeitura + "\n");
+
+  // Acessando constatnes
+  Console.WriteLine("Estoque mínimo: " + ModeloClasse.CONST_ESTOQUE_MINIMO + "\n");
+
+  // Chamando método
+  modelo.AtualizarEstoque(5);
+  
+  // Chamando método estático
+  var valorTotal = ModeloClasse.CalcularDesconto(modelo.PropriedadeImplementadaValor, 10M);
+  ~~~
+
+[🔼 topo](#topo)
