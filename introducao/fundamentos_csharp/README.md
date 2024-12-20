@@ -1097,6 +1097,53 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   
   // Chamando método estático
   var valorTotal = ModeloClasse.CalcularDesconto(modelo.PropriedadeImplementadaValor, 10M);
+
+  // Usando construtor primário
+  // Disponível a partir do C# 12.0
+  // Parâmetros estão disponíveis somente dentro da classe
+  public class ModeloClasse2(int id, int seed, string descricao)
+  {
+    // Para tratar o valor entrado, deve ser criada uma propriedade implementada e o método de validação deve ser estático
+    // Inicialização de um campo
+    private int _id = ValidarId(id) ? id : throw new ArgumentException("Id deve ser maior que 0");
+
+    public int Id
+    {
+      get => _id;
+      set => _id = ValidarId(value) ? value : throw new ArgumentException("Id deve ser maior que 0");
+    }
+
+    // Inicialização de uma propriedade auto-implementada
+    public string Descricao { get; set; } = descricao;
+
+    public int ObterCodigo()
+    {
+      return Random.Shared.Next(10000000) * Math.Abs(seed);
+    }
+
+    private static bool ValidarId(int id) => id > 0;
+  }
+
+  // Herança de classes com construtor primário
+  public class ModeloClasse3 : ModeloClasse2
+  {
+    public ModeloClasse3(int id, int seed, string descricao) : base(id, seed, descricao)
+    {
+      //
+    }
+  }
+
+  public class ModeloClasse4(int id, int seed, string descricao) : ModeloClasse2(id, seed, descricao)
+  {
+    //
+  }
+  
+  // Usando classes com construtor primário
+  var modelo2 = new ModeloClasse2(5, 2, "Teste");
+
+  Console.WriteLine("Id: " + modelo2.Id);
+  Console.WriteLine("Descrição: " + modelo2.Descricao);
+  Console.WriteLine("Código: " + modelo2.ObterCodigo());
   ~~~
 
 [🔼 topo](#topo)

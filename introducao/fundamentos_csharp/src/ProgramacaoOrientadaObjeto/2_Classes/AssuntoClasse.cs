@@ -37,6 +37,16 @@ public class AssuntoClasse(string titulo) : Assunto(titulo)
 
         var valorTotal = ModeloClasse.CalcularDesconto(modelo.PropriedadeImplementadaValor, 10M);
 
-        Console.WriteLine("Usando método estático da classe\n" + "Valor com desconto de 10%: " + valorTotal);
+        Console.WriteLine("Usando método estático da classe\n" + "Valor com desconto de 10%: " + valorTotal + "\n");
+
+        Console.WriteLine("Classe com construtor primário\n");
+        var modelo2 = new ModeloClasse2(1, "Teste");
+        
+        Console.WriteLine(modelo2.RetornarDados() + "\n");
+
+        modelo2.Titulo = "Teste Atualizado";
+        modelo2.Descricao = "Esta é um descrição";
+
+        Console.WriteLine(modelo2.RetornarDados());
     }
 }
