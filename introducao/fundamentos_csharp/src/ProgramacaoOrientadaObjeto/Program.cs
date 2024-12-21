@@ -7,7 +7,8 @@ List<Assunto> assuntos =
     new AssuntoNamespace("Namespace"),
     new AssuntoClasse("Classes"),
     new AssuntoClasseEstatica("Classes Estáticas"),
-    new AssuntoClasseAbstrata("Classes Abstratas")
+    new AssuntoClasseAbstrata("Classes Abstratas"),
+    new AssuntoClasseSelada("Classes Seladas")
 ];
 
 var continuarExecucao = true;

@@ -1360,3 +1360,46 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   ~~~
 
 [🔼 topo](#topo)
+
+#### Classe Sealed
+
+- Indica que a classe não pode ser herdada
+- A keyword **sealed** também pode ser aplicada a método, que indica que heranças posteriores não podem sobrescrever o método
+- Sintaxe:
+
+  ~~~csharp
+  // Keyword 'sealed' impede a classe de ser herdada
+  public sealed class ModeloSealed(int id) : ModeloAbstrato(id)
+  {
+      public override string Metodo3()
+      {
+          return "Esta classe está selada: não pode ser herdada";
+      }
+  }
+
+  // Erro: Não é possível herar de classes seladas
+  /*public class ModeloTesteSealed : ModeloSealed
+  {
+      //
+  }*/
+
+  public class ModeloMetodoSeald (int id) : ModeloAbstrato(id)
+  {
+      // Keyword no método impede de ser sobrescrito em heranças posteriores
+      public sealed override string Metodo3()
+      {
+          return "Este método foi implementado na classe 'ModeloMetodoSeald' e está selado para implementação em herança posterior";
+      }
+  }
+
+  public class ModeloTesteMetodoSeald(int id) : ModeloMetodoSeald(id)
+  {
+      // Erro: método selado não pode ser sobrescrito
+      /*public override string Metodo3()
+      {
+          return "";
+      }*/
+  }
+  ~~~
+
+[🔼 topo](#topo)
