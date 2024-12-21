@@ -6,15 +6,72 @@
 
 [![README Repositório Badge](https://img.shields.io/badge/README-Repositório-062019?style=for-the-badge&labelColor=%23139E65)](/README.md)
 
-## Conceitos Básicos
+<details>
+  <summary style="font-size: 18px; font-weight: bold">📑Sumário</summary>
+
+  1. [Conceitos Básicos](#conceitos)
+      1. [Lógica de Programação](#logica)
+      2. [Linguagem de Programação](#linguagem)
+      3. [.NET](#net)
+          1. [Histórico](#net-hystory)
+          2. [CLR (Commom Language Runtime)](#clr)
+  2. [Ambiente de desenvolvimento](#sdk)
+      1. [Configuração](#sdk-conf)
+      2. [IDE's de desenvolvimento](#sdk-ide)
+      3. [Estrutura](#estrutura)
+          1. [Projeto](#projeto)
+          2. [Solution](#solution)
+          3. [Namespace](#namespace)
+          4. [Entrypoint da aplicação](#entrypoint)
+              1. [Top-Level Statement](#top-level)
+  3. [Programação Básica](#programacao)
+      1. [Tipos de Dados Primitivos](#dados-primitivos)
+          1. [Numéricos](#numericos)
+          2. [Caractere](#caractere)
+          3. [Booleando](#bool)
+      2. [Variável](#variavel)
+      3. [Constante](#constante)
+      4. [Operadores](#operadores)
+          1. [Atribuição](#atribuicao)
+          2. [Aritméticos](#aritmetico)
+          3. [Relacionais](#relacional)
+          4. [Lógicos](#logico)
+          5. [Ternário](#ternario)
+      5. [Métodos (Funções)](#metodo)
+      6. [Estruturas de dados](#estrutura-dados)
+          1. [Array](#array)
+          2. [ArrayList](#arrayList)
+          3. [Lista Genérica](#lista)
+          4. [Dicionário](#dicionario)
+          5. [Queue (Fila)](#queue)
+          6. [Stack (Pilha)](#stack)
+      7. [Estruturas de Controle](#estrutura-controle)
+          1. [Estrutura de decisão](#decisao)
+          2. [Estrutura de seleção](#selecao)
+          3. [Estruturas de Repetição](#repeticao)
+              1. [For](#for)
+              2. [Foreach](#foreach)
+              3. [While](#while)
+              4. [Do..While](#do-while)
+              5. [Break](#break)
+              6. [Continue](#continue)
+  4. [Programação Orientada a Objeto](#poo)
+      1. [Classe](#classe)
+          1. [Classe estática](#class-static)
+          2. [Classe Abstrata](#class-abstract)
+          3. [Classe Sealed](#class-sealed)
+
+</details>
+
+## Conceitos Básicos <a id="conceitos"></a>
 
 Antes de iniciar o estudo da linguagem de programação **C#**, alguns conceitos são importantes serem entendidos:
 
-### Lógica de programação
+### Lógica de programação <a id="logica"></a>
 
 Sequência de passos definidos para que um programa de computador consiga executar algo.
 
-### Linguagem de programação
+### Linguagem de programação <a id="linguagem"></a>
 
 - Define instruções que usamos para implementar a lógica de um programa
 - Existem diversas linguagens disponíveis no mercado, como, por exemplo, o **C#**
@@ -34,13 +91,13 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 [🔼 topo](#topo)
 
-### .NET
+### .NET <a id="net"></a>
 
 - Plataforma de código aberto para desenvolvimento de várias aplicações: desktop, web, IoT, jogos, etc.
 - Provê diversas bibliotecas otimizadas que acelera o desenvolvimento
 - Permite usar diversas linguagens de programação, como, por exemplo, o **C#**.
 
-#### Histórico
+#### Histórico <a id="net-hystory"></a>
 
 - .NET Framework
   - Criado em 2002
@@ -58,7 +115,7 @@ Sequência de passos definidos para que um programa de computador consiga execut
   - Não teve a versão 4 do .NET Core (provavelmente para não gerar confusão com a última versão do .NET Framework, que foi a 4.8.8).
   - Qualquer referência a .NET, estamos falando da versão 5 ou superior do .NET Core (por exemplo: .NET 9, que é a versão mais recente até a escrita desse documento)
 
-#### CLR (Commom Language Runtime)
+#### CLR (Commom Language Runtime) <a id="clr"></a>
 
 - Principal parte do .NET
 - Responsável por executar a [linguagem intermediária (IL)](#compilacao-csharp)
@@ -67,9 +124,9 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 [🔼 topo](#topo)
 
-## Ambiente de desenvolvimento
+## Ambiente de desenvolvimento <a id="sdk"></a>
 
-### Configuração
+### Configuração <a id="sdk-conf"></a>
 
 - Baixe o [.NET](https://dotnet.microsoft.com/pt-br/download) e faça a instalação
   - Baixe o .NET Runtime caso queira somente executar aplicações desenvolvida em .NET
@@ -78,7 +135,7 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
   ![Informações do .NET instalado](/introducao/fundamentos_csharp/img/dotnet-info.png)
 
-### IDE's de desenvolvimento
+### IDE's de desenvolvimento <a id="sdk-ide"></a>
 
 - [Visual Studio](https://visualstudio.microsoft.com/pt-br/)
   - Mais completa para desenvolvimento .NET
@@ -100,9 +157,9 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 [🔼 topo](#topo)
 
-### Estrutura
+### Estrutura <a id="estrutura"></a>
 
-#### Projeto
+#### Projeto <a id="projeto"></a>
 
 - Organiza os _códigos fonte_, seja por pasta e/ou arquivos
 - É escrito em uma das linguagens suportadas pelo .NET
@@ -124,7 +181,7 @@ Sequência de passos definidos para que um programa de computador consiga execut
     - Automaticamente será gerado um _build_ do projeto
     - Desabilitando mensagens de compilação: `dotnet run --WarningLevel 0`
 
-#### Solution
+#### Solution <a id="solution"></a>
 
 - Agrupa projetos de uma aplicação
 - Permite que todos os projetos sejam compilados de uma vez
@@ -136,7 +193,7 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 [🔼 topo](#topo)
 
-#### Namespace
+#### Namespace <a id="namespace"></a>
 
 - Permite realizar agrupamento de classes
 - Podem existir classes de mesmo nome, desde que em namespaces diferentes
@@ -183,7 +240,9 @@ Sequência de passos definidos para que um programa de computador consiga execut
   var class2 = new Alternativa.NomeClass1(); // Pertence ao namespace 'Parte.Nome.NomeNamespace2'. Neste exemplo, para não causar conflito com a classe definida no namespace 'Parte.Nome.NomeNamespace', foi necessário criar um alias.
   ~~~
 
-#### Entrypoint da aplicação
+[🔼 topo](#topo)
+
+#### Entrypoint da aplicação <a id="entrypoint"></a>
 
 - Define o ponto de início de uma aplicação
 - No C#, é iniciado no método estático `Main`
@@ -216,7 +275,9 @@ Sequência de passos definidos para que um programa de computador consiga execut
   }
   ~~~
 
-##### Top-Level Statement
+[🔼 topo](#topo)
+
+##### Top-Level Statement <a id="top-level"></a>
 
 - Simplifica a escrita do ponto de entrada da aplicação
 - Só pode existir um único arquivo de classe com esta forma
@@ -246,13 +307,13 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 [🔼 topo](#topo)
 
-## Programação Básica
+## Programação Básica <a id="programacao"></a>
 
-### Tipos de Dados Primitivos
+### Tipos de Dados Primitivos <a id="dados-primitivos"></a>
 
 Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor para o maior. Isto significa que o tipo menor cabe no tipo maior, porém o contrário não é verdadeiro.
 
-#### Numéricos
+#### Numéricos <a id="numericos"></a>
 
 - Inteiros
   - `byte`: 0 até 255
@@ -273,7 +334,7 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
     - Usado quando necessita de uma precisão maior (por exemplo para trabalhar com valores monetários)
     - O valor deve ter o sufixo `m` ou `M`. Exemplo: `199.99M`
 
-#### Caractere
+#### Caractere <a id="caractere"></a>
 
 - `char`
   - Somente um caractere, podendo ser no formato hexadecimal ou unicode
@@ -283,13 +344,13 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
   - Valor deve estar entre aspas duplas. Exemplo: `"Teste"`
   - Não é um tipo primitivo, mas devido ao seu uso é praticamente considerado como sendo
 
-#### Booleando
+#### Booleando <a id="bool"></a>
 
 - `bool`: Somente os valoes `true`ou `false`
 
 [🔼 topo](#topo)
 
-### Variável
+### Variável <a id="variavel"></a>
 
 - Define uma região de memória para armazenar dados
 - Declaração: `tipo_dado nomeVariavel = valor`. Exemplo: `int idade = 35`
@@ -303,7 +364,7 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
     - Não é indicado usar palavras com acentuação
     - É uma boa prática que o nome seja significativo
 
-### Constante
+### Constante <a id="constante"></a>
 
 - Define uma variável que uma vez inicializada, não pode ser alterada posteriormente
 - Declaração: `const tipo_dado NOME_CONSTANTE = valor`. Exemplo: `const string NOME_CURSO = "CSHARP"`
@@ -312,14 +373,14 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 
 [🔼 topo](#topo)
 
-### Operadores
+### Operadores <a id="operadores"></a>
 
-#### Atribuição
+#### Atribuição <a id="atribuicao"></a>
 
 - Atribui o valor a direita à variável a esquerda
 - Exemplo: `string variavel = "Valor Atribuído";`;
 
-#### Aritméticos
+#### Aritméticos <a id="aritmetico"></a>
 
 - Soma: `var resultado = valor1 + valor2;`
   - Soma da variável e reatribuição: `resultado += valor3; // resultado = resultado + valor3`
@@ -338,7 +399,7 @@ Obs2.: O tipo de dados do resultado será com base no tipo de dado do operando c
 Obs3.: Prioridade segue a mesma regra da matemática
 Obs4.: Em uma expressão, use parênteses para alterar a ordem de prioridade. Exemplo: `var resultado = (valor1 + valor2) * (valor3 / valor4)`
 
-#### Relacionais
+#### Relacionais <a id="relacional"></a>
 
 - Igualdade: `var resultado = valor1 == valor2;`
   - `=` é chamado de _operador de atribuição_
@@ -350,7 +411,7 @@ Obs4.: Em uma expressão, use parênteses para alterar a ordem de prioridade. Ex
 
 Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
-#### Lógicos
+#### Lógicos <a id="logico"></a>
 
 - And: `&&`. Exemplo: `var valido = valor > 5 && valor < 25;`
   - Todas as condições devem ser verdadeiras
@@ -359,7 +420,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 - Not: `!`. Exemplo: `var valido = !(valor > 10);`
   - Inverte o valor de um resultado lógico
 
-#### Ternário
+#### Ternário <a id="ternario"></a>
 
 - Analisa um expressão e retorna um valor se verdeiro, ou um valor diferente se o resultado for falso
 - Sintaxe: `var mensagem = usuarioAtivo ? "Usuário ativo no sistema" : "Usuário inativo no sistema";`
@@ -367,7 +428,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-### Métodos (Funções)
+### Métodos (Funções) <a id="metodo"></a>
 
 - Bloco de código nomeado, executado sempre que chamado
 - Pode receber parâmetro
@@ -408,9 +469,9 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-### Estruturas de dados
+### Estruturas de dados <a id="estrutura-dados"></a>
 
-#### Array
+#### Array <a id="array"></a>
 
 - Deve ser tipado (aceita só um tipo de valor, conforme o tipo definido)
 - Itens da coleção acessado por índice
@@ -438,7 +499,9 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   array6 = [.. array6, "Item 4", "Item 5" ]; // Redimensionando com a inclusão de novos itens
   ~~~
 
-#### ArrayList
+[🔼 topo](#topo)
+
+#### ArrayList <a id="arrayList"></a>
 
 - Armazena itens de diversos tipos de dados
 - Acessada por índice
@@ -491,7 +554,9 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   array6 = new(); // Atribuindo um novo objeto ArrayList
   ~~~
 
-#### Lista Genérica
+[🔼 topo](#topo)
+
+#### Lista Genérica <a id="lista"></a>
 
 - Deve ser tipada
 - Pode ser acessado por índice
@@ -535,8 +600,10 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   // Limpando a lista
   list10.Clear();
   ~~~
-  
-#### Dicionário
+
+[🔼 topo](#topo)
+
+#### Dicionário <a id="dicionario"></a>
 
 - Itens possuem chave/valor
 - Tanto a chave quando o valor são tipados (podem ser diferentes entre si)
@@ -586,7 +653,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Queue (Fila)
+#### Queue (Fila) <a id="queue"></a>
 
 - Lista do tipo FIFO (First In First Out)
 - Não permite ordenação
@@ -629,7 +696,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Stack (Pilha)
+#### Stack (Pilha) <a id="stack"></a>
 
 - Implementa a lógica LIFO (Last In First Out)
 - Não permite ordenação
@@ -671,9 +738,9 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-### Estruturas de Controle
+### Estruturas de Controle <a id="estrutura-controle"></a>
 
-#### Estrutura de decisão
+#### Estrutura de decisão <a id="decisao"></a>
 
 - Executa trecho de código com base em um resultado booleano
 - Sintaxe:
@@ -735,7 +802,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Estrutura de seleção
+#### Estrutura de seleção <a id="selecao"></a>
 
 - Executa um bloco de instrução com base em um valor
 - Sintaxe:
@@ -778,11 +845,11 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Estruturas de Repetição
+#### Estruturas de Repetição <a id="repeticao"></a>
 
 - Repete um trecho de código
 
-##### For
+##### For <a id="for"></a>
 
 - Usado quando se sabe exatamente a quantidade de vezes que o código será repetido.
 - Sintaxe:
@@ -800,7 +867,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   }
   ~~~~
 
-##### Foreach
+##### Foreach <a id="foreach"></a>
 
 - Itera sobre uma coleção, retornando cada valor na mesma
 - Não é possível acessar o índice do item corrente, caso a coleção permita ser acessada por índice
@@ -820,7 +887,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-##### While
+##### While <a id="while"></a>
 
 - Testa uma condição no início
 - Trecho de código executado enquanto uma condição for verdadeira
@@ -837,7 +904,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   }
   ~~~
 
-##### Do..While
+##### Do..While <a id="do-while"></a>
 
 - Testa uma condição no fim do laço
 - Executa o bloco de código ao menos uma vez, e depois enquanto a condição for verdadeira
@@ -855,7 +922,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-##### Break
+##### Break <a id="break"></a>
 
 - Encerra imediatamente a execução do laço de repetição
 - Exemplo:
@@ -870,7 +937,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   }
   ~~~
 
-##### Continue
+##### Continue <a id="continue"></a>
 
 - Avança imediatamente para a próxima iteração do laço de repetição
 - Exemplo:
@@ -888,7 +955,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-## Programação Orientada a Objeto
+## Programação Orientada a Objeto <a id="poo"></a>
 
 - Paradigma de programação, difundido por volta dos anos 90
 - Programação mais próxima do mundo real
@@ -911,7 +978,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-### Classe
+### Classe <a id="classe"></a>
 
 - Implementa os conceitos do mundo real
 - Modelo para a criação dos objetos
@@ -1148,7 +1215,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Classe estática
+#### Classe estática <a id="class-static"></a>
 
 - Não podem ser instanciada
 - Não possui construtor
@@ -1194,7 +1261,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Classe Abstrata
+#### Classe Abstrata <a id="class-abstract"></a>
 
 - Não pode ser instânciada
 - Deve ser herdada por outras classes especializadas
@@ -1361,7 +1428,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Classe Sealed
+#### Classe Sealed <a id="class-sealed"></a>
 
 - Indica que a classe não pode ser herdada
 - A keyword **sealed** também pode ser aplicada a método, que indica que heranças posteriores não podem sobrescrever o método
