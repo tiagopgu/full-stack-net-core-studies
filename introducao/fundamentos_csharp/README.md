@@ -60,6 +60,8 @@
           1. [Classe estática](#class-static)
           2. [Classe Abstrata](#class-abstract)
           3. [Classe Sealed](#class-sealed)
+          4. [Cópia de Classes](#class-copia)
+          5. [Teste de igualdade entre objetos](#class-igualdade)
 
 </details>
 
@@ -312,6 +314,8 @@ Sequência de passos definidos para que um programa de computador consiga execut
 ### Tipos de Dados Primitivos <a id="dados-primitivos"></a>
 
 Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor para o maior. Isto significa que o tipo menor cabe no tipo maior, porém o contrário não é verdadeiro.
+
+Com exceção do tipo `string`, todos os outro são do tipo **valor**. Isso implica que qualquer variável de um destes tipos, aponta diretamente para o endereço da memória onde está o valor.
 
 #### Numéricos <a id="numericos"></a>
 
@@ -986,6 +990,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 - Unidade mínima na linguagem C#
 - Todo método e atributo só podem ser definidos dentro de uma classe
 - **Instância** é o processo de criação de um objeto a partir de uma classe
+- São do tipo **referência**. Todo objeto criado é guardado na área _heap_ da memória e uma variável de um tipo classe aponta para o endereço de memória onde o objeto foi alocado. Isso implica diretamente na atribuição: atribuir uma variável que aponta para um objeto a outra uma variável, na verdade faz com que as duas variáveis apontem para o mesmo objeto.
 - Sintaxe:
 
   ~~~csharp
@@ -1082,6 +1087,12 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
       public ModeloClasse(int id, decimal valor) : this(id)
       {
           PropriedadeImplementadaValor = valor;
+      }
+
+      // Opção para fazer cópia de dados de outro objeto
+      public ModeloClasse(ModeloClasse modelo) : this(modelo.GetIdPrivado(), modelo.PropriedadeImplementadaValor)
+      {
+          PropriedadeAutoImplementadaDescricao = modelo.PropriedadeAutoImplementadaDescricao;
       }
 
       // Este é um método da classe acessível externamente e que não retorna valor
@@ -1212,6 +1223,8 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   Console.WriteLine("Descrição: " + modelo2.Descricao);
   Console.WriteLine("Código: " + modelo2.ObterCodigo());
   ~~~
+
+> Todo objeto em C# herda de `object`
 
 [🔼 topo](#topo)
 
@@ -1467,6 +1480,92 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
           return "";
       }*/
   }
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Cópia de objetos <a id="class-copia"></a>
+
+- Por ser do tipo referência, a simples atribuição a uma outra variável, não copia o objeto, mas sim a referência
+- Exemplo (Usando classes criadas nos tópicos anteriores):
+
+  ~~~csharp
+  var objTesteCopia1 = new ModeloClasse2(1, "Teste Igualdade", "Este é o objeto 1");
+
+  // Isso não cria um novo objeto, mas copia a referência para o mesmo objeto
+  var objTesteCopia2 = objTesteCopia1;
+
+  // Isso altera o mesmo objeto apontado por 'objTesteCopia1'
+  objTesteCopia2.Descricao = "Este é o objeto 2";
+
+  // Agora sim foi realmente criado um novo objeto, que não é o mesmo apontado por 'objTesteCopia1'
+  objTesteCopia2 = new ModeloClasse2(2, objTesteCopia1.Titulo, "Este é o objeto 2");
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Teste de igualdade entre objetos <a id="class-igualdade"></a>
+
+- Para testar igualdade, pode ser usado `==` ou o método herdado `Equals`
+- Por padrão são validas as referências. Ou seja: testar a igualdade de duas referências para objetos diferentes que sejam do mesmo tipo e possuam os mesmos dados, produza um valor `False`
+- Exemplo (Usando classes criadas nos tópicos anteriores):
+
+  ~~~csharp
+  // Criado um novo objeto com os mesmos ddos de outro objeto. Neste caso, as referências são diferentes
+  var objTesteIgualdade1 = new ModeloClasse2(2, objTesteCopia1.Titulo, objTesteCopia1.Descricao);
+  
+  // As validações abaixo resultam em `False`, já que por padrão são validadas as referências e não os dados em si
+  Console.WriteLine(objTesteIgualdade1 == objTesteCopia1);
+  Console.WriteLine(objTesteIgualdade1.Equals(objTesteCopia1));
+  
+  // Isso resulta em 'True'
+  Console.WriteLine(objTesteIgualdade1 != objTesteCopia1);
+
+  /********************************************************************************/
+  // Para corrigir esse comportamento, devem ser realizadas as implementações a seguir nas classes. No Exemplo, implementada na classe 'ModeloClasse'
+
+  public class ModeloClasse
+  {
+    // Demais implementações
+
+    // GetHashCode e Equals são herdados de object
+    public override int GetHashCode() => HashCode.Combine(_idPrivado, _valor, PropriedadeAutoImplementadaDescricao);
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is null) return false;
+
+        if (obj is not ModeloClasse objModelo) return false;
+
+        if (ReferenceEquals(obj, objModelo)) return true;
+
+        return objModelo._idPrivado == _idPrivado &&
+            objModelo._valor == _valor &&
+            objModelo.PropriedadeAutoImplementadaDescricao == PropriedadeAutoImplementadaDescricao;
+    }
+
+    public static bool operator ==(ModeloClasse lhs, ModeloClasse rhs) => lhs.Equals(rhs);
+
+    public static bool operator !=(ModeloClasse lhs, ModeloClasse rhs) => !(lhs == rhs);
+
+    // Demais implementações
+  }
+
+  // Testando novamente a igualdade
+  var objTesteIgualdade2 = new ModeloClasse(1, 16.49M)
+  {
+      PropriedadeAutoImplementadaDescricao = "Objeto de Teste"
+  };
+
+  // Fazendo uma cópia dos dados de outro objeto
+  var objTesteIgualdade3 = new ModeloClasse(objTesteIgualdade2);
+
+  // Agora sim as validações abaixo serão 'True'
+  Console.WriteLine("Objeto1 == Objeto2: " + (objTesteIgualdade2 == objTesteIgualdade3));
+  Console.WriteLine("Objeto1.Equals(objeto2): " + objTesteIgualdade2.Equals(objTesteIgualdade3));
+
+  // E isso é 'False'
+  Console.WriteLine("Objeto1 != Objeto2: " + (objTesteIgualdade2 != objTesteIgualdade3));
   ~~~
 
 [🔼 topo](#topo)

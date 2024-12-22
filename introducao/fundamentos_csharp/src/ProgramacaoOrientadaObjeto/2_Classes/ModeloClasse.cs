@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace ProgramacaoOrientadaObjeto.Classes;
 
 public class ModeloClasse
@@ -65,6 +67,11 @@ public class ModeloClasse
     {
         PropriedadeImplementadaValor = valor;
     }
+
+    public ModeloClasse(ModeloClasse modelo) : this(modelo.GetIdPrivado(), modelo.PropriedadeImplementadaValor)
+    {
+        PropriedadeAutoImplementadaDescricao = modelo.PropriedadeAutoImplementadaDescricao;
+    }
     
     public void ChecarEstoque()
     {
@@ -90,7 +97,26 @@ public class ModeloClasse
     }
     
     public static decimal CalcularDesconto(decimal valor, decimal percentual) => valor - (valor * (percentual / 100));
-    
+
+    public override int GetHashCode() => HashCode.Combine(_idPrivado, _valor, PropriedadeAutoImplementadaDescricao);
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is null) return false;
+
+        if (obj is not ModeloClasse objModelo) return false;
+
+        if (ReferenceEquals(obj, objModelo)) return true;
+
+        return objModelo._idPrivado == _idPrivado &&
+            objModelo._valor == _valor &&
+            objModelo.PropriedadeAutoImplementadaDescricao == PropriedadeAutoImplementadaDescricao;
+    }
+
+    public static bool operator ==(ModeloClasse lhs, ModeloClasse rhs) => lhs.Equals(rhs);
+
+    public static bool operator !=(ModeloClasse lhs, ModeloClasse rhs) => !(lhs == rhs);
+
     private bool ValidarValorEstoque(int qtd)
     {
         if (qtd <= 0)
