@@ -62,6 +62,7 @@
           3. [Classe Sealed](#class-sealed)
           4. [Cópia de Classes](#class-copia)
           5. [Teste de igualdade entre objetos](#class-igualdade)
+      2. [Record](#record)
 
 </details>
 
@@ -1569,3 +1570,62 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   ~~~
 
 [🔼 topo](#topo)
+
+### Record
+
+- Pode substituir o uso de classes (não em todas as situações)
+- É um tipo referência
+- Permite herança (somente entre outros `record`) e uso das keywords `abstract` e `sealed`
+- Facilita a cópia de objetos
+- Falicita o teste de igualdade: o teste é feito pelo tipo e os dados nas propriedades do objeto (não testa a referência)
+- Facilita a criação de objetos imutáveis
+- Exemplo:
+
+  ~~~csharp
+  // Estrutura semelhante a uma classe
+  public record class ModeloRecord
+  {
+      public int Id { get; }
+      public string Titulo { get; private set; }
+      public string Descricao { get; set; }
+
+      public ModeloRecord(int id, string titulo)
+      {
+          Id = ValidarId(id) ? id : throw new ArgumentException("Id deve ser maior que 0");
+          Titulo = titulo;
+      }
+
+      private bool ValidarId(int id) => id > 0;
+  }
+
+  // Cria um objeto imutável: O construtor primário cria as propriedades somente leitura
+  public record class ModeloImutavel(int Id, string Titulo, decimal Valor);
+
+  // Uso de um record
+
+  var modeloRecord = new ModeloRecord(1, "Teste") { Descricao = "Este é um record de Teste" };
+  var modeloRecord2 = new ModeloRecord(1, "Teste") { Descricao = "Este é um record de Teste" };
+
+  // Facilita a escrita dos dados do objeto
+  Console.WriteLine(modeloRecord); // Saída: ModeloRecord { Id = 1, Titulo = Teste, Descricao = Este é um record de Teste }
+  Console.WriteLine(modeloRecord2); // Saída: ModeloRecord { Id = 1, Titulo = Teste, Descricao = Este é um record de Teste }
+
+  // Facilita a cópia
+  var modeloRecord3 = modeloRecord with { Descricao = "Este é um teste de cópia" };
+
+  // Facilita o teste de igualdade (não precisa de sobrescrita de métodos)
+  Console.WriteLine((modeloRecord == modeloRecord2)); // True
+  Console.WriteLine(modeloRecord.Equals(modeloRecord2)); // True
+  Console.WriteLine((modeloRecord == modeloRecord3)); // False
+  Console.WriteLine(modeloRecord.Equals(modeloRecord3)); // False
+
+  var modeloImutavel = new ModeloImutavel(1, "Teste", 10.99M);
+
+  // Códigos abaixo geram falha
+  //modeloImutavel.Id = 2;
+  //modeloImutavel.Titulo = "Novo Teste";
+  //modeloImutavel.Valor = 15.99;
+  ~~~
+
+[🔼 topo](#topo)
+

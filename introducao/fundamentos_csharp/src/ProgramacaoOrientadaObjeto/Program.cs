@@ -1,6 +1,7 @@
 ﻿using ProgramacaoOrientadaObjeto;
 using ProgramacaoOrientadaObjeto.Classes;
 using ProgramacaoOrientadaObjeto.Namespaces;
+using ProgramacaoOrientadaObjeto.Records;
 
 List<Assunto> assuntos =
 [
@@ -8,7 +9,8 @@ List<Assunto> assuntos =
     new AssuntoClasse("Classes"),
     new AssuntoClasseEstatica("Classes Estáticas"),
     new AssuntoClasseAbstrata("Classes Abstratas"),
-    new AssuntoClasseSelada("Classes Seladas")
+    new AssuntoClasseSelada("Classes Seladas"),
+    new AssuntoRecord("Record")
 ];
 
 var continuarExecucao = true;
