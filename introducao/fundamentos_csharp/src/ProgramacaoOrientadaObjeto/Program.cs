@@ -1,5 +1,6 @@
 ﻿using ProgramacaoOrientadaObjeto;
 using ProgramacaoOrientadaObjeto.Classes;
+using ProgramacaoOrientadaObjeto.Interfaces;
 using ProgramacaoOrientadaObjeto.Namespaces;
 using ProgramacaoOrientadaObjeto.Records;
 
@@ -10,7 +11,8 @@ List<Assunto> assuntos =
     new AssuntoClasseEstatica("Classes Estáticas"),
     new AssuntoClasseAbstrata("Classes Abstratas"),
     new AssuntoClasseSelada("Classes Seladas"),
-    new AssuntoRecord("Record")
+    new AssuntoRecord("Record"),
+    new AssuntoInterface("Interface")
 ];
 
 var continuarExecucao = true;

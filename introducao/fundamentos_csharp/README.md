@@ -63,6 +63,7 @@
           4. [Cópia de Classes](#class-copia)
           5. [Teste de igualdade entre objetos](#class-igualdade)
       2. [Record](#record)
+      3. [Interface](#interface)
 
 </details>
 
@@ -1571,7 +1572,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-### Record
+### Record <a id="record"></a>
 
 - Pode substituir o uso de classes (não em todas as situações)
 - É um tipo referência
@@ -1629,3 +1630,64 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
+### Interface <a id="interface"></a>
+
+- Define assinaturas de métodos e propriedades (sem implementações)
+- Cria um contrato, onde as classes que implementam a interface devem implementar a lógica dos métodos e propriedades definidas na interface
+- Bastante usada para definir designs mais complexos de sistemas
+- Muito usado para aplicação do polimorfismo
+- Por convenção, o nome da interface inicia com `I`
+- Sintaxe
+
+  ~~~csharp
+  // Definindo uma interface
+  public interface INotificacao
+  {
+      public string Descricao { get; set; } // Define a assinatura de uma propriedade
+
+      public string Notificar(); // Define a assinatura de um método
+  }
+
+  // Usando uma interface
+
+  // Implementando uma interface (:)
+  public class Cliente : INotificacao
+  {
+      public string Descricao { get; set; }
+
+      public string Notificar() => "Esta é um notificação do cliente";
+
+      public string MetodoCliente() => "Este é um método só do cliente";
+  }
+
+  // Herdando de uma classe e implementando uma interface
+  public class Funcionario : ClasseBase, INotificacao
+  {
+      public string Descricao { get; set; }
+
+      public string Notificar() => "Esta é uma notificação do funcionário.";
+
+      public string MetodoFuncionario() => "Este é um método do funcionario";
+  }
+
+  // Usando os objetos
+  var cliente = new Cliente() { Descricao = "Instância de um cliente" };
+  var funcionario = new Funcionario() { Descricao = "Instância de um funcionário" };
+
+  // Referência do próprio objeto pode chamar membros obrigatório da interface e os próprios membros definidos na classe
+  Console.WriteLine(cliente.Descricao + ": " + cliente.Notificar() + " - " + cliente.MetodoCliente());
+  Console.WriteLine(funcionario.Descricao + ": " + funcionario.Notificar() + " - " + funcionario.MetodoFuncionario());
+
+  // Aplicando o polimorfismo
+  
+  // Lista aceita qualquer tipo que implementa a interface
+  List<INotificacao> notificacoes = [];
+  notificacoes.Add(cliente);
+  notificacoes.Add(funcionario);
+
+  // Variável tipada pela inteface, somente chama membros definidos pela interface, ou seja, não chama membros definidos no tipo do objeto.
+  foreach (INotificacao obj in notificacoes)
+      Console.WriteLine(obj.Descricao + ": " + obj.Notificar());
+  ~~~
+
+[🔼 topo](#topo)
