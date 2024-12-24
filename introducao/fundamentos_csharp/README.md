@@ -6,15 +6,76 @@
 
 [![README Repositório Badge](https://img.shields.io/badge/README-Repositório-062019?style=for-the-badge&labelColor=%23139E65)](/README.md)
 
-## Conceitos Básicos
+<details>
+  <summary style="font-size: 18px; font-weight: bold">📑Sumário</summary>
+
+  1. [Conceitos Básicos](#conceitos)
+      1. [Lógica de Programação](#logica)
+      2. [Linguagem de Programação](#linguagem)
+      3. [.NET](#net)
+          1. [Histórico](#net-hystory)
+          2. [CLR (Commom Language Runtime)](#clr)
+  2. [Ambiente de desenvolvimento](#sdk)
+      1. [Configuração](#sdk-conf)
+      2. [IDE's de desenvolvimento](#sdk-ide)
+      3. [Estrutura](#estrutura)
+          1. [Projeto](#projeto)
+          2. [Solution](#solution)
+          3. [Namespace](#namespace)
+          4. [Entrypoint da aplicação](#entrypoint)
+              1. [Top-Level Statement](#top-level)
+  3. [Programação Básica](#programacao)
+      1. [Tipos de Dados Primitivos](#dados-primitivos)
+          1. [Numéricos](#numericos)
+          2. [Caractere](#caractere)
+          3. [Booleando](#bool)
+      2. [Variável](#variavel)
+      3. [Constante](#constante)
+      4. [Operadores](#operadores)
+          1. [Atribuição](#atribuicao)
+          2. [Aritméticos](#aritmetico)
+          3. [Relacionais](#relacional)
+          4. [Lógicos](#logico)
+          5. [Ternário](#ternario)
+      5. [Métodos (Funções)](#metodo)
+      6. [Estruturas de dados](#estrutura-dados)
+          1. [Array](#array)
+          2. [ArrayList](#arrayList)
+          3. [Lista Genérica](#lista)
+          4. [Dicionário](#dicionario)
+          5. [Queue (Fila)](#queue)
+          6. [Stack (Pilha)](#stack)
+      7. [Estruturas de Controle](#estrutura-controle)
+          1. [Estrutura de decisão](#decisao)
+          2. [Estrutura de seleção](#selecao)
+          3. [Estruturas de Repetição](#repeticao)
+              1. [For](#for)
+              2. [Foreach](#foreach)
+              3. [While](#while)
+              4. [Do..While](#do-while)
+              5. [Break](#break)
+              6. [Continue](#continue)
+  4. [Programação Orientada a Objeto](#poo)
+      1. [Classe](#classe)
+          1. [Classe estática](#class-static)
+          2. [Classe Abstrata](#class-abstract)
+          3. [Classe Sealed](#class-sealed)
+          4. [Cópia de Classes](#class-copia)
+          5. [Teste de igualdade entre objetos](#class-igualdade)
+      2. [Record](#record)
+      3. [Interface](#interface)
+
+</details>
+
+## Conceitos Básicos <a id="conceitos"></a>
 
 Antes de iniciar o estudo da linguagem de programação **C#**, alguns conceitos são importantes serem entendidos:
 
-### Lógica de programação
+### Lógica de programação <a id="logica"></a>
 
 Sequência de passos definidos para que um programa de computador consiga executar algo.
 
-### Linguagem de programação
+### Linguagem de programação <a id="linguagem"></a>
 
 - Define instruções que usamos para implementar a lógica de um programa
 - Existem diversas linguagens disponíveis no mercado, como, por exemplo, o **C#**
@@ -34,13 +95,13 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 [🔼 topo](#topo)
 
-### .NET
+### .NET <a id="net"></a>
 
 - Plataforma de código aberto para desenvolvimento de várias aplicações: desktop, web, IoT, jogos, etc.
 - Provê diversas bibliotecas otimizadas que acelera o desenvolvimento
 - Permite usar diversas linguagens de programação, como, por exemplo, o **C#**.
 
-#### Histórico
+#### Histórico <a id="net-hystory"></a>
 
 - .NET Framework
   - Criado em 2002
@@ -58,7 +119,7 @@ Sequência de passos definidos para que um programa de computador consiga execut
   - Não teve a versão 4 do .NET Core (provavelmente para não gerar confusão com a última versão do .NET Framework, que foi a 4.8.8).
   - Qualquer referência a .NET, estamos falando da versão 5 ou superior do .NET Core (por exemplo: .NET 9, que é a versão mais recente até a escrita desse documento)
 
-#### CLR (Commom Language Runtime)
+#### CLR (Commom Language Runtime) <a id="clr"></a>
 
 - Principal parte do .NET
 - Responsável por executar a [linguagem intermediária (IL)](#compilacao-csharp)
@@ -67,9 +128,9 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 [🔼 topo](#topo)
 
-## Ambiente de desenvolvimento
+## Ambiente de desenvolvimento <a id="sdk"></a>
 
-### Configuração
+### Configuração <a id="sdk-conf"></a>
 
 - Baixe o [.NET](https://dotnet.microsoft.com/pt-br/download) e faça a instalação
   - Baixe o .NET Runtime caso queira somente executar aplicações desenvolvida em .NET
@@ -78,7 +139,7 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
   ![Informações do .NET instalado](/introducao/fundamentos_csharp/img/dotnet-info.png)
 
-### IDE's de desenvolvimento
+### IDE's de desenvolvimento <a id="sdk-ide"></a>
 
 - [Visual Studio](https://visualstudio.microsoft.com/pt-br/)
   - Mais completa para desenvolvimento .NET
@@ -100,9 +161,9 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 [🔼 topo](#topo)
 
-### Estrutura
+### Estrutura <a id="estrutura"></a>
 
-#### Projeto
+#### Projeto <a id="projeto"></a>
 
 - Organiza os _códigos fonte_, seja por pasta e/ou arquivos
 - É escrito em uma das linguagens suportadas pelo .NET
@@ -124,7 +185,7 @@ Sequência de passos definidos para que um programa de computador consiga execut
     - Automaticamente será gerado um _build_ do projeto
     - Desabilitando mensagens de compilação: `dotnet run --WarningLevel 0`
 
-#### Solution
+#### Solution <a id="solution"></a>
 
 - Agrupa projetos de uma aplicação
 - Permite que todos os projetos sejam compilados de uma vez
@@ -136,13 +197,129 @@ Sequência de passos definidos para que um programa de computador consiga execut
 
 [🔼 topo](#topo)
 
-## Programação Básica
+#### Namespace <a id="namespace"></a>
 
-### Tipos de Dados Primitivos
+- Permite realizar agrupamento de classes
+- Podem existir classes de mesmo nome, desde que em namespaces diferentes
+- Sintaxe:
+
+  ~~~csharp
+  // Declaração de um namespace. Esta forma de declaração permite ter mais de um namespace no mesmo arquivo
+  namespace Parte.Nome.NomeNamespace
+  {
+    public class NomeClass1
+    {
+      //
+    }
+
+    public class NomeClass2
+    {
+      //
+    }
+  }
+
+  // Declaração simplificada. Esta forma de declaração permite somente uma definição de namespace no arquivo, e deve estar no início, antes da declaração dos membros
+  namespace Parte.Nome.NomeNamespace2;
+
+  public class NomeClass1
+  {
+    //
+  }
+
+  public class NomeClass3
+  {
+    //
+  }
+
+  // Para acessar membros do namespace em outro arquivo da aplicação
+  // Usando o caminho completo da classe
+  var class1 = new Parte.Nome.NomeNamespace.NomeClass1();
+  var class2 = new Parte.Nome.NomeNamespace2.NomeClass1();
+
+  // Usando using para simplificar caminho do membro
+  using Parte.Nome.NomeNamespace;
+  using Alternativa = Parte.Nome.NomeNamespace2; // Alias para um namespace
+
+  var class1 = new NomeClass1(); // Pertence ao namespace 'Parte.Nome.NomeNamespace'
+  var class2 = new Alternativa.NomeClass1(); // Pertence ao namespace 'Parte.Nome.NomeNamespace2'. Neste exemplo, para não causar conflito com a classe definida no namespace 'Parte.Nome.NomeNamespace', foi necessário criar um alias.
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Entrypoint da aplicação <a id="entrypoint"></a>
+
+- Define o ponto de início de uma aplicação
+- No C#, é iniciado no método estático `Main`
+  - Só pode exitir um método estático `Main`
+- Sintaxe:
+
+  ~~~csharp
+  namespace NomeNamespace;
+
+  public class Program
+  {
+    static void Main(string[] args)
+    {
+      Console.WriteLine("Aqui inicia a execução da aplicação");
+
+      MetodoInterno(5);
+
+      Console.WriteLine(OutroMetodoInterno());
+    }
+
+    static void MetodoInterno(int param)
+    {
+      //
+    }
+
+    static string OutroMetodoInterno()
+    {
+      return "Alguma coisa";
+    }
+  }
+  ~~~
+
+[🔼 topo](#topo)
+
+##### Top-Level Statement <a id="top-level"></a>
+
+- Simplifica a escrita do ponto de entrada da aplicação
+- Só pode existir um único arquivo de classe com esta forma
+- Disponível a partir do **.Net 6.0**
+- Se existir na aplicação um método `Main`, esta forma terá prioridade na execução
+- Sintaxe:
+
+  ~~~csharp
+  // Simples assim: não precisa definir o namespace, a classe e o método Main
+  Console.WriteLine("Aqui inicia a execução da aplicação");
+
+  MetodoInterno(5);
+  
+  Console.WriteLine(OutroMetodoInterno());
+
+  // Um método que não retorna valor
+  void MetodoInterno(int param)
+  {
+    //
+  }
+
+  string OutroMetodoInterno()
+  {
+    return "Alguma Coisa"
+  }
+  ~~~
+
+[🔼 topo](#topo)
+
+## Programação Básica <a id="programacao"></a>
+
+### Tipos de Dados Primitivos <a id="dados-primitivos"></a>
 
 Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor para o maior. Isto significa que o tipo menor cabe no tipo maior, porém o contrário não é verdadeiro.
 
-#### Numéricos
+Com exceção do tipo `string`, todos os outro são do tipo **valor**. Isso implica que qualquer variável de um destes tipos, aponta diretamente para o endereço da memória onde está o valor.
+
+#### Numéricos <a id="numericos"></a>
 
 - Inteiros
   - `byte`: 0 até 255
@@ -163,7 +340,7 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
     - Usado quando necessita de uma precisão maior (por exemplo para trabalhar com valores monetários)
     - O valor deve ter o sufixo `m` ou `M`. Exemplo: `199.99M`
 
-#### Caractere
+#### Caractere <a id="caractere"></a>
 
 - `char`
   - Somente um caractere, podendo ser no formato hexadecimal ou unicode
@@ -173,13 +350,13 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
   - Valor deve estar entre aspas duplas. Exemplo: `"Teste"`
   - Não é um tipo primitivo, mas devido ao seu uso é praticamente considerado como sendo
 
-#### Booleando
+#### Booleando <a id="bool"></a>
 
 - `bool`: Somente os valoes `true`ou `false`
 
 [🔼 topo](#topo)
 
-### Variável
+### Variável <a id="variavel"></a>
 
 - Define uma região de memória para armazenar dados
 - Declaração: `tipo_dado nomeVariavel = valor`. Exemplo: `int idade = 35`
@@ -193,7 +370,7 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
     - Não é indicado usar palavras com acentuação
     - É uma boa prática que o nome seja significativo
 
-### Constante
+### Constante <a id="constante"></a>
 
 - Define uma variável que uma vez inicializada, não pode ser alterada posteriormente
 - Declaração: `const tipo_dado NOME_CONSTANTE = valor`. Exemplo: `const string NOME_CURSO = "CSHARP"`
@@ -202,14 +379,14 @@ Cada categoria abaixo segue a ordem de capacidade de armazenamento, do menor par
 
 [🔼 topo](#topo)
 
-### Operadores
+### Operadores <a id="operadores"></a>
 
-#### Atribuição
+#### Atribuição <a id="atribuicao"></a>
 
 - Atribui o valor a direita à variável a esquerda
 - Exemplo: `string variavel = "Valor Atribuído";`;
 
-#### Aritméticos
+#### Aritméticos <a id="aritmetico"></a>
 
 - Soma: `var resultado = valor1 + valor2;`
   - Soma da variável e reatribuição: `resultado += valor3; // resultado = resultado + valor3`
@@ -228,7 +405,7 @@ Obs2.: O tipo de dados do resultado será com base no tipo de dado do operando c
 Obs3.: Prioridade segue a mesma regra da matemática
 Obs4.: Em uma expressão, use parênteses para alterar a ordem de prioridade. Exemplo: `var resultado = (valor1 + valor2) * (valor3 / valor4)`
 
-#### Relacionais
+#### Relacionais <a id="relacional"></a>
 
 - Igualdade: `var resultado = valor1 == valor2;`
   - `=` é chamado de _operador de atribuição_
@@ -240,7 +417,7 @@ Obs4.: Em uma expressão, use parênteses para alterar a ordem de prioridade. Ex
 
 Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
-#### Lógicos
+#### Lógicos <a id="logico"></a>
 
 - And: `&&`. Exemplo: `var valido = valor > 5 && valor < 25;`
   - Todas as condições devem ser verdadeiras
@@ -249,7 +426,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 - Not: `!`. Exemplo: `var valido = !(valor > 10);`
   - Inverte o valor de um resultado lógico
 
-#### Ternário
+#### Ternário <a id="ternario"></a>
 
 - Analisa um expressão e retorna um valor se verdeiro, ou um valor diferente se o resultado for falso
 - Sintaxe: `var mensagem = usuarioAtivo ? "Usuário ativo no sistema" : "Usuário inativo no sistema";`
@@ -257,7 +434,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-### Métodos (Funções)
+### Métodos (Funções) <a id="metodo"></a>
 
 - Bloco de código nomeado, executado sempre que chamado
 - Pode receber parâmetro
@@ -298,9 +475,9 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-### Estruturas de dados
+### Estruturas de dados <a id="estrutura-dados"></a>
 
-#### Array
+#### Array <a id="array"></a>
 
 - Deve ser tipado (aceita só um tipo de valor, conforme o tipo definido)
 - Itens da coleção acessado por índice
@@ -328,7 +505,9 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   array6 = [.. array6, "Item 4", "Item 5" ]; // Redimensionando com a inclusão de novos itens
   ~~~
 
-#### ArrayList
+[🔼 topo](#topo)
+
+#### ArrayList <a id="arrayList"></a>
 
 - Armazena itens de diversos tipos de dados
 - Acessada por índice
@@ -381,7 +560,9 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   array6 = new(); // Atribuindo um novo objeto ArrayList
   ~~~
 
-#### Lista Genérica
+[🔼 topo](#topo)
+
+#### Lista Genérica <a id="lista"></a>
 
 - Deve ser tipada
 - Pode ser acessado por índice
@@ -425,8 +606,10 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   // Limpando a lista
   list10.Clear();
   ~~~
-  
-#### Dicionário
+
+[🔼 topo](#topo)
+
+#### Dicionário <a id="dicionario"></a>
 
 - Itens possuem chave/valor
 - Tanto a chave quando o valor são tipados (podem ser diferentes entre si)
@@ -476,7 +659,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Queue (Fila)
+#### Queue (Fila) <a id="queue"></a>
 
 - Lista do tipo FIFO (First In First Out)
 - Não permite ordenação
@@ -519,7 +702,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Stack (Pilha)
+#### Stack (Pilha) <a id="stack"></a>
 
 - Implementa a lógica LIFO (Last In First Out)
 - Não permite ordenação
@@ -561,9 +744,9 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-### Estruturas de Controle
+### Estruturas de Controle <a id="estrutura-controle"></a>
 
-#### Estrutura de decisão
+#### Estrutura de decisão <a id="decisao"></a>
 
 - Executa trecho de código com base em um resultado booleano
 - Sintaxe:
@@ -625,7 +808,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Estrutura de seleção
+#### Estrutura de seleção <a id="selecao"></a>
 
 - Executa um bloco de instrução com base em um valor
 - Sintaxe:
@@ -668,11 +851,11 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-#### Estruturas de Repetição
+#### Estruturas de Repetição <a id="repeticao"></a>
 
 - Repete um trecho de código
 
-##### For
+##### For <a id="for"></a>
 
 - Usado quando se sabe exatamente a quantidade de vezes que o código será repetido.
 - Sintaxe:
@@ -690,7 +873,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   }
   ~~~~
 
-##### Foreach
+##### Foreach <a id="foreach"></a>
 
 - Itera sobre uma coleção, retornando cada valor na mesma
 - Não é possível acessar o índice do item corrente, caso a coleção permita ser acessada por índice
@@ -710,7 +893,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-##### While
+##### While <a id="while"></a>
 
 - Testa uma condição no início
 - Trecho de código executado enquanto uma condição for verdadeira
@@ -727,7 +910,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   }
   ~~~
 
-##### Do..While
+##### Do..While <a id="do-while"></a>
 
 - Testa uma condição no fim do laço
 - Executa o bloco de código ao menos uma vez, e depois enquanto a condição for verdadeira
@@ -745,7 +928,7 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
 
 [🔼 topo](#topo)
 
-##### Break
+##### Break <a id="break"></a>
 
 - Encerra imediatamente a execução do laço de repetição
 - Exemplo:
@@ -760,20 +943,751 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   }
   ~~~
 
-  ##### Continue
+##### Continue <a id="continue"></a>
 
-  - Avança imediatamente para a próxima iteração do laço de repetição
-  - Exemplo:
+- Avança imediatamente para a próxima iteração do laço de repetição
+- Exemplo:
 
-    ~~~csharp
-    // Não escreve os números divisiveis por 3
-    for (var i = 0; i <= 10; i++)
+  ~~~csharp
+  // Não escreve os números divisiveis por 3
+  for (var i = 0; i <= 10; i++)
+  {
+    if (i % 3 == 0)
+      continue;
+
+    Console.WriteLine(i);
+  }
+  ~~~
+
+[🔼 topo](#topo)
+
+## Programação Orientada a Objeto <a id="poo"></a>
+
+- Paradigma de programação, difundido por volta dos anos 90
+- Programação mais próxima do mundo real
+  - Conceitos dos mundo real são tratados como objeto
+- Pilares
+  - Abstração
+    - Consiste em "abstrair" somente características essencial do objeto
+    - Torna o objeto mais genérico
+    - Características estendidas e melhor definida por objetos especializados
+  - Encapsulamento
+    - Protege atributos e propriedades do objeto
+    - Esconde complexidade das implementações de um objeto
+    - Alterações em atributos e propriedades do objeto somente feito por métodos expostos
+  - Herança
+    - Capacidade de um objeto herdar atributos e comportamentos de outro
+    - Conceito do "é um": objeto que herda "é um" tipo do objeto herdado
+  - Polimorfismo
+    - Um comportamento pode ser diferente dependendo do objeto que o invoca
+    - Um objeto genérico pode aplicar um comportamento padrão, e objetos especializados sobreescrever esse comportamento conforme suas necessidades.
+
+[🔼 topo](#topo)
+
+### Classe <a id="classe"></a>
+
+- Implementa os conceitos do mundo real
+- Modelo para a criação dos objetos
+- Define atributos e comportamentos dos objetos
+- Unidade mínima na linguagem C#
+- Todo método e atributo só podem ser definidos dentro de uma classe
+- **Instância** é o processo de criação de um objeto a partir de uma classe
+- São do tipo **referência**. Todo objeto criado é guardado na área _heap_ da memória e uma variável de um tipo classe aponta para o endereço de memória onde o objeto foi alocado. Isso implica diretamente na atribuição: atribuir uma variável que aponta para um objeto a outra uma variável, na verdade faz com que as duas variáveis apontem para o mesmo objeto.
+- Sintaxe:
+
+  ~~~csharp
+  using System; // Definição dos usings usados na classe
+
+  namespace ProgramacaoOrientadaObjeto.Classes; // Namespace ao qual pertence a classe
+
+  // Modificador de acesso 'public' indica que a classe pode ser instânciada (criação de um objeto) em qualquer lugar da aplicação
+  public class ModeloClasse
+  {
+      // Este é um campo da classe. Convenções da linguagem dita que campos privados devem iniciar com '_'.
+      // O modificador de acesso 'private', indica que o campo só pode ser acessado diretamente dentro da classe
+      private int _idPrivado;
+
+      // Os métodos a seguir são chamados de acessores do campo privado acima, permitindo atualizar e acessar o valor.
+      // O modificador de acesso 'public', indica que o método pode ser acessado de fora da classe
+      public void SetIdPrivado(int id)
+      {
+          if (id > 0)
+              throw new ArgumentException("Id deve ser maior que 0");
+
+          _idPrivado = id;
+      }
+
+      public int GetIdPrivado()
+      {
+          return _idPrivado;
+      }
+
+      // Esta é uma propriedade auto-implementada: substitui a escrita de campo acima e seus acessores. Os métodos acessores estão intrísecos na propriedade.
+      public int PropriedadeAutoImplementadaDescricao { get; set; }
+
+      // A seguir é uma propriedade implementada. Métodos acessores estão intríseco na propriedade. Ideal quando precisa de lógica de tratamento do valor a ser inserido na propriedade e/ou tratamento do retorno
+      // É uma boa prática que o nome da propriedade implementada seja igual ao do campo ao qual referencia. No exemplo, seria "Valor". O nome abaixo é para didaticamente indicar que é uma propriedade implementada.
+      private decimal _valor;
+      
+      public decimal PropriedadeImplementadaValor
+      {
+          get
+          {
+              // Talvez algum tratamento do retorno
+              return _valor;
+          }
+          set
+          {
+              if (value < 0M)
+                  throw new ArgumentException("Valor não pode ser menor que 0");
+
+              _valor = value;
+          }
+      }
+
+      // A seguir dois membros de classe somente leitura: atualização somente pode ser feita pelo construtor da classe
+      public string PropriedadeSomenteLeitura { get; }
+      public readonly string CampoSomenteLeitura;
+
+      // A propriedade implementada abaixo, embora seja somente leitura fora da classe, internamente pode ser atualizada
+      private int _estoque;
+      public int PropriedadeEstoque {
+          // Chaves nos acessores e métodos pode ser substituída por '=>', caso o membro retorne somente o valor sem tratamento, ou caso execute somente uma lógica, mesmo não retornando nada.
+          get => _estoque;
+
+          // O modificador de acesso 'private' indica que o método acessor só pode ser chamado internamente.
+          private set
+          {
+              if (ValidarValorEstoque(value))
+                  _estoque = value;
+          } 
+      }
+
+      // Essa é a definição de uma constante. Diferente dos outros membros, que devem ser chamados a partir de uma instância, este é chamado pela própria classe, sem instância
+      public const int CONST_ESTOQUE_MINIMO = 10;
+
+      // Esse é um construtor, que possui o mesmo nome da classe e não tem retorno.
+      // Construtores inicializam propriedades e campos da classe
+      // O construtor sem parâmetro estará disponível automaticamente, caso nenhum outro com parâmetro tenha sido implementado.
+      // Se existir construtor com parâmetro, para diponibilizar o construtor sem parâmetro deve ser implementado explicitamente
+      public ModeloClasse()
+      {
+          // Campos somente leitura somente podem ser inicializados em contrutores
+          PropriedadeSomenteLeitura = "Esta propriedade é somente leitura";
+          CampoSomenteLeitura = "Este campo é somente leitura";
+      }
+
+      // Os construtores abaixo aceitam parâmetros.
+      // Caso não tenha sido declarado explicitamente o construtor sem parâmetros, essa classe só pode ser instânciada mediante a passagem de valor definida em um desses construtores.
+      // this se refere à propria classe. Neste caso, após execução desse construtor, chama o construtor sem parâmetros, caso seja definido
+      public ModeloClasse(int id) : this()
+      {
+          SetIdPrivado(id);
+      }
+
+      // this se refere à propria classe. Neste caso, após execução desse construtor, chama o construtor com um parâmetro, caso seja definido
+      public ModeloClasse(int id, decimal valor) : this(id)
+      {
+          PropriedadeImplementadaValor = valor;
+      }
+
+      // Opção para fazer cópia de dados de outro objeto
+      public ModeloClasse(ModeloClasse modelo) : this(modelo.GetIdPrivado(), modelo.PropriedadeImplementadaValor)
+      {
+          PropriedadeAutoImplementadaDescricao = modelo.PropriedadeAutoImplementadaDescricao;
+      }
+
+      // Este é um método da classe acessível externamente e que não retorna valor
+      public void ChecarEstoque()
+      {
+          if (PropriedadeEstoque < CONST_ESTOQUE_MINIMO)
+              throw new ApplicationException("Estoque muito baixo");
+      }
+
+      // Este é um método da classe acessível externamente e que não retorna valor
+      public void AtualizarEstoque(int qtd)
+      {
+          if (ValidarValorEstoque(qtd))
+              _estoque += qtd;
+      }
+
+      // Este é um método da classe acessível externamente e que retorna valor
+      public string RetornarDados()
+      {
+          return 
+              "Id: " + GetIdPrivado() +
+              "\nDescrição: " + PropriedadeAutoImplementadaDescricao +
+              "\nValor: " + PropriedadeImplementadaValor +
+              "\nEstoque: " + PropriedadeEstoque +
+              "\nObservação 1: " + PropriedadeSomenteLeitura +
+              "\nObservação 2: " + CampoSomenteLeitura;
+      }
+
+      // Método static é acessado sem uma instância da classe. Esses métodos não podem acessar membros não estáticos da classe
+      public static decimal CalcularDesconto(decimal valor, decimal percentual) => valor - (valor * (percentual / 100));
+
+      // O método abaixo só pode ser acessado pela classe
+      private bool ValidarValorEstoque(int qtd)
+      {
+          if (qtd <= 0)
+              throw new ArgumentException("Valor para atualização do estoque deve ser maior que 0");
+
+          return true;
+      }
+  }
+
+  // Usando classe. Será necessário o using com o namespace da classe em outros arquivos
+
+  // Instânciando usando construtor padrão
+  var instanciaValoresPadrao = new ModeloClasse();
+
+  // Instânciando usando construtor com um parâmetro
+  var instanciaConstrutorUmParam = new ModeloClasse(5);
+
+  // Instânciando usando construtor com dois parâmetros
+  var intanciaConstrutorDoisParam = new ModeloClasse(3, 19.99M);
+
+  // Instanciando e inicializando propriedades
+  var modelo = new ModeloClasse()
+  {
+      PropriedadeAutoImplementadaDescricao = "Atualizando valor de uma propriedade",
+      PropriedadeImplementadaValor = 39.99M,
+
+      // Tentivas abaixo produzirá erros, por serem somente leitura externamente
+      //PropriedadeSomenteLeitura = "Atualizado internamente via construtor";
+      //PropriedadeEstoque = 5 // Não pode ser atualizado
+      //CampoSomenteLeitura = "Atualizando internamente via construtor";
+  };
+
+  // Chamando métodos
+  Console.WriteLine(modelo.RetornarDados() + "\n");
+
+  // Usando acessores de campos
+  modelo.SetIdPrivado(10);
+  Console.WriteLine("Atualizando Id para " + modelo.GetIdPrivado() +"\n" + modelo.RetornarDados() + "\n");
+
+  // Acessando propriedades
+  Console.WriteLine("Observação: " + modelo.PropriedadeSomenteLeitura + "\n");
+
+  // Acessando constatnes
+  Console.WriteLine("Estoque mínimo: " + ModeloClasse.CONST_ESTOQUE_MINIMO + "\n");
+
+  // Chamando método
+  modelo.AtualizarEstoque(5);
+  
+  // Chamando método estático
+  var valorTotal = ModeloClasse.CalcularDesconto(modelo.PropriedadeImplementadaValor, 10M);
+
+  // Usando construtor primário
+  // Disponível a partir do C# 12.0
+  // Parâmetros estão disponíveis somente dentro da classe
+  public class ModeloClasse2(int id, int seed, string descricao)
+  {
+    // Para tratar o valor entrado, deve ser criada uma propriedade implementada e o método de validação deve ser estático
+    // Inicialização de um campo
+    private int _id = ValidarId(id) ? id : throw new ArgumentException("Id deve ser maior que 0");
+
+    public int Id
     {
-      if (i % 3 == 0)
-        continue;
-
-      Console.WriteLine(i);
+      get => _id;
+      set => _id = ValidarId(value) ? value : throw new ArgumentException("Id deve ser maior que 0");
     }
-    ~~~
+
+    // Inicialização de uma propriedade auto-implementada
+    public string Descricao { get; set; } = descricao;
+
+    public int ObterCodigo()
+    {
+      return Random.Shared.Next(10000000) * Math.Abs(seed);
+    }
+
+    private static bool ValidarId(int id) => id > 0;
+  }
+
+  // Herança de classes com construtor primário
+  public class ModeloClasse3 : ModeloClasse2
+  {
+    public ModeloClasse3(int id, int seed, string descricao) : base(id, seed, descricao)
+    {
+      //
+    }
+  }
+
+  public class ModeloClasse4(int id, int seed, string descricao) : ModeloClasse2(id, seed, descricao)
+  {
+    //
+  }
+  
+  // Usando classes com construtor primário
+  var modelo2 = new ModeloClasse2(5, 2, "Teste");
+
+  Console.WriteLine("Id: " + modelo2.Id);
+  Console.WriteLine("Descrição: " + modelo2.Descricao);
+  Console.WriteLine("Código: " + modelo2.ObterCodigo());
+  ~~~
+
+> Todo objeto em C# herda de `object`
+
+[🔼 topo](#topo)
+
+#### Classe estática <a id="class-static"></a>
+
+- Não podem ser instanciada
+- Não possui construtor
+- Não pode ser herdado
+- Só podem ter membros estáticos
+- Sintaxe
+
+  ~~~csharp
+  public static class ClassStatic
+  {
+    // Constantes são automaticamente estáticas
+    public const int VALOR_CONSTANTE = 3;
+
+    public static int PropriedadeStatic { get; set; }
+
+    public static void MetodoStatic(int a, int b)
+    {
+      PropriedadeStatic = a + b + VALOR_CONSTANTE;
+    }
+
+    public static string OutroMetodoStatic()
+    {
+      return "Alguma coisa";
+    }
+  }
+
+  // Usando uma classe estática. Using necessário em outras namespace
+
+  // Isso produz erro
+  //var modelo = new ClassStatic();
+
+  // Acessando membros de uma classe estática
+  ClassStatic.PropriedadeStatic = 11;
+
+  Console.WriteLine(ClassStatic.PropriedadeStatic);
+
+  Console.WriteLine(ClassStatic.VALOR_CONSTANTE);
+
+  ClassStatic.MetodoStatic(5, 2);
+
+  Console.WriteLine(ClassStatic.OutroMetodoStatic());
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Classe Abstrata <a id="class-abstract"></a>
+
+- Não pode ser instânciada
+- Deve ser herdada por outras classes especializadas
+- Acesso aos membros que não sejam de classe somente através de objetos especializados
+- Sintaxe:
+
+  ~~~csharp
+  public abstract class ModeloAbstrato
+  {
+    // Constantes e membros estáticos podem ser acessador pelo nome da superclasse
+    public const string CHAVE_PADRAO = "TESTE";
+
+    public int Id { get; set; }
+
+    // O modificador de acesso 'protected' indica que o membro somente pode ser acessado pelas subclasses, ou classes filhas
+    public int Codigo { get; protected set; }
+
+    // Método não pode ser sobrescrito nas subclasses
+    public string Metodo()
+    {
+        return "Metodo implementado na superclasse";
+    }
+
+    // A keyword 'virtual' indica que o método pode ser sobrescrito pelas subclasses
+    public virtual string Metodo2()
+    {
+        return "Metodo2 implementado na superclasse";
+    }
+
+    // Método abstratos obriga a implementação nas subclasses
+    // Métodos abstratos não possuem implementação
+    // Só pode existir em classes abstratas
+    public abstract string Metodo3();
+
+    public virtual string ObterDados()
+    {
+        return "Id: " + Id +
+            "\nCódigo: " + Codigo;
+    }
+
+    // É uma boa prática manter os construtores 'protected', já que somente serão acessados pelas subclasses
+    protected ModeloAbstrato()
+    {
+
+    }
+
+    protected ModeloAbstrato(int id) : this()
+    {
+        Id = id;
+    }
+  }
+
+  // Classe herda de 'ModeloAbstrato' (Neste contexto ':' significa que herda, ou seja, aplica o conceito 'é um')
+  // A classe herdada é chamada de 'superclasse', e a que herda é chamada de 'subclasse'
+  public class ModeloEspecializado : ModeloAbstrato
+  {
+    // Membro só pode ser acessado pelo objeto especializado
+    public string PropriedadeEspecializada { get; set; }
+
+    public ModeloEspecializado()
+    {
+        // Membro definido na superclasse pode ser acessado na subclasse, desde que não seja privado
+        Codigo = Random.Shared.Next();
+    }
+
+    public ModeloEspecializado(int id, string valor) : this()
+    {
+        Id = id;
+        PropriedadeEspecializada = valor;
+    }
+
+    // Membro só pode ser acessado pelo objeto especializado
+    public string MetodoEspecializado()
+    {
+        return "Este método só existe na classe 'ModeloEspecializado'";
+    }
+
+    // A keyword 'override' significa que o método está sendo sobrescrito
+    public override string Metodo2()
+    {
+        return "Método2 reimplementado na subclasse 'ModeloEspecializado'";
+    }
+
+    public override string Metodo3()
+    {
+        return "Método3 implementado na subclasse 'ModeloEspecializado'";
+    }
+
+    // A keyword 'base', significa que está sendo acessado membros da superclasse e não da subclasse
+    public override string ObterDados()
+    {        
+        return base.ObterDados() +
+            "\nPropriedade Especializada: " + PropriedadeEspecializada
+        ;
+    }
+  }
+
+  public class ModeloEspecializado2 : ModeloAbstrato
+  {
+    public string PropriedadeEspecializada2 { get; }
+
+    // 'base(id)' indica que está sendo usado o construtor da base que aceita um argumento do tipo passado
+    public ModeloEspecializado2(int id, string valor) : base(id)
+    {
+        PropriedadeEspecializada2 = valor;
+        Codigo = Random.Shared.Next();
+    }
+
+    public string MetodoEspecializado2()
+    {
+        return "Este método só existe na classe 'ModeloEspecializado2'";
+    }
+
+    public override string Metodo3()
+    {
+        return "Metodo3 implementado na subclasse 'ModeloEspecializado2'";
+    }
+
+    public override string ObterDados()
+    {
+        return base.ObterDados() +
+            "\nPropriedade Especializada 2: " + PropriedadeEspecializada2
+        ;
+    }
+  }
+
+  // Usando classes herdadas
+
+  // Erro: classe abstrata não pode ser instanciada
+  //var modeloAbstrato = new ModeloAbstrato();
+  var modeloEspecializado = new ModeloEspecializado()
+  {
+      Id = 3,
+      PropriedadeEspecializada = "Valor 1"
+      //Codigo = 5; // Erro: Propriedade somente leitura externamente
+  };
+  var modeloEspecializado2 = new ModeloEspecializado2(5, "Valor 2");
+
+  // Membro estático na superclasse
+  Console.WriteLine(ModeloAbstrato.CHAVE_PADRAO);
+
+  // Membros existente somente nas especializações
+  Console.WriteLine(modeloEspecializado.PropriedadeEspecializada);
+  Console.WriteLine(modeloEspecializado.MetodoEspecializado());
+
+  Console.WriteLine(modeloEspecializado2.PropriedadeEspecializada2);
+  Console.WriteLine(modeloEspecializado2.MetodoEspecializado2());
+
+  // Abstração e herança permite a aplicação do polimorfismo
+  // Embora de tipos diferentes, as duas classes especializadas puderam ser alocadas na lista de tipo diferente, devido ao conceito do "é um"
+  List<ModeloAbstrato> especializacoes = [modeloEspecializado, modeloEspecializado2];
+
+  // Chamadas aos métodos abaixo podem ter comportamentos diferentes dependendo do objeto em que está sendo chamado
+  // Somente podem ser chamados membros definidos no tipo da lista 'especializacoes'
+  foreach (var obj in especializacoes)
+  {
+      Console.WriteLine("Id: " + obj.Id);
+      Console.WriteLine("Método 1: " + obj.Metodo());
+      Console.WriteLine("Método 2: " + obj.Metodo2());
+      Console.WriteLine("Método 3: " + obj.Metodo3());
+      Console.WriteLine();
+  }
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Classe Sealed <a id="class-sealed"></a>
+
+- Indica que a classe não pode ser herdada
+- A keyword **sealed** também pode ser aplicada a método, que indica que heranças posteriores não podem sobrescrever o método
+- Sintaxe:
+
+  ~~~csharp
+  // Keyword 'sealed' impede a classe de ser herdada
+  public sealed class ModeloSealed(int id) : ModeloAbstrato(id)
+  {
+      public override string Metodo3()
+      {
+          return "Esta classe está selada: não pode ser herdada";
+      }
+  }
+
+  // Erro: Não é possível herar de classes seladas
+  /*public class ModeloTesteSealed : ModeloSealed
+  {
+      //
+  }*/
+
+  public class ModeloMetodoSeald (int id) : ModeloAbstrato(id)
+  {
+      // Keyword no método impede de ser sobrescrito em heranças posteriores
+      public sealed override string Metodo3()
+      {
+          return "Este método foi implementado na classe 'ModeloMetodoSeald' e está selado para implementação em herança posterior";
+      }
+  }
+
+  public class ModeloTesteMetodoSeald(int id) : ModeloMetodoSeald(id)
+  {
+      // Erro: método selado não pode ser sobrescrito
+      /*public override string Metodo3()
+      {
+          return "";
+      }*/
+  }
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Cópia de objetos <a id="class-copia"></a>
+
+- Por ser do tipo referência, a simples atribuição a uma outra variável, não copia o objeto, mas sim a referência
+- Exemplo (Usando classes criadas nos tópicos anteriores):
+
+  ~~~csharp
+  var objTesteCopia1 = new ModeloClasse2(1, "Teste Igualdade", "Este é o objeto 1");
+
+  // Isso não cria um novo objeto, mas copia a referência para o mesmo objeto
+  var objTesteCopia2 = objTesteCopia1;
+
+  // Isso altera o mesmo objeto apontado por 'objTesteCopia1'
+  objTesteCopia2.Descricao = "Este é o objeto 2";
+
+  // Agora sim foi realmente criado um novo objeto, que não é o mesmo apontado por 'objTesteCopia1'
+  objTesteCopia2 = new ModeloClasse2(2, objTesteCopia1.Titulo, "Este é o objeto 2");
+  ~~~
+
+[🔼 topo](#topo)
+
+#### Teste de igualdade entre objetos <a id="class-igualdade"></a>
+
+- Para testar igualdade, pode ser usado `==` ou o método herdado `Equals`
+- Por padrão são validas as referências. Ou seja: testar a igualdade de duas referências para objetos diferentes que sejam do mesmo tipo e possuam os mesmos dados, produza um valor `False`
+- Exemplo (Usando classes criadas nos tópicos anteriores):
+
+  ~~~csharp
+  // Criado um novo objeto com os mesmos ddos de outro objeto. Neste caso, as referências são diferentes
+  var objTesteIgualdade1 = new ModeloClasse2(2, objTesteCopia1.Titulo, objTesteCopia1.Descricao);
+  
+  // As validações abaixo resultam em `False`, já que por padrão são validadas as referências e não os dados em si
+  Console.WriteLine(objTesteIgualdade1 == objTesteCopia1);
+  Console.WriteLine(objTesteIgualdade1.Equals(objTesteCopia1));
+  
+  // Isso resulta em 'True'
+  Console.WriteLine(objTesteIgualdade1 != objTesteCopia1);
+
+  /********************************************************************************/
+  // Para corrigir esse comportamento, devem ser realizadas as implementações a seguir nas classes. No Exemplo, implementada na classe 'ModeloClasse'
+
+  public class ModeloClasse
+  {
+    // Demais implementações
+
+    // GetHashCode e Equals são herdados de object
+    public override int GetHashCode() => HashCode.Combine(_idPrivado, _valor, PropriedadeAutoImplementadaDescricao);
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is null) return false;
+
+        if (obj is not ModeloClasse objModelo) return false;
+
+        if (ReferenceEquals(obj, objModelo)) return true;
+
+        return objModelo._idPrivado == _idPrivado &&
+            objModelo._valor == _valor &&
+            objModelo.PropriedadeAutoImplementadaDescricao == PropriedadeAutoImplementadaDescricao;
+    }
+
+    public static bool operator ==(ModeloClasse lhs, ModeloClasse rhs) => lhs.Equals(rhs);
+
+    public static bool operator !=(ModeloClasse lhs, ModeloClasse rhs) => !(lhs == rhs);
+
+    // Demais implementações
+  }
+
+  // Testando novamente a igualdade
+  var objTesteIgualdade2 = new ModeloClasse(1, 16.49M)
+  {
+      PropriedadeAutoImplementadaDescricao = "Objeto de Teste"
+  };
+
+  // Fazendo uma cópia dos dados de outro objeto
+  var objTesteIgualdade3 = new ModeloClasse(objTesteIgualdade2);
+
+  // Agora sim as validações abaixo serão 'True'
+  Console.WriteLine("Objeto1 == Objeto2: " + (objTesteIgualdade2 == objTesteIgualdade3));
+  Console.WriteLine("Objeto1.Equals(objeto2): " + objTesteIgualdade2.Equals(objTesteIgualdade3));
+
+  // E isso é 'False'
+  Console.WriteLine("Objeto1 != Objeto2: " + (objTesteIgualdade2 != objTesteIgualdade3));
+  ~~~
+
+[🔼 topo](#topo)
+
+### Record <a id="record"></a>
+
+- Pode substituir o uso de classes (não em todas as situações)
+- É um tipo referência
+- Permite herança (somente entre outros `record`) e uso das keywords `abstract` e `sealed`
+- Facilita a cópia de objetos
+- Falicita o teste de igualdade: o teste é feito pelo tipo e os dados nas propriedades do objeto (não testa a referência)
+- Facilita a criação de objetos imutáveis
+- Exemplo:
+
+  ~~~csharp
+  // Estrutura semelhante a uma classe
+  public record class ModeloRecord
+  {
+      public int Id { get; }
+      public string Titulo { get; private set; }
+      public string Descricao { get; set; }
+
+      public ModeloRecord(int id, string titulo)
+      {
+          Id = ValidarId(id) ? id : throw new ArgumentException("Id deve ser maior que 0");
+          Titulo = titulo;
+      }
+
+      private bool ValidarId(int id) => id > 0;
+  }
+
+  // Cria um objeto imutável: O construtor primário cria as propriedades somente leitura
+  public record class ModeloImutavel(int Id, string Titulo, decimal Valor);
+
+  // Uso de um record
+
+  var modeloRecord = new ModeloRecord(1, "Teste") { Descricao = "Este é um record de Teste" };
+  var modeloRecord2 = new ModeloRecord(1, "Teste") { Descricao = "Este é um record de Teste" };
+
+  // Facilita a escrita dos dados do objeto
+  Console.WriteLine(modeloRecord); // Saída: ModeloRecord { Id = 1, Titulo = Teste, Descricao = Este é um record de Teste }
+  Console.WriteLine(modeloRecord2); // Saída: ModeloRecord { Id = 1, Titulo = Teste, Descricao = Este é um record de Teste }
+
+  // Facilita a cópia
+  var modeloRecord3 = modeloRecord with { Descricao = "Este é um teste de cópia" };
+
+  // Facilita o teste de igualdade (não precisa de sobrescrita de métodos)
+  Console.WriteLine((modeloRecord == modeloRecord2)); // True
+  Console.WriteLine(modeloRecord.Equals(modeloRecord2)); // True
+  Console.WriteLine((modeloRecord == modeloRecord3)); // False
+  Console.WriteLine(modeloRecord.Equals(modeloRecord3)); // False
+
+  var modeloImutavel = new ModeloImutavel(1, "Teste", 10.99M);
+
+  // Códigos abaixo geram falha
+  //modeloImutavel.Id = 2;
+  //modeloImutavel.Titulo = "Novo Teste";
+  //modeloImutavel.Valor = 15.99;
+  ~~~
+
+[🔼 topo](#topo)
+
+### Interface <a id="interface"></a>
+
+- Define assinaturas de métodos e propriedades (sem implementações)
+- Cria um contrato, onde as classes que implementam a interface devem implementar a lógica dos métodos e propriedades definidas na interface
+- Bastante usada para definir designs mais complexos de sistemas
+- Muito usado para aplicação do polimorfismo
+- Por convenção, o nome da interface inicia com `I`
+- Sintaxe
+
+  ~~~csharp
+  // Definindo uma interface
+  public interface INotificacao
+  {
+      public string Descricao { get; set; } // Define a assinatura de uma propriedade
+
+      public string Notificar(); // Define a assinatura de um método
+  }
+
+  // Usando uma interface
+
+  // Implementando uma interface (:)
+  public class Cliente : INotificacao
+  {
+      public string Descricao { get; set; }
+
+      public string Notificar() => "Esta é um notificação do cliente";
+
+      public string MetodoCliente() => "Este é um método só do cliente";
+  }
+
+  // Herdando de uma classe e implementando uma interface
+  public class Funcionario : ClasseBase, INotificacao
+  {
+      public string Descricao { get; set; }
+
+      public string Notificar() => "Esta é uma notificação do funcionário.";
+
+      public string MetodoFuncionario() => "Este é um método do funcionario";
+  }
+
+  // Usando os objetos
+  var cliente = new Cliente() { Descricao = "Instância de um cliente" };
+  var funcionario = new Funcionario() { Descricao = "Instância de um funcionário" };
+
+  // Referência do próprio objeto pode chamar membros obrigatório da interface e os próprios membros definidos na classe
+  Console.WriteLine(cliente.Descricao + ": " + cliente.Notificar() + " - " + cliente.MetodoCliente());
+  Console.WriteLine(funcionario.Descricao + ": " + funcionario.Notificar() + " - " + funcionario.MetodoFuncionario());
+
+  // Aplicando o polimorfismo
+  
+  // Lista aceita qualquer tipo que implementa a interface
+  List<INotificacao> notificacoes = [];
+  notificacoes.Add(cliente);
+  notificacoes.Add(funcionario);
+
+  // Variável tipada pela inteface, somente chama membros definidos pela interface, ou seja, não chama membros definidos no tipo do objeto.
+  foreach (INotificacao obj in notificacoes)
+      Console.WriteLine(obj.Descricao + ": " + obj.Notificar());
+  ~~~
 
 [🔼 topo](#topo)
