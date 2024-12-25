@@ -64,6 +64,8 @@
           5. [Teste de igualdade entre objetos](#class-igualdade)
       2. [Record](#record)
       3. [Interface](#interface)
+  5. [Recursos do .NET](#recursos)
+      1. [Conversores de tipos primitivos](#conversores)
 
 </details>
 
@@ -1688,6 +1690,105 @@ Obs.: O resultado dos operadores relacionais é do tipo `bool;`
   // Variável tipada pela inteface, somente chama membros definidos pela interface, ou seja, não chama membros definidos no tipo do objeto.
   foreach (INotificacao obj in notificacoes)
       Console.WriteLine(obj.Descricao + ": " + obj.Notificar());
+  ~~~
+
+[🔼 topo](#topo)
+
+## Recursos do .NET <a id="recursos"></a>
+
+Neste tópico serão abordados outros recursos do framework que auxiliam no desenvolvimento.
+
+### Conversores de tipos primitivos <a id="conversores"></a>
+
+- Permite a conversão do valor de um tipo em outro tipo primitivo
+- O valor convertido deve estar dentro do range de valores permitidos para o tipo
+- Podem ser usados os seguintes métodos:
+  - Usando o método estático `Parse` do tipo primitivo: `var resultado = {tipo_primitivo}.Parse(valor_string);`
+    - Não pode receber parâmetro `null`
+    - Lança exceção se não puder realizar a conversão
+  - Usando o método estático `TryParse` do tipo primitivo: `var resultadoConversao = {tipo_primitivo}.TryParse(valor_string, out var variavelSaidaConversao);`
+    - Não retorna erro: retorna `True` se convertido com sucesso, ou `False` caso contrário
+    - A variável de saída será iniciado com o valor do tipo, caso a conversãof falhe
+  - Usando métodos estáticos da classe `Convert`: `var resultado = Convert.To{tipo_desejado}(valor)`
+    - Parâmetro `null` resulta no valor padrão para o tipo
+    - Lança exceção se não puder realizar a conversão
+    - Métodos tem sobrecarga para conversão de outros tipos que não sejam string
+- Sintaxe:
+
+  ~~~csharp  
+  //Conversões numéricas
+
+  var numero = int.Parse("5");
+  numero = Convert.ToInt32("5");
+  var sucessoParse = int.TryParse("5", out numero); // sucessoParse = True / numero = 6
+
+  var numero2 = int.Parse("-10");
+  numero2 = Convert.ToInt32("-10");
+  sucessoParse = int.TryParse("-10", out numero2); // sucessoParse = True / numero2 = -10
+
+  var numero3 = decimal.Parse("19,99");
+  numero3 = Convert.ToDecimal("19,99");
+  sucessoParse = decimal.TryParse("19,99", out numero3); // sucessoParse = False / numero3 = 19.99
+
+  // Cuidado com a localização: em pt-BR, por padrão o '.' é ignorado
+  var numero4 = decimal.Parse("9.99"); 
+  numero4 = Convert.ToDecimal("9.99");
+  sucessoParse = decimal.TryParse("9.99", out numero4); // sucessoParse = False / numero4 = 999
+
+  string entrada = null;
+  var numero5 = Convert.ToSingle(entrada); // Resulta em um float de valor 0
+  //numero5 = int.Parse(entrada); // Erro: Parâmetro não pode ser null
+  sucessoParse = int.TryParse(entrada, out numero5); // sucessoParse = False / numero5 = 0
+
+  var numero6 = Convert.ToInt32(32.664); // Valor arredondado automaticamente / numero6 = 33
+  //numero6 = int.Parse(32.664); // Erro: Parâmetro não é uma string
+  //sucessoParse = int.TryParse(32.664, out numero6); // Erro: Parâmetro não é uma string
+
+  // Conversões abaixo produz erro
+  //var numero7 = int.Parse("a"); // Erro: Formato inválido
+  //numero7 = Convert.ToInt32("a"); // Erro: Formato inválido
+  sucessoParse = int.TryParse("a", out numero7); // sucessoParse = False / numero7 = 0
+  
+  //var numero8 = byte.Parse("257"); // Erro: Fora do range permitido
+  //numero8 = Convert.ToByte("257"); // Erro: Fora do range permitido
+  sucessoParse = byte.TryParse("257", out numero8); // sucessoParse = False / numero8 = 0
+
+  // Conversões booleanas
+  
+  var verdadeiro = bool.Parse("true");
+  verdadeiro = Convert.ToBoolean("true");
+  sucessoParse = bool.TryParse("true", out verdadeiro); // sucessoParse = True / verdadeiro = True
+
+  var verdadeiro2 = bool.Parse("false");
+  verdadeiro2 = Convert.ToBoolean("false");
+  sucessoParse = bool.TryParse("false", out verdadeiro2); // sucessoParse = True / verdadeiro2 = False
+
+  var verdadeiro3 = Convert.ToBoolean(0); // Resulta em False
+  //verdadeiro3 = bool.Parse("0"); // Erro: Formato inválido
+  //sucessoParse = bool.TryParse(0, out verdadeiro2); // Erro: Parâmetro não é uma string
+
+  var verdadeiro4 = Convert.ToBoolean(1); // Resulta em True
+  //verdadeiro4 = bool.Parse(1);  // Erro: Parâmetro não é uma string
+
+  var verdadeiro5 = Convert.ToBoolean(-1); // True
+  //verdadeiro5 = bool.Parse(-1); // Erro: Parâmetro não é uma string
+
+  entrada = null;
+  var verdadeiro6 = Convert.ToBoolean(entrada); // Resulta em False
+  //verdadeiro6 = bool.Parse(null); // Erro: Parâmetro não pode ser null
+  sucessoParse = bool.TryParse(entrada, out verdadeiro6); // sucessoParse = False / verdadeiro6 = False
+  
+  //var verdadeiro7 = bool.Parse("verdadeiro"); // Erro: Fora do range permitido
+  //verdadeiro7 = Convert.ToBoolean("verdadeiro"); // Erro: Fora do range permitido
+  sucessoParse = bool.TryParse(entrada, out verdadeiro7); // sucessoParse = False / verdadeiro7 = False
+
+  //var verdadeiro8 = Convert.ToBoolean("0"); // Erro: Fora do range permitido
+  //verdadeiro8 = bool.Parse("0"); // Erro: Parâmetro não é uma string
+  sucessoParse = bool.TryParse("0", out verdadeiro8); // sucessoParse = False / verdadeiro8 = False
+
+  //var verdadeiro9 = Convert.ToBoolean("1"); // Erro: Fora do range permitido
+  //verdadeiro9 = bool.Parse("1"); // Erro: Parâmetro não é uma string
+  sucessoParse = bool.TryParse("1", out verdadeiro9); // sucessoParse = False / verdadeiro9 = False
   ~~~
 
 [🔼 topo](#topo)
